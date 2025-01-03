@@ -1,0 +1,105 @@
+/* รีเซ็ตค่าการแสดงผลเบื้องต้น */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+/* ตั้งค่ารูปแบบแถบเมนู */
+.navbar {
+   background-color: #ffffff; /* พื้นหลังสีขาว */
+   display: flex;
+   justify-content: space-between; /* แยกโลโก้และเมนูไปคนละด้าน */
+   align-items: center; /* จัดตำแหน่งแนวตั้งให้อยู่ตรงกลาง */
+   padding: 15px 20px; /* ระยะห่างภายใน */
+   border-bottom: 2px solid #ddd; /* เส้นขอบล่าง */
+}
+
+/* โลโก้ */
+.navbar .logo a {
+   color: #169bdd; /* สีของโลโก้ */
+   font-size: 24px;
+   font-weight: bold;
+   text-decoration: none;
+   font-family: 'Mochiy Pop One', sans-serif;
+   margin-right: 15px; /* เพิ่มระยะห่างจากเมนู */
+}
+
+/* ตั้งค่ารูปแบบลิงก์ในเมนู */
+.nav-links {
+   list-style: none; /* ลบจุดหน้ารายการ */
+   display: flex;
+   gap: 15px; /* ระยะห่างระหว่างลิงก์ */
+}
+
+.nav-links li a {
+   color: #000000; /* สีตัวอักษรปกติ */
+   text-decoration: none;
+   font-size: 15px;
+   padding: 5px 10px;
+   font-family: 'Open Sans', sans-serif;
+   transition: color 0.3s ease, border-bottom 0.3s ease;
+   border-bottom: 2px solid transparent; /* เส้นข้างล่างแบบโปร่งใส */
+}
+
+.nav-links li a:hover {
+   color: #169bdd; /* สีตัวอักษรเมื่อ hover */
+   border-bottom: 2px solid #169bdd; /* เส้นข้างล่างเมื่อ hover */
+}
+
+/* เมื่อคลิกหรือโฟกัสลิงก์ */
+.nav-links li a:focus,
+.nav-links li a:active {
+   color: #169bdd; /* สีตัวอักษรเมื่อเลือก */
+   border-bottom: 2px solid #169bdd; /* เส้นข้างล่างเมื่อเลือก */
+}
+
+/* ตัวแปลภาษาและไอคอน */
+.language-and-icons {
+   display: flex;
+   align-items: center;
+   gap: 15px; /* ระยะห่างระหว่าง select และไอคอน */
+}
+
+/* ตัวแปลภาษา */
+.language-selector {
+   background-color: transparent; /* ไม่มีพื้นหลัง */
+   color: #000000; /* สีตัวอักษร */
+   padding: 5px 10px;
+   border: none; /* เอาขอบออก */
+   cursor: pointer;
+   font-family: 'Open Sans', sans-serif;
+   appearance: none; /* เอาเครื่องหมายตกแต่งที่เพิ่มขึ้นจากเบราว์เซอร์ */
+   -webkit-appearance: none; /* สำหรับ Safari */
+   -moz-appearance: none; /* สำหรับ Firefox */
+}
+
+
+/* ไอคอนค้นหาและ GPS */
+.search-icon,
+.gps-icon {
+   color: #000000; /* สีของไอคอน */
+   font-size: 20px;
+   cursor: pointer;
+}
+
+.search-icon:hover,
+.gps-icon:hover {
+   color: #169bdd; /* เปลี่ยนสีเมื่อ hover */
+}
+
+/* ตั้งค่ารูปแบบเนื้อหาหลัก */
+.content {
+   padding: 50px;
+   text-align: center;
+}
+
+.content h1 {
+   font-size: 36px;
+   color: #333;
+}
+
+.content p {
+   font-size: 18px;
+   color: #555;
+}
