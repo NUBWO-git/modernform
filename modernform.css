@@ -11,7 +11,7 @@
    display: flex;
    justify-content: space-between; /* จัดระเบียบให้โลโก้+เมนู อยู่ซ้าย และแปล+ไอคอน อยู่ขวา */
    align-items: center;
-   padding: 10px 20px; /* ปรับระยะห่างของแถบเมนู */
+   padding: 30px 25px; /* ปรับระยะห่างของแถบเมนู */
    border-bottom: 2px solid #ddd;
    position: sticky;
    z-index: 1000;
@@ -30,12 +30,8 @@
    font-size: 26px;
    font-weight: bold;
    text-decoration: none;
-   font-family: 'Mochiy Pop One', sans-serif;
+   font-family: 'Righteous', sans-serif; /* ฟอนต์ที่ถูกต้อง */
    transition: color 0.3s ease;
-}
-
-.navbar .logo a:hover {
-   color: #4CAF50;
 }
 
 /* เมนู */
@@ -91,6 +87,74 @@
    outline: none;
 }
 
+/* ปรับการจัดตำแหน่งของเมนูภาษา */
+.languageMenu {
+   position: absolute; /* ให้เมนูภาษาไม่อยู่ในแถบเมนูใหญ่ */
+   top: 95px; /* ระยะห่างจากขอบบน */
+   right: 60px; /* ระยะห่างจากขอบขวา */
+   background-color: #ffffff;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   padding: 10px;
+   list-style: none;
+   display: none; /* ซ่อนเมนูเริ่มต้น */
+   border-radius: 5px;
+   z-index: 999; /* ให้เมนูอยู่เหนือส่วนอื่น */
+}
+
+.languageMenu li {
+   margin-bottom: 10px;
+}
+
+/* ปรับสไตล์ให้ปุ่มแปลภาษา */
+.languageMenu li button {
+   background-color: transparent;  /* ไม่มีพื้นหลัง */
+   border: none;  /* ไม่มีขอบ */
+   padding: 8px 15px;  /* ระยะห่างภายใน */
+   cursor: pointer;  /* เปลี่ยนเป็นมือเมื่อชี้ */
+   font-size: 14px;  /* ขนาดตัวอักษร */
+   font-family: 'Open Sans', sans-serif;  /* ฟอนต์ */
+   display: flex;
+   align-items: center;  /* จัดให้ข้อความและลูกศรอยู่ตรงกลาง */
+   position: relative;  /* ใช้สำหรับการจัดการตำแหน่งของลูกศร */
+   transition: background-color 0.3s ease;  /* การเปลี่ยนพื้นหลังเมื่อโฮเวอร์ */
+}
+
+/* ลูกศรชี้ไปที่ข้อความ */
+.languageMenu li button::after {
+   content: "";  /* สร้างเนื้อหาว่างๆ */
+   display: inline-block;
+   width: 0;
+   height: 0;
+   margin-left: 8px;  /* ระยะห่างจากข้อความ */
+   border-left: 5px solid transparent;  /* ขอบซ้ายเป็นโปร่งใส */
+   border-right: 5px solid transparent;  /* ขอบขวาเป็นโปร่งใส */
+   border-top: 5px solid #000;  /* ขอบบนเป็นสีดำเพื่อสร้างลูกศร */
+   position: absolute;
+   left: 50%;  /* วางลูกศรไว้ที่กลางของปุ่ม */
+   top: 100%;  /* วางลูกศรใต้ปุ่ม */
+   transform: translateX(-50%);  /* ทำให้ลูกศรอยู่กลางปุ่ม */
+   transition: transform 0.3s ease;  /* เพิ่มการเคลื่อนไหวของลูกศร */
+}
+
+/* เปลี่ยนพื้นหลังเมื่อโฮเวอร์ */
+.languageMenu li button:hover {
+   background-color: #f1f1f1;  /* พื้นหลังเมื่อโฮเวอร์ */
+}
+
+/* เมื่อเมนูแสดงผล */
+.languageMenu {
+   position: absolute;
+   top: 95px;
+   right: 60px;
+   background-color: #ffffff;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   padding: 10px;
+   list-style: none;
+   display: none;
+   border-radius: 5px;
+   z-index: 999;
+}
+
 /* ไอคอนค้นหาและ GPS */
 .search-icon,
 .gps-icon {
@@ -118,4 +182,27 @@
 .content p {
    font-size: 18px;
    color: #555;
+}
+
+/* เพิ่มความสามารถในการตอบสนองเมื่อขนาดหน้าจอเล็กลง */
+@media (max-width: 768px) {
+   .navbar {
+      flex-direction: column; /* เปลี่ยนให้แถบเมนูเป็นแนวตั้งเมื่อหน้าจอเล็ก */
+      padding: 15px;
+   }
+
+   .nav-links {
+      flex-direction: column; /* เปลี่ยนเมนูให้เป็นแนวตั้ง */
+      gap: 10px;
+   }
+
+   .language-and-icons {
+      flex-direction: column;
+      gap: 10px;
+   }
+
+   .languageMenu {
+      top: 40px; /* ปรับตำแหน่งเมนูให้เหมาะสม */
+      right: 10px;
+   }
 }
