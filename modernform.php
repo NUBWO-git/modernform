@@ -49,14 +49,17 @@ $language = $_SESSION['language'];
          </ul>
       </div>
       <div class="language-and-icons">
-         <!-- ปุ่มแปลภาษา (ซ่อนไว้) จะไม่แสดงบนหน้าเว็บ -->
          <button id="translateButton">En</button>
 
-         <!-- เมนูภาษา -->
          <ul id="languageMenu" class="languageMenu" style="display: none;">
-            <li><button onclick="selectLanguage('Th')">Th - ภาษาไทย</button></li>
-            <li><button onclick="selectLanguage('En')">En - English</button></li>
+            <li><button onclick="selectLanguage('Th')" data-lang="Th" data-full-text="Th - ภาษาไทย">
+                  <img src="./img/Th.png" alt="Thai Icon" class="icon"> Th - ภาษาไทย
+               </button></li>
+            <li><button onclick="selectLanguage('En')" data-lang="En" data-full-text="En - English">
+                  <img src="./img/En.png" alt="English Icon" class="icon"> En - English
+               </button></li>
          </ul>
+
          <!-- ไอคอนค้นหาและ GPS -->
          <div class="search-icon">
             <span class="material-symbols-outlined">search</span>
@@ -71,6 +74,10 @@ $language = $_SESSION['language'];
    <section class="content">
       <h1>Welcome to Modernform Website</h1>
       <p>This is a modern bar example</p>
+
+      <!-- เพิ่มรูปภาพ -->
+      <img src="./img/Th.png" alt="Thai Flag" style="width: 100px; height: auto; margin-top: 20px;">
+      <img src="./img/En.png" alt="English Flag" style="width: 100px; height: auto; margin-top: 20px;">
    </section>
 </body>
 

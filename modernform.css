@@ -67,15 +67,13 @@
 
 /* ตัวแปลภาษา */
 #translateButton {
-   background-color: transparent;
-   color: #000000;
-   padding: 8px 15px; /* เพิ่ม padding */
-   cursor: pointer;
-   font-family: 'Open Sans', sans-serif;
-   font-size: 16px;
-   border: 0px solid #ddd;
-   border-radius: 5px;
-   transition: background-color 0.3s ease, color 0.3s ease;
+   background-color: transparent; /* ลบพื้นหลัง */
+   border: none; /* ลบเส้นขอบ */
+   color: #000; /* ตั้งค่าสีตัวหนังสือ */
+   font-size: 16px; /* กำหนดขนาดตัวหนังสือ */
+   font-family: 'Open Sans', sans-serif; /* ตั้งฟอนต์ */
+   cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อชี้ */
+   padding: 0; /* ลบระยะขอบใน */
 }
 
 #translateButton:hover {
@@ -87,10 +85,10 @@
 .languageMenu {
    position: absolute;
    top: 65px; /* ลดระยะห่าง */
-   right: 60px; /* ปรับตำแหน่งให้สมดุล */
+   right:70px; /* ปรับตำแหน่งให้ตรงกับขอบขวาของ navbar */
    background-color: #ffffff;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   padding: 10px; 
+   padding: 10px;
    list-style: none;
    display: none;
    border-radius: 8px;
@@ -115,20 +113,25 @@
    font-size: 16px;
    font-family: 'Open Sans', sans-serif;
    text-align: left;
-   width: 100%; 
+   width: 100%;
    transition: background-color 0.3s ease, color 0.3s ease;
    border-radius: 5px;
-}
-
-.languageMenu li button:hover {
-   background-color: #f1f1f1;
-   color: #169bdd;
+   display: inline-flex; /* ใช้ inline-flex เพื่อให้ไอคอนและข้อความอยู่ในแถวเดียวกัน */
+   align-items: center; /* จัดตำแหน่งไอคอนและข้อความให้อยู่ในแนวเดียวกัน */
 }
 
 /* ปุ่มที่เลือก */
 .languageMenu li button.selected {
    background-color: #169bdd;
    color: #ffffff;
+}
+
+.languageMenu .icon {
+   width: 20px; /* ขนาดของไอคอน */
+   height: 20px; /* ขนาดของไอคอน */
+   margin-right: 10px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+   object-fit: cover; /* ป้องกันการบิดเบี้ยว */
+   vertical-align: middle; /* จัดแนวไอคอนให้อยู่กึ่งกลางข้อความ */
 }
 
 /* ไอคอนค้นหาและ GPS */
@@ -180,5 +183,10 @@
    .languageMenu {
       top: 45px; /* ปรับระยะห่าง */
       right: 10px;
+   }
+
+   .languageMenu .icon {
+      width: 14px; /* ลดขนาดธงชาติสำหรับหน้าจอเล็ก */
+      height: 14px;
    }
 }
