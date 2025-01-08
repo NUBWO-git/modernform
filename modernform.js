@@ -1,41 +1,36 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
    const translateButton = document.getElementById('translateButton');
    const languageMenu = document.getElementById('languageMenu');
-
+   
    if (translateButton && languageMenu) {
-      translateButton.addEventListener('click', function() {
-         languageMenu.style.display = (languageMenu.style.display === 'none' || languageMenu.style.display === '') ? 'block' : 'none';
+      // คลิกที่ปุ่มแสดง/ซ่อนเมนู
+      translateButton.addEventListener('click', function () {
+         const isMenuVisible = languageMenu.style.display === 'block';
+         languageMenu.style.display = isMenuVisible ? 'none' : 'block';
       });
    }
 
-   // ฟังก์ชันสำหรับเลือกภาษา
-   const buttons = document.querySelectorAll('.languageMenu li button');
-   buttons.forEach(button => {
-      button.addEventListener('click', function() {
-         selectLanguage(button);
-      });
-   });
+   // ฟังก์ชันเลือกภาษา
+   window.selectLanguage = function (lang) {
+      // อัปเดตข้อความในปุ่มแปลภาษา
+      translateButton.innerHTML = `${lang}`; // ไอคอนไม่แสดงที่ปุ่ม
+
+      // ปิดเมนูภาษา
+      languageMenu.style.display = 'none';
+
+      // อัปเดตเมนูให้แสดงไอคอนที่เลือก
+      const selectedButton = document.querySelector(`#languageMenu li button[data-lang="${lang}"]`);
+      if (selectedButton) {
+         selectedButton.innerHTML = `${lang} <span class="material-symbols-outlined">arrow_left</span>`; // แสดงไอคอนที่เลือก
+      }
+
+      // ส่งค่าภาษาไปยัง backend (ถ้าจำเป็น)
+      updateLanguage(lang);
+   };
+
+   // ตัวอย่างฟังก์ชันอัปเดตภาษาใน backend
+   function updateLanguage(lang) {
+      console.log(`Language set to: ${lang}`);
+      // หากต้องการส่งข้อมูลไป backend, ใช้ fetch หรือ AJAX
+   }
 });
-
-// ฟังก์ชันสำหรับเลือกภาษา
-function selectLanguage(button) {
-   const buttons = document.querySelectorAll('.languageMenu li button');
-   
-   // ลบคลาส 'selected' จากทุกปุ่ม
-   buttons.forEach(btn => {
-      btn.classList.remove('selected');
-   });
-
-   // เพิ่มคลาส 'selected' ให้กับปุ่มที่เลือก
-   button.classList.add('selected');
-
-   // อัปเดตตำแหน่งของลูกศร
-   updateArrowPosition(button);
-}
-
-// ฟังก์ชันสำหรับอัปเดตตำแหน่งของลูกศร
-function updateArrowPosition(button) {
-   const arrow = button.querySelector('::after'); // ใช้ pseudo-element เพื่อจัดการตำแหน่ง
-   // ทำให้ลูกศรชี้ไปที่ตัวเลือกที่เลือก
-   arrow.style.transform = 'translateX(-50%) rotate(180deg)';
-}

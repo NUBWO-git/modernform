@@ -26,8 +26,8 @@ $language = $_SESSION['language'];
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
-   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
 
 <script src="./modernform.js"></script>
@@ -49,12 +49,14 @@ $language = $_SESSION['language'];
          </ul>
       </div>
       <div class="language-and-icons">
-         <button id="translateButton">ภาษา</button>
-         <ul id="languageMenu" class="languageMenu" style="display: none;">
-            <li><button onclick="selectLanguage('th')">Th - ภาษาไทย</button></li>
-            <li><button onclick="selectLanguage('en')">En - English</button></li>
-         </ul>
+         <!-- ปุ่มแปลภาษา (ซ่อนไว้) จะไม่แสดงบนหน้าเว็บ -->
+         <button id="translateButton">En</button>
 
+         <!-- เมนูภาษา -->
+         <ul id="languageMenu" class="languageMenu" style="display: none;">
+            <li><button onclick="selectLanguage('Th')">Th - ภาษาไทย</button></li>
+            <li><button onclick="selectLanguage('En')">En - English</button></li>
+         </ul>
          <!-- ไอคอนค้นหาและ GPS -->
          <div class="search-icon">
             <span class="material-symbols-outlined">search</span>
