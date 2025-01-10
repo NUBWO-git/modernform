@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // ฟังก์ชันตั้งค่าไอคอนในปุ่มเมนูภาษา
    function updateMenuIcons(selectedLang) {
-      const buttons = document.querySelectorAll(`#languageMenu li button`);
+      const buttons = document.querySelectorAll('#languageMenu li button');
       buttons.forEach(button => {
          const buttonLang = button.getAttribute('data-lang');
-         const fullText = button.getAttribute('data-full-text'); // ดึงข้อความเต็มจาก data attribute
+         const fullText = button.getAttribute('data-full-text');
          if (buttonLang === selectedLang) {
             // เพิ่มไอคอนในปุ่มที่เลือก
-            button.innerHTML = `${fullText} <span class="material-symbols-outlined">arrow_left</span>`;
+            button.innerHTML = `<img src="./img/${buttonLang}.png" alt="${buttonLang} Icon" class="icon"> ${fullText} <span class="material-symbols-outlined">arrow_left</span>`;
          } else {
             // รีเซ็ตปุ่มอื่นๆ ให้ไม่มีไอคอน
-            button.innerHTML = fullText;
+            button.innerHTML = `<img src="./img/${buttonLang}.png" alt="${buttonLang} Icon" class="icon"> ${fullText}`;
          }
       });
    }
@@ -27,22 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // ตั้งค่าเริ่มต้นให้ En มีไอคอน
       updateMenuIcons('En');
-
-      // ตั้งค่าเริ่มต้นให้ปุ่ม translateButton แสดงภาษาและไอคอน
-      translateButton.innerHTML = '<img src="./img/En.png" alt="English Icon" class="icon"> En';
    }
 
    // ฟังก์ชันเลือกภาษา
    window.selectLanguage = function (lang) {
-      // อัปเดตข้อความในปุ่มแปลภาษา (แสดงเฉพาะรหัสภาษา)
-      translateButton.textContent = lang;
-
-      // เพิ่มไอคอนที่แสดงภาษาที่เลือกในปุ่ม
-      if (lang === 'Th') {
-         translateButton.innerHTML = '<img src="./img/Th.png" alt="Thai Icon" class="icon"> Th';
-      } else if (lang === 'En') {
-         translateButton.innerHTML = '<img src="./img/En.png" alt="English Icon" class="icon"> En';
-      }
+      // อัปเดตข้อความในปุ่มแปลภาษา
+      translateButton.innerHTML = lang;
 
       // ปิดเมนูภาษา
       languageMenu.style.display = 'none';

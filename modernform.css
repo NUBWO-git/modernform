@@ -11,42 +11,40 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 15px 20px; /* ลด padding ให้ดูสมดุล */
+   padding: 10px 20px;
    border-bottom: 2px solid #ddd;
    position: sticky;
    top: 0;
    z-index: 1000;
+   box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
 }
 
 /* โลโก้และเมนูรวมกัน */
 .navbar .logo-menu {
    display: flex;
    align-items: center;
-   gap: 20px; /* เพิ่มระยะห่าง */
+   gap: 20px;
 }
 
 /* โลโก้ */
-.navbar .logo a {
-   color: #169bdd;
-   font-size: 24px;
-   font-weight: bold;
-   text-decoration: none;
-   font-family: 'Righteous', sans-serif;
-   transition: color 0.3s ease;
+.navbar .logo img {
+   height: 65px; 
+   width: auto;   
 }
 
 /* เมนู */
 .nav-links {
    list-style: none;
    display: flex;
-   gap: 20px; /* เพิ่มระยะห่าง */
+   gap: 15px;
+   margin: 0; /* ลบ margin */
 }
 
 .nav-links li a {
    color: #000000;
    text-decoration: none;
-   font-size: 16px;
-   padding: 8px 12px; /* เพิ่ม padding */
+   font-size: 14px;
+   padding: 6px 10px;
    font-family: 'Open Sans', sans-serif;
    transition: color 0.3s ease, border-bottom 0.3s ease;
    border-bottom: 2px solid transparent;
@@ -67,126 +65,166 @@
 
 /* ตัวแปลภาษา */
 #translateButton {
-   background-color: transparent; /* ลบพื้นหลัง */
-   border: none; /* ลบเส้นขอบ */
-   color: #000; /* ตั้งค่าสีตัวหนังสือ */
-   font-size: 16px; /* กำหนดขนาดตัวหนังสือ */
-   font-family: 'Open Sans', sans-serif; /* ตั้งฟอนต์ */
-   cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อชี้ */
-   padding: 0; /* ลบระยะขอบใน */
+   background-color: transparent;
+   border: none;
+   color: #000;
+   font-size: 14px;
+   font-family: 'Open Sans', sans-serif;
+   cursor: pointer;
+   padding: 6px 10px;
+   border-radius: 5px;
+   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+   display: flex;
+   align-items: center;
 }
 
 #translateButton:hover {
    background-color: #f1f1f1;
+   color: #169bdd;
+   transform: scale(1.05);
+}
+
+/* ไอคอนในปุ่มแปลภาษา */
+#translateButton .arrow-icon {
+   margin-left: 10px; /* ระยะห่างระหว่างข้อความกับไอคอน */
+   font-size: 20px; /* ขนาดไอคอน */
+   position: relative;
+   top: 1px; /* ปรับตำแหน่งแนวตั้ง */
+   order: 2; /* เลื่อนไอคอนไปอยู่หลังข้อความ */
+   color: #374957; /* สีของไอคอน */
+}
+
+#translateButton .arrow-icon:hover {
    color: #169bdd;
 }
 
 /* เมนูภาษา */
 .languageMenu {
    position: absolute;
-   top: 65px; /* ลดระยะห่าง */
-   right:70px; /* ปรับตำแหน่งให้ตรงกับขอบขวาของ navbar */
+   top: 85px;
+   right: 60px;
    background-color: #ffffff;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   padding: 10px;
+   padding: 5px;
    list-style: none;
    display: none;
    border-radius: 8px;
    z-index: 999;
-   width: 200px; /* ขยายความกว้าง */
+   width: 210px;
+   animation: fadeIn 0.3s ease;
 }
 
 .languageMenu li {
-   margin-bottom: 10px;
+   margin-bottom: 12px;
 }
 
 .languageMenu li:last-child {
    margin-bottom: 0;
 }
 
-/* เมนูภาษา */
 .languageMenu li button {
+   display: flex;
+   align-items: center;
    background-color: transparent;
    border: none;
-   padding: 10px 15px;
+   padding: 8px 16px; /* ขนาด padding ที่เท่ากัน */
    cursor: pointer;
-   font-size: 16px;
+   font-size: 15px; /* ขนาดฟอนต์ 20px */
    font-family: 'Open Sans', sans-serif;
    text-align: left;
    width: 100%;
    transition: background-color 0.3s ease, color 0.3s ease;
    border-radius: 5px;
-   display: inline-flex; /* ใช้ inline-flex เพื่อให้ไอคอนและข้อความอยู่ในแถวเดียวกัน */
-   align-items: center; /* จัดตำแหน่งไอคอนและข้อความให้อยู่ในแนวเดียวกัน */
+   gap: 10px; /* ระยะห่างระหว่างข้อความและไอคอน */
+   line-height: 1.5; /* ทำให้ตัวหนังสือไม่อัดกัน */
 }
 
-/* ปุ่มที่เลือก */
 .languageMenu li button.selected {
    background-color: #169bdd;
    color: #ffffff;
 }
 
+/* ไอคอนในเมนูภาษา */
 .languageMenu .icon {
-   width: 20px; /* ขนาดของไอคอน */
-   height: 20px; /* ขนาดของไอคอน */
-   margin-right: 10px; /* ระยะห่างระหว่างไอคอนและข้อความ */
-   object-fit: cover; /* ป้องกันการบิดเบี้ยว */
-   vertical-align: middle; /* จัดแนวไอคอนให้อยู่กึ่งกลางข้อความ */
+   width: 20px; /* ขนาดไอคอน */
+   height: 20px;
+   object-fit: cover;
+   vertical-align: middle;
 }
 
-/* ไอคอนค้นหาและ GPS */
-.search-icon,
-.gps-icon {
-   color: #000000;
-   font-size: 20px;
-   cursor: pointer;
-}
-
-.search-icon:hover,
-.gps-icon:hover {
-   color: #169bdd;
-}
-
-/* เนื้อหาหลัก */
-.content {
-   padding: 50px;
-   text-align: center;
-}
-
-.content h1 {
-   font-size: 36px;
-   color: #333;
-}
-
-.content p {
-   font-size: 18px;
-   color: #555;
-}
-
-/* การตอบสนองสำหรับหน้าจอเล็ก */
 @media (max-width: 768px) {
-   .navbar {
-      flex-direction: column;
-      padding: 15px;
-   }
-
-   .nav-links {
-      flex-direction: column;
-      gap: 15px; /* เพิ่มระยะห่าง */
-   }
-
-   .language-and-icons {
-      flex-direction: column;
-      gap: 15px;
-   }
-
    .languageMenu {
-      top: 45px; /* ปรับระยะห่าง */
-      right: 10px;
+      top: 50px;
+      right: 15px;
+      padding: 10px;
    }
 
    .languageMenu .icon {
-      width: 14px; /* ลดขนาดธงชาติสำหรับหน้าจอเล็ก */
-      height: 14px;
+      width: 16px;
+      height: 16px;
    }
 }
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* เนื้อหาทั้งหมด */
+
+/* คอนเทนเนอร์สำหรับรูปภาพ */
+.image-container {
+   position: relative;
+   display: inline-block;
+   width: 100%; 
+   max-width: 100%; 
+   overflow: hidden; 
+}
+
+/* การตั้งค่ารูปภาพ */
+.image-container img {
+   width: 100%; 
+   height: 100%; 
+   object-fit: cover; 
+}
+
+/* ปุ่ม "ดูเพิ่มเติม" */
+.more-button {
+   background-color: #233388; 
+   color: white; 
+   border: none; 
+   padding: 12px 25px; 
+   font-size: 18px;
+   font-family: 'Open Sans', sans-serif; 
+   border-radius: 5px; 
+   cursor: pointer; 
+   transition: background-color 0.3s ease; 
+   position: absolute; 
+   bottom: 20px; 
+   left: 50%; 
+   transform: translateX(-50%); 
+   z-index: 10; 
+   text-align: center; 
+   display: flex; /* ทำให้ปุ่มและไอคอนจัดเรียงในแนวนอน */
+   align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
+   gap: 10px; /* ระยะห่างระหว่างข้อความและไอคอน */
+}
+
+/* ปรับสีเมื่อ hover */
+.more-button:hover {
+   background-color: #1a2561; 
+}
+
+/* ปรับให้ไอคอนมีขนาดและระยะห่างที่เหมาะสม */
+.more-button i {
+   font-size: 18px; 
+   margin-left: 10px; 
+}
+
+

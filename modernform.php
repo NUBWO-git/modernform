@@ -14,7 +14,6 @@ if (isset($_POST['language'])) {
 $language = $_SESSION['language'];
 ?>
 
-
 <!DOCTYPE html>
 <html lang="<?php echo $language; ?>">
 
@@ -37,7 +36,7 @@ $language = $_SESSION['language'];
    <nav class="navbar">
       <div class="logo-menu">
          <div class="logo">
-            <a href="#">Modernform</a>
+            <img src="./img/Logo.png" alt="Logo">
          </div>
          <ul class="nav-links">
             <li><a href="#">Products</a></li>
@@ -50,14 +49,17 @@ $language = $_SESSION['language'];
       </div>
       <div class="language-and-icons">
          <button id="translateButton">En</button>
-
          <ul id="languageMenu" class="languageMenu" style="display: none;">
-            <li><button onclick="selectLanguage('Th')" data-lang="Th" data-full-text="Th - ภาษาไทย">
+            <li>
+               <button onclick="selectLanguage('Th')" data-lang="Th" data-full-text="Th - ภาษาไทย">
                   <img src="./img/Th.png" alt="Thai Icon" class="icon"> Th - ภาษาไทย
-               </button></li>
-            <li><button onclick="selectLanguage('En')" data-lang="En" data-full-text="En - English">
+               </button>
+            </li>
+            <li>
+               <button onclick="selectLanguage('En')" data-lang="En" data-full-text="En - English">
                   <img src="./img/En.png" alt="English Icon" class="icon"> En - English
-               </button></li>
+               </button>
+            </li>
          </ul>
 
          <!-- ไอคอนค้นหาและ GPS -->
@@ -72,12 +74,20 @@ $language = $_SESSION['language'];
 
    <!-- เนื้อหาหลักของเว็บ -->
    <section class="content">
-      <h1>Welcome to Modernform Website</h1>
-      <p>This is a modern bar example</p>
+      <div class="image-container">
+         <img src="./img/furniture1.png" alt="Furniture">
+         <button class="more-button">
+            ดูเพิ่มเติม
+         </button>
+      </div>
 
-      <!-- เพิ่มรูปภาพ -->
-      <img src="./img/Th.png" alt="Thai Flag" style="width: 100px; height: auto; margin-top: 20px;">
-      <img src="./img/En.png" alt="English Flag" style="width: 100px; height: auto; margin-top: 20px;">
+      <div class="investor-info">
+         <span class="material-icons">Chevron Forward</span>
+         <div class="investor-text">
+            <h2>INVESTORS</h2>
+            <p>News & Results for Investor Relations</p>
+         </div>
+      </div>
    </section>
 </body>
 
