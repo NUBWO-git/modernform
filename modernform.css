@@ -211,9 +211,9 @@
    transform: translateX(-50%); 
    z-index: 10; 
    text-align: center; 
-   display: flex; /* ทำให้ปุ่มและไอคอนจัดเรียงในแนวนอน */
-   align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
-   gap: 10px; /* ระยะห่างระหว่างข้อความและไอคอน */
+   display: flex; 
+   align-items: center;
+   gap: 10px;
 }
 
 /* ปรับสีเมื่อ hover */
@@ -227,4 +227,95 @@
    margin-left: 10px; 
 }
 
+/* ฟังก์ชั่นข้อความข้างขวา*/
+.investor-info {
+   display: flex;
+   align-items: center; 
+   background-color: #616161; 
+   padding: 10px 28px; 
+   border-radius: 16px; 
+   width: 100%; 
+   max-width: 295px; 
+   margin: 20px auto; 
+   box-sizing: border-box; 
+   margin-left: 0; /* ปรับให้ไม่เว้นระยะจากซ้าย */
+   margin-right: auto; /* ขยับคอนเทนเนอร์ไปทางซ้าย */
+   position: relative; /* ทำให้สามารถขยับตำแหน่งได้ */
+   left: -20px; /* อยู่ทางซ้าย */
+   top: -725px; /* ขยับขึ้นจากตำแหน่งเดิม 20px */
+}
 
+.investor-info .arrow-icon {
+   width: 9px; 
+   height: 24px;
+   margin-right: 12px; 
+}
+
+.investor-text h2 {
+   color: #FFFFFF; 
+   margin: 0; 
+   font-size: 18px; 
+}
+
+.investor-text p {
+   color: #D9D9D9; 
+   margin: 0; 
+   font-size: 14px; 
+}
+
+/* ปรับขนาดของไอคอน */
+.investor-info img {
+   max-width: 40px; 
+   height: auto;
+   margin-right: 12px; 
+   object-fit: contain;
+}
+
+/* รูปทั้ง 4 รูป */
+.container {
+   display: flex;
+   align-items: flex-start; /* จัดแนวไอเท็มในแนวตั้ง */
+   justify-content: center; /* จัดไอเท็มให้อยู่กลาง */
+   gap: 24px; /* เพิ่มระยะห่างระหว่างรูป */
+   flex-wrap: wrap; /* ให้ไอเท็มยืดหยุ่นและเปลี่ยนแถวเมื่อหน้าจอเล็ก */
+   margin: 0 auto; 
+   padding: 10px;
+   max-width: 1200px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
+   position: relative;
+   top: -10px; /* เลื่อนขึ้น 10px */
+}
+
+/* รูปภาพ */
+.content-item {
+   flex: 1 1 calc(25% - 24px); /* ให้แต่ละไอเท็มขยายเป็น 25% ของความกว้างคอนเทนเนอร์ */
+   min-width: 250px; /* ขนาดขั้นต่ำของไอเท็ม */
+   max-width: 300px; /* ขนาดสูงสุดของไอเท็ม */
+   text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+   background-color: #f4f4f4;
+   padding: 16px;
+   border-radius: 8px; /* มุมโค้ง */
+   box-sizing: border-box;
+}
+
+.content-item img {
+   width: 100%; /* รูปภาพจะขยายเต็มคอนเทนเนอร์ */
+   height: auto; /* คงสัดส่วนของรูป */
+   border: none; /* ลบขอบรูป */
+   max-width: 100%; /* ขยายรูปให้เต็มขนาดของคอนเทนเนอร์ */
+   margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+}
+
+.content-item h2 {
+   text-align: left; /* จัดหัวข้อให้อยู่ทางซ้าย */
+   color: #000000; 
+   font-family: 'Poppins', sans-serif;
+   font-size: 20px;
+   margin-top: 12px; /* เพิ่มระยะห่างด้านบน */
+}
+
+.content-item p {
+   margin: 8px 0 0; /* เพิ่มระยะห่างระหว่างข้อความ */
+   color: #ABB2BE;
+   font-family: 'Raleway', sans-serif;
+   font-size: 14px;
+}

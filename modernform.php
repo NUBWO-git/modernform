@@ -27,6 +27,7 @@ $language = $_SESSION['language'];
    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
 </head>
 
 <script src="./modernform.js"></script>
@@ -76,19 +77,47 @@ $language = $_SESSION['language'];
    <section class="content">
       <div class="image-container">
          <img src="./img/furniture1.png" alt="Furniture">
-         <button class="more-button">
-            ดูเพิ่มเติม
-         </button>
-      </div>
-
-      <div class="investor-info">
-         <span class="material-icons">Chevron Forward</span>
-         <div class="investor-text">
-            <h2>INVESTORS</h2>
-            <p>News & Results for Investor Relations</p>
-         </div>
+         <button class="more-button">ดูเพิ่มเติม</button>
       </div>
    </section>
+
+   <div class="investor-info">
+      <img src="./img/Arrow Right.png" class="arrow-icon">
+      <div class="investor-text">
+         <h2>INVESTORS</h2>
+         <p>News & Results for Investor Relations</p>
+      </div>
+   </div>
+
+   <div class="container">
+      <div class="content-item">
+         <img src="./img/office.png" alt="office">
+         <h2>office</h2>
+         <p>เพราะงานที่ดีเกิดจากการได้อยู่ในสภาพแวดล้อมที่ดีและเกิดจาก</p>
+         <p>ความสุขของพนักงานเราจึงมุ่งมั่นที่จะสร้างสรรค์บรรยากาศ...</p>
+      </div>
+
+      <div class="content-item">
+         <img src="./img/Home.png" alt="Home">
+         <h2>Home</h2>
+         <p>เพราะคำนิยามการใช้ชีวิตของแต่ละคนแตกต่างกันเราจึงมุ่งมั่น</p>
+         <p>สร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
+      </div>
+
+      <div class="content-item">
+         <img src="./img/Kitchen.png" alt="Kitchen">
+         <h2>Kitchen</h2>
+         <p>เพราะพื้นที่ครัวเปรียบเสมือนหัวใจของบ้านเป็นศูนย์กลางการ</p>
+         <p>รวมตัวของสมาชิก และเป็นพื้นที่แห่งการพบปะสังสรรค์...</p>
+      </div>
+
+      <div class="content-item">
+         <img src="./img/Hardware & Fitting.png" alt="Hardware & Fitting">
+         <h2>Hardware & Fitting</h2>
+         <p>เพราะคุณภาพชีวิตที่ดีของการอยู่อาศัยล้วนเกิดจากการสรรหา</p>
+         <p>สินค้า และวัสดุคุณภาพต่าง ๆ ทั่วโลก เพื่อตอบสนอง...</p>
+      </div>
+   </div>
 </body>
 
 </html>
