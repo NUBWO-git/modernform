@@ -177,7 +177,6 @@
 }
 
 /* เนื้อหาทั้งหมด */
-
 /* คอนเทนเนอร์สำหรับรูปภาพ */
 .image-container {
    position: relative;
@@ -272,50 +271,136 @@
 }
 
 /* รูปทั้ง 4 รูป */
+/* คอนเทนเนอร์สำหรับรูปทั้งหมด */
 .container {
    display: flex;
-   align-items: flex-start; /* จัดแนวไอเท็มในแนวตั้ง */
-   justify-content: center; /* จัดไอเท็มให้อยู่กลาง */
-   gap: 24px; /* เพิ่มระยะห่างระหว่างรูป */
-   flex-wrap: wrap; /* ให้ไอเท็มยืดหยุ่นและเปลี่ยนแถวเมื่อหน้าจอเล็ก */
-   margin: 0 auto; 
-   padding: 10px;
-   max-width: 1200px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
+   align-items: flex-start; /* จัดแนวตั้งของไอเท็ม */
+   justify-content: space-between; /* จัดให้รูปอยู่ห่างกันพอสมควร */
+   gap: 21px; /* ระยะห่างระหว่างไอเท็ม */
+   flex-wrap: wrap; /* ทำให้เลย์เอาต์ยืดหยุ่นเมื่อหน้าจอแคบ */
+   margin: 0 auto;
+   max-width: 1420px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
    position: relative;
-   top: -10px; /* เลื่อนขึ้น 10px */
+   top: -60px; 
 }
 
-/* รูปภาพ */
+/* การตั้งค่าของแต่ละรูป */
 .content-item {
-   flex: 1 1 calc(25% - 24px); /* ให้แต่ละไอเท็มขยายเป็น 25% ของความกว้างคอนเทนเนอร์ */
-   min-width: 250px; /* ขนาดขั้นต่ำของไอเท็ม */
-   max-width: 300px; /* ขนาดสูงสุดของไอเท็ม */
-   text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+   flex: 1 1 calc(25% - 16px); /* ใช้ 25% ของความกว้างคอนเทนเนอร์ */
+   min-width: 280px; /* กำหนดขนาดต่ำสุด */
+   max-width: 350px; /* กำหนดขนาดสูงสุด */
+   text-align: center;
    background-color: #f4f4f4;
-   padding: 16px;
-   border-radius: 8px; /* มุมโค้ง */
    box-sizing: border-box;
+   border: none;
+   border-radius: 0;
+   height: 350px; /* กำหนดความสูงของคอนเทนเนอร์เป็น px */
 }
 
+/* รูปภาพทั้งหมด */
 .content-item img {
-   width: 100%; /* รูปภาพจะขยายเต็มคอนเทนเนอร์ */
-   height: auto; /* คงสัดส่วนของรูป */
-   border: none; /* ลบขอบรูป */
-   max-width: 100%; /* ขยายรูปให้เต็มขนาดของคอนเทนเนอร์ */
-   margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+   width: 100%; /* ขยายรูปให้เต็มคอนเทนเนอร์ */
+   height: 100%; /* ให้รูปเต็มความสูง */
+   object-fit: cover; /* ทำให้รูปครอบพื้นที่เต็มโดยไม่ทำให้ผิดสัดส่วน */
+   border: none; /* ลบขอบออก */
+   margin: 0 auto; /* จัดรูปให้อยู่ตรงกลาง */
 }
 
+/* ตั้งค่าชื่อและคำอธิบาย */
 .content-item h2 {
-   text-align: left; /* จัดหัวข้อให้อยู่ทางซ้าย */
-   color: #000000; 
+   text-align: left;
+   color: #000000;
    font-family: 'Poppins', sans-serif;
-   font-size: 20px;
-   margin-top: 12px; /* เพิ่มระยะห่างด้านบน */
+   font-size: 20px; /* ขนาดตัวอักษรของ h2 */
+   margin-top: 12px;
 }
 
 .content-item p {
-   margin: 8px 0 0; /* เพิ่มระยะห่างระหว่างข้อความ */
+   text-align: left;
+   margin: 8px 0 0;
    color: #ABB2BE;
    font-family: 'Raleway', sans-serif;
-   font-size: 14px;
+   font-size: 14px; /* ขนาดตัวอักษรของ p */
+}
+
+/* ปุ่มทั้ง 2 ปุ่ม*/
+/* คอนเทนเนอร์สำหรับปุ่ม */
+.button-container {
+   display: flex;
+   justify-content: center; /* จัดปุ่มให้อยู่กลาง */
+   gap: 16px; /* ระยะห่างระหว่างปุ่ม */
+   margin: 40px 0 20px; /* เพิ่มระยะห่างด้านบน (40px) และด้านล่าง (20px) */
+   padding: 0;
+}
+
+/* คอนเทนเนอร์สำหรับปุ่ม */
+.button-container {
+   display: flex;
+   justify-content: center; /* จัดให้อยู่กลางแนวนอน */
+   gap: 35px; /* ระยะห่างระหว่างปุ่ม */
+   margin: 60px 0 25px; /* ระยะห่างด้านบนและล่าง */
+}
+
+/* รูปแบบของปุ่มพื้นฐาน */
+.custom-button {
+   color: white;
+   border: none;
+   padding: 12px 24px;
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+/* ปุ่ม View Product Catalogue */
+.catalogue-button {
+   background-color: #639BDB;
+}
+
+/* ปุ่ม Visit Online Store */
+.store-button {
+   background-color: #233388;
+}
+
+/* รูปทั้ง 4 ที่จะจัดสลับ */
+.swapped-layout {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+.swapped-layout .content-item {
+   display: flex;
+   flex-direction: row-reverse; /* สลับรูปและข้อความ */
+   gap: 20px;
+   align-items: center;
+}
+
+.swapped-layout .content-item img {
+   width: 50%; /* ปรับขนาดรูปภาพ */
+}
+
+.swapped-layout .content-item h2,
+.swapped-layout .content-item p {
+   line-height: 1.6;
+   margin-bottom: 15px;
+}
+
+.swapped-layout .content-item:nth-child(odd) {
+   flex-direction: row; /* สำหรับรายการคี่จะกลับไปจัดเรียงแบบปกติ */
+}
+
+button {
+   background-color: #2333BB; /* กำหนดสีพื้นหลัง */
+   color: white; /* กำหนดสีข้อความให้เป็นสีขาว */
+   border: none; /* ลบเส้นขอบ */
+   padding: 10px 20px; /* กำหนดระยะห่างภายในปุ่ม */
+   font-size: 16px; /* กำหนดขนาดตัวอักษร */
+   cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์บนปุ่ม */
+   border-radius: 5px; /* ทำให้มุมของปุ่มโค้ง */
+   transition: background-color 0.3s; /* เพิ่มการเปลี่ยนแปลงสีเมื่อโฮเวอร์ */
+}
+
+button:hover {
+   background-color: #1A2A8C; /* เปลี่ยนสีเมื่อวางเมาส์บนปุ่ม */
 }

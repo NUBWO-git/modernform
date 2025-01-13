@@ -93,29 +93,57 @@ $language = $_SESSION['language'];
       <div class="content-item">
          <img src="./img/office.png" alt="office">
          <h2>office</h2>
-         <p>เพราะงานที่ดีเกิดจากการได้อยู่ในสภาพแวดล้อมที่ดีและเกิดจาก</p>
-         <p>ความสุขของพนักงานเราจึงมุ่งมั่นที่จะสร้างสรรค์บรรยากาศ...</p>
+         <p>เพราะงานที่ดีเกิดจากการได้อยู่ในสภาพแวดล้อมที่ดีและเกิดจากสร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
       </div>
 
       <div class="content-item">
          <img src="./img/Home.png" alt="Home">
          <h2>Home</h2>
-         <p>เพราะคำนิยามการใช้ชีวิตของแต่ละคนแตกต่างกันเราจึงมุ่งมั่น</p>
-         <p>สร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
+         <p>เพราะคำนิยามการใช้ชีวิตของแต่ละคนแตกต่างกันเราจึงมุ่งมั่นสร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
       </div>
 
       <div class="content-item">
          <img src="./img/Kitchen.png" alt="Kitchen">
          <h2>Kitchen</h2>
-         <p>เพราะพื้นที่ครัวเปรียบเสมือนหัวใจของบ้านเป็นศูนย์กลางการ</p>
-         <p>รวมตัวของสมาชิก และเป็นพื้นที่แห่งการพบปะสังสรรค์...</p>
+         <p>เพราะพื้นที่ครัวเปรียบเสมือนหัวใจของบ้านเป็นศูนย์กลางการรวมตัวของสมาชิก และเป็นพื้นที่แห่งการพบปะสังสรรค์...</p>
       </div>
 
       <div class="content-item">
          <img src="./img/Hardware & Fitting.png" alt="Hardware & Fitting">
          <h2>Hardware & Fitting</h2>
-         <p>เพราะคุณภาพชีวิตที่ดีของการอยู่อาศัยล้วนเกิดจากการสรรหา</p>
-         <p>สินค้า และวัสดุคุณภาพต่าง ๆ ทั่วโลก เพื่อตอบสนอง...</p>
+         <p>เพราะคุณภาพชีวิตที่ดีของการอยู่อาศัยล้วนเกิดจากการสรรหาสินค้า และวัสดุคุณภาพต่าง ๆ ทั่วโลก เพื่อตอบสนอง...</p>
+      </div>
+   </div>
+
+   <div class="button-container">
+      <button class="custom-button catalogue-button">View Product Catalogue</button>
+      <button class="custom-button store-button">Visit Online Store</button>
+   </div>
+
+   <div class="swapped-layout">
+      <div class="content-item">
+         <img src="./img/Pinterest/Pinterest1.png">
+         <h2>Pet Space Collection | เฟอร์นิเจอร์ที่ตอบรับทุกพฤติกรรมสัตว์เลี้ยง</h2>
+         <p>Pet Collection เฟอร์นิเจอร์และพื้นที่สำหรับสัตว์เลี้ยงที่สะท้อนแนวคิด Pet Centric เน้นความต้องการของสัตว์ เลี้ยงเป็นหลักโดยออกแบบมาเพื่อตอบโจทย์พฤติกรรมของสัตว์เลี้ยง สามารถดีไซน์รูปแบบ และการจัดวางให้เข้ากับบ้าน  ได้ตามต้องการ</p>
+         <button>Discover</button>
+      </div>
+      <div class="content-item">
+         <img src="./img/Pinterest/Pinterest2.png">
+         <h2>RHAPSODY Space Management</h2>
+         <p>Rhapsody”แนวคิดการจัดพื้นที่รูปแบบใหม่สร้างขึ้นเพื่อรองรับการทำงานและการอยู่อาศัยที่ทันสมัยด้วยการแบ่งพื้นที่ใช้งานที่รองรับความหลากหลายทั้งการทำงานพฤติกรรมการใช้งาน และไลฟ์สไตล์ของผู้คนที่ใช้งานในยุคปัจจุบัน</p>
+         <button>Discover</button>
+      </div>
+      <div class="content-item">
+         <img src="./img/Pinterest/Pinterest3.png">
+         <h2>Steelcase THINK V2 Glow up your style |เปล่งประกายในสไตล์ ที่เป็นคุณ</h2>
+         <p>THINK V2 เก้าอี้เพื่อสุขภาพที่มาพร้อมฟังก์ชันครบครัน ซัพพอร์ตสรีระการนั่งทำงานได้อย่างลงตัว ด้วยระบบปรับอัตโนมัติ ที่ตอบสนองต่อการเคลื่อนไหวจะ WFH หรือ Hybrid Working ก็เนรมิต Working Space ให้ Glow ในแบบที่เป็นตัวเอง </p>
+         <button>Discover</button>
+      </div>
+      <div class="content-item">
+         <img src="./img/Pinterest/Pinterest4.png"> 
+         <h2>มุมทำงานที่ใช่ ตอบโจทย์สไตล์ในแบบคุณ</h2>
+         <p>พบกับไอเดียการจัดมุมทำงานในสไตล์ต่าง ๆ ที่ช่วยกระตุ้นไอเดีย และเพิ่ม Energy ให้ทุกวันทำงาน ผ่านเฟอร์นิเจอร์หลาก ดีไซน์</p>
+         <button>Discover</button>
       </div>
    </div>
 </body>
