@@ -11,9 +11,8 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 10px 20px;
+   padding: 0px 20px;
    border-bottom: 2px solid #ddd;
-   position: sticky;
    top: 0;
    z-index: 1000;
    box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
@@ -57,55 +56,72 @@
 
 /* ตัวแปลภาษาและไอคอน */
 .language-and-icons {
-   display: flex;
-   align-items: center;
-   gap: 20px;
-   margin-left: auto;
+   display: flex; 
+   align-items: center; 
+   gap: 20px; 
 }
 
-/* ตัวแปลภาษา */
+/* ปุ่มเปลี่ยนภาษา */
 #translateButton {
-   background-color: transparent;
-   border: none;
-   color: #000;
+   display: flex; /* จัดข้อความและไอคอนในแนวนอน */
+   align-items: center; /* จัดให้ข้อความและไอคอนอยู่ตรงกลาง */
+   background: none; /* ลบพื้นหลัง */
+   border: none; /* ลบขอบ */
+   color: #000; /* สีข้อความ */
    font-size: 14px;
    font-family: 'Open Sans', sans-serif;
    cursor: pointer;
-   padding: 6px 10px;
-   border-radius: 5px;
-   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-   display: flex;
-   align-items: center;
+   padding: 0; /* ลบ padding */
+   gap: 12px; /* ระยะห่างระหว่างข้อความกับไอคอน */
+   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 #translateButton:hover {
-   background-color: #f1f1f1;
-   color: #169bdd;
-   transform: scale(1.05);
+   color: #169bdd; 
+   transform: none; 
 }
 
-/* ไอคอนในปุ่มแปลภาษา */
+/* ไอคอนในปุ่มเปลี่ยนภาษา */
 #translateButton .arrow-icon {
-   margin-left: 10px; /* ระยะห่างระหว่างข้อความกับไอคอน */
-   font-size: 20px; /* ขนาดไอคอน */
-   position: relative;
-   top: 1px; /* ปรับตำแหน่งแนวตั้ง */
-   order: 2; /* เลื่อนไอคอนไปอยู่หลังข้อความ */
-   color: #374957; /* สีของไอคอน */
+   font-size: 16px; /* ขนาดไอคอน */
+   position: relative; /* ใช้ปรับตำแหน่ง */
+   top: 2px; /* เลื่อนลงมาเล็กน้อย (ปรับได้ตามต้องการ) */
+   line-height: 1; /* ลดการลอย */
+   vertical-align: middle; /* จัดให้ตรงกลางข้อความ */
 }
 
-#translateButton .arrow-icon:hover {
-   color: #169bdd;
+/* ไอคอนค้นหาและ GPS */
+.search-icon, .gps-icon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   font-size: 20px; 
+   color: #374957; 
+   transition: color 0.3s ease, transform 0.2s ease;
+}
+/* ขยับตำแหน่งไอคอน */
+.search-icon {
+   position: relative; 
+   top: 1px; 
+}
+
+.gps-icon {
+   position: relative;;
+   top: 1px; 
+}
+
+.search-icon:hover, .gps-icon:hover {
+   color: #169bdd; 
 }
 
 /* เมนูภาษา */
 .languageMenu {
    position: absolute;
-   top: 85px;
+   top: 60px;
    right: 60px;
    background-color: #ffffff;
    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   padding: 5px;
    list-style: none;
    display: none;
    border-radius: 8px;
@@ -127,18 +143,30 @@
    align-items: center;
    background-color: transparent;
    border: none;
-   padding: 8px 16px; /* ขนาด padding ที่เท่ากัน */
+   padding: 8px 16px;
    cursor: pointer;
-   font-size: 15px; /* ขนาดฟอนต์ 20px */
+   font-size: 15px;
    font-family: 'Open Sans', sans-serif;
    text-align: left;
    width: 100%;
-   transition: background-color 0.3s ease, color 0.3s ease;
    border-radius: 5px;
-   gap: 10px; /* ระยะห่างระหว่างข้อความและไอคอน */
-   line-height: 1.5; /* ทำให้ตัวหนังสือไม่อัดกัน */
+   gap: 10px;
+   line-height: 1.5;
+   color: #000000;
+   justify-content: flex-start; /* จัดให้ไอคอนอยู่ทางซ้ายสุด */
 }
 
+.languageMenu li button .icon {
+   order: -1; /* ทำให้ไอคอนอยู่ทางซ้ายสุด */
+}
+
+/* เพิ่มการเปลี่ยนสีเมื่อ hover */
+.languageMenu li button:hover {
+   background-color: #E6F2FF; /* สีพื้นหลังเมื่อ hover */
+   color: #169bdd; /* สีข้อความเมื่อ hover */
+}
+
+/* เปลี่ยนสีปุ่มที่ถูกเลือก */
 .languageMenu li button.selected {
    background-color: #169bdd;
    color: #ffffff;
@@ -195,30 +223,71 @@
 
 /* ปุ่ม "ดูเพิ่มเติม" */
 .more-button {
-   background-color: #233388; 
-   color: white; 
-   border: none; 
-   padding: 12px 25px; 
-   font-size: 18px;
-   font-family: 'Open Sans', sans-serif; 
-   border-radius: 5px; 
-   cursor: pointer; 
-   transition: background-color 0.3s ease; 
-   position: absolute; 
-   bottom: 20px; 
-   left: 50%; 
-   transform: translateX(-50%); 
-   z-index: 10; 
-   text-align: center; 
-   display: flex; 
-   align-items: center;
-   gap: 10px;
+   color: white;
+   border: none;
+   padding: 12px 24px;
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
+   border-radius: 5px;
+   cursor: pointer;
+   background: linear-gradient(to left, #233388 50%, #6E6E6E 50%); /* ไล่สีจากน้ำเงินไปเทา (จากขวาไปซ้าย) */
+   background-size: 200% 100%; /* ขยายพื้นที่พื้นหลัง */
+   background-position: right center; /* เริ่มที่ขวา */
+   transition: background-position 0.6s ease, background-color 0.6s ease; /* ทำให้การเปลี่ยนแปลงราบรื่น */
+   
+   /* จัดตำแหน่งปุ่มให้อยู่กลาง */
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -190%);
+   z-index: 1000;
 }
 
-/* ปรับสีเมื่อ hover */
 .more-button:hover {
-   background-color: #1a2561; 
+   background-position: left center; /* เมื่อ hover ให้พื้นหลังไหลจากขวาไปซ้าย */
 }
+
+/* ปุ่ม View Product Catalogue & Visit Online Store */
+/* คอนเทนเนอร์สำหรับปุ่ม */
+.button-container {
+   display: flex;
+   justify-content: center; /* จัดให้อยู่กลางแนวนอน */
+   gap: 35px; /* ระยะห่างระหว่างปุ่ม */
+   margin: 60px 0 60px; /* ระยะห่างด้านบนและล่าง */
+}
+
+/* รูปแบบของปุ่มพื้นฐาน */
+.custom-button {
+   color: white;
+   border: none;
+   padding: 12px 24px;
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
+   border-radius: 5px;
+   cursor: pointer;
+   background-size: 200% 100%; /* ขยายพื้นที่ของพื้นหลัง */
+   background-position: left bottom; /* เริ่มต้นที่ซ้าย */
+   transition: background-position 0.6s ease; /* เพิ่มการเปลี่ยนแปลงที่นุ่มนวล */
+}
+
+/* ปุ่ม View Product Catalogue */
+.catalogue-button {
+   background: linear-gradient(to right, #233388, #6E6E6E); /* ไล่สีจากน้ำเงินไปเทา */
+}
+
+.catalogue-button:hover {
+   background-position: right bottom; /* เปลี่ยนตำแหน่งเป็นขวาเมื่อ hover */
+}
+
+/* ปุ่ม Visit Online Store */
+.store-button {
+   background: linear-gradient(to right, #233388, #6E6E6E); /* ไล่สีจากน้ำเงินไปเทา */
+}
+
+.store-button:hover {
+   background-position: right bottom; /* เปลี่ยนตำแหน่งเป็นขวาเมื่อ hover */
+}
+
 
 /* ปรับให้ไอคอนมีขนาดและระยะห่างที่เหมาะสม */
 .more-button i {
@@ -240,8 +309,8 @@
    margin-left: 0; /* ปรับให้ไม่เว้นระยะจากซ้าย */
    margin-right: auto; /* ขยับคอนเทนเนอร์ไปทางซ้าย */
    position: relative; /* ทำให้สามารถขยับตำแหน่งได้ */
-   left: -20px; /* อยู่ทางซ้าย */
-   top: -725px; /* ขยับขึ้นจากตำแหน่งเดิม 20px */
+   left: -13px; /* อยู่ทางซ้าย */
+   top: -780px; /* ขยับขึ้นจากตำแหน่งเดิม 20px */
 }
 
 .investor-info .arrow-icon {
@@ -272,6 +341,7 @@
 
 /* รูปทั้ง 4 รูป */
 /* คอนเทนเนอร์สำหรับรูปทั้งหมด */
+/* คอนเทนเนอร์หลัก */
 .container {
    display: flex;
    align-items: flex-start; /* จัดแนวตั้งของไอเท็ม */
@@ -279,9 +349,10 @@
    gap: 21px; /* ระยะห่างระหว่างไอเท็ม */
    flex-wrap: wrap; /* ทำให้เลย์เอาต์ยืดหยุ่นเมื่อหน้าจอแคบ */
    margin: 0 auto;
-   max-width: 1420px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
+   max-width: 1600px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
    position: relative;
-   top: -60px; 
+   top: -120px; 
+   padding: 20px; /* เพิ่มระยะห่างภายในคอนเทนเนอร์เพื่อไม่ให้ไอเท็มติดขอบ */
 }
 
 /* การตั้งค่าของแต่ละรูป */
@@ -292,9 +363,10 @@
    text-align: center;
    background-color: #f4f4f4;
    box-sizing: border-box;
-   border: none;
-   border-radius: 0;
+   border: 2px solid #ddd; /* เพิ่มขอบให้แต่ละไอเท็ม */
+   border-radius: 8px; /* ทำให้มุมขอบโค้ง */
    height: 350px; /* กำหนดความสูงของคอนเทนเนอร์เป็น px */
+   margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างไอเท็ม */
 }
 
 /* รูปภาพทั้งหมด */
@@ -338,7 +410,7 @@
    display: flex;
    justify-content: center; /* จัดให้อยู่กลางแนวนอน */
    gap: 35px; /* ระยะห่างระหว่างปุ่ม */
-   margin: 60px 0 25px; /* ระยะห่างด้านบนและล่าง */
+   margin: 60px 0 60px; /* ระยะห่างด้านบนและล่าง */
 }
 
 /* รูปแบบของปุ่มพื้นฐาน */
@@ -362,45 +434,90 @@
    background-color: #233388;
 }
 
-/* รูปทั้ง 4 ที่จะจัดสลับ */
+.catalogue-button:hover{
+   background-color: #6E6E6E;
+}
+
+
+/* รูปทั้ง 4 ที่จะจัดสลับกัน */
 .swapped-layout {
    display: flex;
-   flex-direction: column;
-   gap: 20px;
+   flex-direction: column; 
+   gap: 30px; 
+   padding: 40px; 
+   border-radius: 15px; 
+   background-color: #f9f9f9; 
+   margin: 0; 
+   width: 100%; 
 }
 
-.swapped-layout .content-item {
+/* รูปแต่ละบล็อก */
+.item-block {
    display: flex;
-   flex-direction: row-reverse; /* สลับรูปและข้อความ */
-   gap: 20px;
-   align-items: center;
+   gap: 30px; 
+   align-items: center; 
+   width: 100%; 
+   background-color: #fff; 
+   padding: 20px;
+   box-sizing: border-box;
 }
 
-.swapped-layout .content-item img {
-   width: 50%; /* ปรับขนาดรูปภาพ */
+/* รูป */
+.item-block img {
+   width: 50%; 
+   height: auto; 
+   object-fit: cover; 
+   margin-top: -70px;
 }
 
-.swapped-layout .content-item h2,
-.swapped-layout .content-item p {
-   line-height: 1.6;
-   margin-bottom: 15px;
+/* ข้อความและปุ่มใน .text-content */
+.item-block .text-content {
+   width: 50%; /* ใช้พื้นที่ครึ่งหนึ่ง */
+   display: flex;
+   flex-direction: column; /* จัดข้อความในแนวตั้ง */
+   justify-content: center; /* จัดให้อยู่กลางในแนวตั้ง */
+   align-items: center; /* จัดให้อยู่กลางในแนวนอน */
+   text-align: center; /* ข้อความชิดกลาง */
+   padding: 10px; /* เพิ่มระยะห่างภายใน */
+   box-sizing: border-box; /* คำนวณ padding รวมขนาด */
 }
 
-.swapped-layout .content-item:nth-child(odd) {
-   flex-direction: row; /* สำหรับรายการคี่จะกลับไปจัดเรียงแบบปกติ */
+.item-block h2 {
+   color: #2333BB;
+   font-size: 20px; /* เพิ่มขนาดตัวอักษร */
+   margin-bottom: 10px;
+   font-weight: bold;
 }
 
-button {
-   background-color: #2333BB; /* กำหนดสีพื้นหลัง */
-   color: white; /* กำหนดสีข้อความให้เป็นสีขาว */
-   border: none; /* ลบเส้นขอบ */
-   padding: 10px 20px; /* กำหนดระยะห่างภายในปุ่ม */
-   font-size: 16px; /* กำหนดขนาดตัวอักษร */
-   cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อวางเมาส์บนปุ่ม */
-   border-radius: 5px; /* ทำให้มุมของปุ่มโค้ง */
-   transition: background-color 0.3s; /* เพิ่มการเปลี่ยนแปลงสีเมื่อโฮเวอร์ */
+.item-block p {
+   color: #6D6E70;
+   font-size: 16px; /* เพิ่มขนาดข้อความ */
+   line-height: 1.8;
+   text-align: left;
 }
 
-button:hover {
-   background-color: #1A2A8C; /* เปลี่ยนสีเมื่อวางเมาส์บนปุ่ม */
+/* ปุ่ม Discover */
+.discover-button {
+   background-color: #0044cc;
+   color: white;
+   border: none;
+   padding: 12px 24px;
+   font-size: 1rem;
+   cursor: pointer;
+   border-radius: 8px;
+   transition: all 0.3s ease-in-out;
+   margin-top: 15px;
+}
+
+.discover-button:hover {
+   background-color: #003399;
+   transform: scale(1.05); /* ขยายเล็กน้อยเมื่อโฮเวอร์ */
+}
+/* สลับรูป ซ้าย-ขวา */
+.item-block:nth-child(odd) {
+   flex-direction: row; /* บล็อกคี่ */
+}
+
+.item-block:nth-child(even) {
+   flex-direction: row-reverse; /* บล็อกคู่ */
 }
