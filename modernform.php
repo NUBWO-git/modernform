@@ -76,8 +76,21 @@ $language = $_SESSION['language'];
    <!-- zone ดูเพิ่มเติม -->
    <section class="content">
       <div class="image-container">
-         <img src="./img/furniture1.png" alt="Furniture 1">
-         <button class="more-button">ดูเพิ่มเติม</button>
+         <!-- รูปภาพที่ 1 -->
+         <div class="image-item">
+            <img src="./img/furniture1.png" alt="Furniture 1">
+            <button class="more-button">ดูเพิ่มเติม</button>
+         </div>
+         <!-- รูปภาพที่ 2 -->
+         <div class="image-item">
+            <img src="./img/Pinterest/Pinterest3.png" alt="Furniture 2">
+            <button class="more-button">ดูเพิ่มเติม</button>
+         </div>
+         <!-- รูปภาพที่ 3 -->
+         <div class="image-item">
+            <img src="./img/Pinterest5.png" alt="Furniture 3">
+            <button class="more-button">ดูเพิ่มเติม</button>
+         </div>
       </div>
    </section>
 
@@ -90,6 +103,7 @@ $language = $_SESSION['language'];
       </div>
    </div>
 
+   <!-- รูปเรียงกันแนวนอน -->
    <div class="container">
       <div class="content-item">
          <img src="./img/office.png" alt="office">

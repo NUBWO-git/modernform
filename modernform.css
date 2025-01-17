@@ -207,22 +207,29 @@
 /* เนื้อหาทั้งหมด */
 /* คอนเทนเนอร์สำหรับรูปภาพ */
 .image-container {
-   position: relative;
-   display: inline-block;
-   width: 100%; 
-   max-width: 100%; 
-   overflow: hidden; 
+   display: flex; /* ใช้ Flexbox เพื่อจัดเรียงรูปภาพในแถวเดียว */
+   width: 100%;
+   overflow: hidden;
 }
 
-/* การตั้งค่ารูปภาพ */
+.image-item {
+   min-width: 100%; /* ให้แต่ละรูปมีขนาดเต็ม 100% ของคอนเทนเนอร์ */
+   transition: transform 1s ease-in-out; /* เพิ่มการเคลื่อนไหวแบบราบรื่น */
+   position: relative; /* ทำให้สามารถจัดตำแหน่งของปุ่มได้ */
+}
+
 .image-container img {
-   width: 100%; 
-   height: 100%; 
-   object-fit: cover; 
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
 /* ปุ่ม "ดูเพิ่มเติม" */
 .more-button {
+   position: absolute; /* ให้ปุ่มอยู่ในตำแหน่งที่คงที่ */
+   top: 91%; /* ตั้งปุ่มให้อยู่กลางในแนวตั้ง */
+   left: 50%; /* ตั้งปุ่มให้อยู่กลางในแนวนอน */
+   transform: translate(-50%, -50%); /* เลื่อนปุ่มให้ตรงกลางพอดี */
    color: white;
    border: none;
    padding: 12px 24px;
@@ -230,21 +237,15 @@
    font-family: 'Poppins', sans-serif;
    border-radius: 5px;
    cursor: pointer;
-   background: linear-gradient(to left, #233388 50%, #6E6E6E 50%); /* ไล่สีจากน้ำเงินไปเทา (จากขวาไปซ้าย) */
-   background-size: 200% 100%; /* ขยายพื้นที่พื้นหลัง */
-   background-position: right center; /* เริ่มที่ขวา */
-   transition: background-position 0.6s ease, background-color 0.6s ease; /* ทำให้การเปลี่ยนแปลงราบรื่น */
-   
-   /* จัดตำแหน่งปุ่มให้อยู่กลาง */
-   position: relative;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -190%);
-   z-index: 1000;
+   background: linear-gradient(to left, #233388 50%, #6E6E6E 50%); 
+   background-size: 200% 100%; 
+   background-position: right center; 
+   transition: background-position 0.6s ease, background-color 0.6s ease; 
+   z-index: 1000; /* ทำให้ปุ่มอยู่บนสุด */
 }
 
 .more-button:hover {
-   background-position: left center; /* เมื่อ hover ให้พื้นหลังไหลจากขวาไปซ้าย */
+   background-position: left center; 
 }
 
 /* ปุ่ม View Product Catalogue & Visit Online Store */
@@ -310,7 +311,7 @@
    margin-right: auto; /* ขยับคอนเทนเนอร์ไปทางซ้าย */
    position: relative; /* ทำให้สามารถขยับตำแหน่งได้ */
    left: -13px; /* อยู่ทางซ้าย */
-   top: -780px; /* ขยับขึ้นจากตำแหน่งเดิม 20px */
+   top: -740px; /* ขยับขึ้นจากตำแหน่งเดิม 20px */
 }
 
 .investor-info .arrow-icon {
@@ -346,13 +347,13 @@
    display: flex;
    align-items: flex-start; /* จัดแนวตั้งของไอเท็ม */
    justify-content: space-between; /* จัดให้รูปอยู่ห่างกันพอสมควร */
-   gap: 21px; /* ระยะห่างระหว่างไอเท็ม */
+   gap: 15px; /* ระยะห่างระหว่างไอเท็ม */
    flex-wrap: wrap; /* ทำให้เลย์เอาต์ยืดหยุ่นเมื่อหน้าจอแคบ */
    margin: 0 auto;
    max-width: 1600px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
    position: relative;
-   top: -120px; 
-   padding: 20px; /* เพิ่มระยะห่างภายในคอนเทนเนอร์เพื่อไม่ให้ไอเท็มติดขอบ */
+   top: -115px; 
+   padding: 45px; /* เพิ่มระยะห่างภายในคอนเทนเนอร์เพื่อไม่ให้ไอเท็มติดขอบ */
 }
 
 /* การตั้งค่าของแต่ละรูป */
@@ -364,7 +365,6 @@
    background-color: #f4f4f4;
    box-sizing: border-box;
    border: 2px solid #ddd; /* เพิ่มขอบให้แต่ละไอเท็ม */
-   border-radius: 8px; /* ทำให้มุมขอบโค้ง */
    height: 350px; /* กำหนดความสูงของคอนเทนเนอร์เป็น px */
    margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างไอเท็ม */
 }
@@ -410,7 +410,7 @@
    display: flex;
    justify-content: center; /* จัดให้อยู่กลางแนวนอน */
    gap: 35px; /* ระยะห่างระหว่างปุ่ม */
-   margin: 60px 0 60px; /* ระยะห่างด้านบนและล่าง */
+   margin: -4px 0 50px; /* ระยะห่างด้านบนและล่าง */
 }
 
 /* รูปแบบของปุ่มพื้นฐาน */

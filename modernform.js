@@ -1,3 +1,4 @@
+//แปลภาษา
 document.addEventListener('DOMContentLoaded', function () {
    const translateButton = document.getElementById('translateButton');
    const languageMenu = document.getElementById('languageMenu');
@@ -40,4 +41,22 @@ document.addEventListener('DOMContentLoaded', function () {
       // อัปเดตไอคอนในเมนู
       updateMenuIcons(lang);
    };
+});
+
+//การไหลของรูปภาพ
+document.addEventListener('DOMContentLoaded', function () {
+   let currentIndex = 0;
+   const images = document.querySelectorAll('.image-item'); // หาทุก element ที่มีคลาส .image-item
+   const totalImages = images.length;
+
+   function slideImages() {
+      images.forEach((image, index) => {
+         image.style.transform = `translateX(-${currentIndex * 100}%)`; // เลื่อนไปที่รูปที่ currentIndex
+      });
+
+      currentIndex = (currentIndex + 1) % totalImages; // เลื่อนไปที่รูปถัดไป
+   }
+
+   // เรียกใช้ฟังก์ชันสไลด์ทุกๆ 6 วินาที
+   setInterval(slideImages, 6000); // 6000 มิลลิวินาที = 6 วินาที
 });
