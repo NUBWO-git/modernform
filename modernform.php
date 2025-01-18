@@ -104,32 +104,49 @@ $language = $_SESSION['language'];
    </div>
 
    <!-- รูปเรียงกันแนวนอน -->
-   <div class="container">
-      <div class="content-item">
-         <img src="./img/office.png" alt="office">
-         <h2>office</h2>
-         <p>เพราะงานที่ดีเกิดจากการได้อยู่ในสภาพแวดล้อมที่ดีและเกิดจากสร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
+   <div class="office-container">
+      <div class="office-item">
+         <div class="office-image">
+            <img src="./img/office.png" alt="office">
+         </div>
+         <div class="office-text">
+            <h2>Office</h2>
+            <p>เพราะงานที่ดีเกิดจากการได้อยู่ในสภาพแวดล้อมที่ดีและเกิดจากสร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
+         </div>
       </div>
 
-      <div class="content-item">
-         <img src="./img/Home.png" alt="Home">
-         <h2>Home</h2>
-         <p>เพราะคำนิยามการใช้ชีวิตของแต่ละคนแตกต่างกันเราจึงมุ่งมั่นสร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
+      <div class="office-item">
+         <div class="office-image">
+            <img src="./img/Home.png" alt="Home">
+         </div>
+         <div class="office-text">
+            <h2>Home</h2>
+            <p>เพราะคำนิยามการใช้ชีวิตของแต่ละคนแตกต่างกันเราจึงมุ่งมั่นสร้างสรรค์สินค้านวัตกรรม เพื่อตอบโจทย์ทุกรูปแบบการอยู่...</p>
+         </div>
       </div>
 
-      <div class="content-item">
-         <img src="./img/Kitchen.png" alt="Kitchen">
-         <h2>Kitchen</h2>
-         <p>เพราะพื้นที่ครัวเปรียบเสมือนหัวใจของบ้านเป็นศูนย์กลางการรวมตัวของสมาชิก และเป็นพื้นที่แห่งการพบปะสังสรรค์...</p>
+      <div class="office-item">
+         <div class="office-image">
+            <img src="./img/Kitchen.png" alt="Kitchen">
+         </div>
+         <div class="office-text">
+            <h2>Kitchen</h2>
+            <p>เพราะพื้นที่ครัวเปรียบเสมือนหัวใจของบ้านเป็นศูนย์กลางการรวมตัวของสมาชิก และเป็นพื้นที่แห่งการพบปะสังสรรค์...</p>
+         </div>
       </div>
 
-      <div class="content-item">
-         <img src="./img/Hardware & Fitting.png" alt="Hardware & Fitting">
-         <h2>Hardware & Fitting</h2>
-         <p>เพราะคุณภาพชีวิตที่ดีของการอยู่อาศัยล้วนเกิดจากการสรรหาสินค้า และวัสดุคุณภาพต่าง ๆ ทั่วโลก เพื่อตอบสนอง...</p>
+      <div class="office-item">
+         <div class="office-image">
+            <img src="./img/Hardware & Fitting.png" alt="Hardware & Fitting">
+         </div>
+         <div class="office-text">
+            <h2>Hardware & Fitting</h2>
+            <p>เพราะคุณภาพชีวิตที่ดีของการอยู่อาศัยล้วนเกิดจากการสรรหาสินค้า และวัสดุคุณภาพต่าง ๆ ทั่วโลก เพื่อตอบสนอง...</p>
+         </div>
       </div>
    </div>
 
+   <!-- ปุ่ม View Product Catalogue & Visit Online Store -->
    <div class="button-container">
       <button class="custom-button catalogue-button">View Product Catalogue</button>
       <button class="custom-button store-button">Visit Online Store</button>

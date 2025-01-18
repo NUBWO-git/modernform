@@ -206,6 +206,19 @@
 
 /* เนื้อหาทั้งหมด */
 /* คอนเทนเนอร์สำหรับรูปภาพ */
+.container {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   gap: 15px;
+   flex-wrap: wrap;
+   margin: 0 auto;
+   max-width: 1600px;
+   position: relative;
+   top: -115px; 
+   padding: 45px;
+}
+
 .image-container {
    display: flex; /* ใช้ Flexbox เพื่อจัดเรียงรูปภาพในแถวเดียว */
    width: 100%;
@@ -342,57 +355,77 @@
 
 /* รูปทั้ง 4 รูป */
 /* คอนเทนเนอร์สำหรับรูปทั้งหมด */
-/* คอนเทนเนอร์หลัก */
-.container {
+.office-container {
    display: flex;
-   align-items: flex-start; /* จัดแนวตั้งของไอเท็ม */
-   justify-content: space-between; /* จัดให้รูปอยู่ห่างกันพอสมควร */
-   gap: 15px; /* ระยะห่างระหว่างไอเท็ม */
-   flex-wrap: wrap; /* ทำให้เลย์เอาต์ยืดหยุ่นเมื่อหน้าจอแคบ */
+   align-items: flex-start; /* จัดให้อยู่ชิดด้านบน */
+   justify-content: center; /* จัดให้อยู่กลางในแนวนอน */
+   gap: 60px;
+   flex-wrap: wrap;
    margin: 0 auto;
-   max-width: 1600px; /* กำหนดขนาดสูงสุดของคอนเทนเนอร์ */
-   position: relative;
-   top: -115px; 
-   padding: 45px; /* เพิ่มระยะห่างภายในคอนเทนเนอร์เพื่อไม่ให้ไอเท็มติดขอบ */
+   max-width: 1600px;
+   margin-top: -60px; 
 }
 
-/* การตั้งค่าของแต่ละรูป */
-.content-item {
-   flex: 1 1 calc(25% - 16px); /* ใช้ 25% ของความกว้างคอนเทนเนอร์ */
-   min-width: 280px; /* กำหนดขนาดต่ำสุด */
-   max-width: 350px; /* กำหนดขนาดสูงสุด */
-   text-align: center;
+/* การตั้งค่าของแต่ละรายการ */
+.office-item {
+   width: 301px; /* ขนาดความกว้าง */
+   height: 419px; /* ขนาดความสูง รวมทั้งรูปและข้อความ */
    background-color: #f4f4f4;
    box-sizing: border-box;
-   border: 2px solid #ddd; /* เพิ่มขอบให้แต่ละไอเท็ม */
-   height: 350px; /* กำหนดความสูงของคอนเทนเนอร์เป็น px */
-   margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างไอเท็ม */
+   border: 2px solid #ddd;
+   margin-bottom: 20px;
+   overflow: hidden; /* ซ่อนส่วนที่เกินจากกรอบ */
+   transition: box-shadow 0.3s;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start; /* จัดข้อความให้ชิดซ้าย */
 }
 
-/* รูปภาพทั้งหมด */
-.content-item img {
-   width: 100%; /* ขยายรูปให้เต็มคอนเทนเนอร์ */
-   height: 100%; /* ให้รูปเต็มความสูง */
-   object-fit: cover; /* ทำให้รูปครอบพื้นที่เต็มโดยไม่ทำให้ผิดสัดส่วน */
-   border: none; /* ลบขอบออก */
-   margin: 0 auto; /* จัดรูปให้อยู่ตรงกลาง */
+/* การตั้งค่ารูปภาพ */
+.office-image {
+   width: 100%;
+   height: 70%; /* ให้รูปภาพมีขนาดพอสมควรภายในกรอบ */
+   overflow: hidden;
+   position: relative;
+}
+
+.office-image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.3s ease-in-out;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+
+/* เอฟเฟกต์ขยายรูปภาพ */
+.office-item:hover .office-image img {
+   transform: scale(1.2); /* ขยายรูปภาพ */
 }
 
 /* ตั้งค่าชื่อและคำอธิบาย */
-.content-item h2 {
-   text-align: left;
-   color: #000000;
-   font-family: 'Poppins', sans-serif;
-   font-size: 20px; /* ขนาดตัวอักษรของ h2 */
-   margin-top: 12px;
+.office-text {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start; /* จัดข้อความให้ชิดด้านบน */
+   width: 100%; /* ให้เนื้อหาขยายเต็มกรอบ */
+   text-align: left; /* จัดข้อความให้ชิดซ้าย */
 }
 
-.content-item p {
-   text-align: left;
-   margin: 8px 0 0;
+.office-text h2 {
+   color: #000000;
+   font-family: 'Poppins', sans-serif;
+   font-size: 20px;
+   margin-top: 10px;
+   margin: 8px 5px 0;
+}
+
+.office-text p {
+   margin: 8px 5px 0;
    color: #ABB2BE;
    font-family: 'Raleway', sans-serif;
-   font-size: 14px; /* ขนาดตัวอักษรของ p */
+   font-size: 11px;
 }
 
 /* ปุ่มทั้ง 2 ปุ่ม*/
