@@ -152,6 +152,7 @@ $language = $_SESSION['language'];
       <button class="custom-button store-button">Visit Online Store</button>
    </div>
 
+   <!-- รูปสลับ ซ้ายขวาทั้งตัวหนัง & และรูป -->
    <div class="swapped-layout">
       <div class="item-block">
          <img src="./img/Pinterest/Pinterest1.png" alt="Pinterest1">
