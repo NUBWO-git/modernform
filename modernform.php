@@ -37,7 +37,7 @@ $language = $_SESSION['language'];
    <nav class="navbar">
       <div class="logo-menu">
          <div class="logo">
-            <img src="./img/Logo.png" alt="Logo">
+            <img src="./img/Logo/Logo 2.png" alt="Logo">
          </div>
          <ul class="nav-links">
             <li><a href="#">Products</a></li>
@@ -155,7 +155,9 @@ $language = $_SESSION['language'];
    <!-- รูปสลับ ซ้ายขวาทั้งตัวหนัง & และรูป -->
    <div class="swapped-layout">
       <div class="item-block">
-         <img src="./img/Pinterest/Pinterest1.png" alt="Pinterest1">
+         <div class="image-wrapper">
+            <img src="./img/Pinterest/Pinterest1.png" alt="Pinterest1">
+         </div>
          <div class="text-content">
             <h2>Pet Space Collection | เฟอร์นิเจอร์ที่ตอบรับทุกพฤติกรรมสัตว์เลี้ยง</h2>
             <p>Pet Collection เฟอร์นิเจอร์และพื้นที่สำหรับสัตว์เลี้ยงที่สะท้อนแนวคิด Pet Centric เน้นความต้องการของสัตว์ เลี้ยงเป็นหลักโดยออกแบบมาเพื่อตอบโจทย์พฤติกรรมของสัตว์เลี้ยง สามารถดีไซน์รูปแบบ และการจัดวางให้เข้ากับบ้าน ได้ตามต้องการ</p>
@@ -164,7 +166,9 @@ $language = $_SESSION['language'];
       </div>
 
       <div class="item-block">
-         <img src="./img/Pinterest/Pinterest2.png" alt="Pinterest2">
+         <div class="image-wrapper">
+            <img src="./img/Pinterest/Pinterest2.png" alt="Pinterest2">
+         </div>
          <div class="text-content">
             <h2>RHAPSODY Space Management</h2>
             <p>Rhapsody”แนวคิดการจัดพื้นที่รูปแบบใหม่สร้างขึ้นเพื่อรองรับการทำงานและการอยู่อาศัยที่ทันสมัยด้วยการแบ่งพื้นที่ใช้งานที่รองรับความหลากหลายทั้งการทำงานพฤติกรรมการใช้งาน และไลฟ์สไตล์ของผู้คนที่ใช้งานในยุคปัจจุบัน</p>
@@ -173,16 +177,20 @@ $language = $_SESSION['language'];
       </div>
 
       <div class="item-block">
-         <img src="./img/Pinterest/Pinterest3.png" alt="Pinterest3">
+         <div class="image-wrapper">
+            <img src="./img/Pinterest/Pinterest3.png" alt="Pinterest3">
+         </div>
          <div class="text-content">
-            <h2>Steelcase THINK V2 Glow up your style |เปล่งประกายในสไตล์ ที่เป็นคุณ</h2>
+            <h2>Steelcase THINK V2 Glow up your style | เปล่งประกายในสไตล์ ที่เป็นคุณ</h2>
             <p>THINK V2 เก้าอี้เพื่อสุขภาพที่มาพร้อมฟังก์ชันครบครัน ซัพพอร์ตสรีระการนั่งทำงานได้อย่างลงตัว ด้วยระบบปรับอัตโนมัติ ที่ตอบสนองต่อการเคลื่อนไหวจะ WFH หรือ Hybrid Working ก็เนรมิต Working Space ให้ Glow ในแบบที่เป็นตัวเอง </p>
             <button class="discover-button">Discover</button>
          </div>
       </div>
 
       <div class="item-block">
-         <img src="./img/Pinterest/Pinterest4.png" alt="Pinterest4">
+         <div class="image-wrapper">
+            <img src="./img/Pinterest/Pinterest4.png" alt="Pinterest4">
+         </div>
          <div class="text-content">
             <h2>มุมทำงานที่ใช่ ตอบโจทย์สไตล์ในแบบคุณ</h2>
             <p>พบกับไอเดียการจัดมุมทำงานในสไตล์ต่าง ๆ ที่ช่วยกระตุ้นไอเดีย และเพิ่ม Energy ให้ทุกวันทำงาน ผ่านเฟอร์นิเจอร์หลาก ดีไซน์</p>
@@ -190,7 +198,6 @@ $language = $_SESSION['language'];
          </div>
       </div>
    </div>
-
 </body>
 
 </html>

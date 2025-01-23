@@ -338,7 +338,7 @@
    display: flex;
    justify-content: center; /* จัดให้อยู่กลางแนวนอน */
    gap: 60px; /* ระยะห่างระหว่างปุ่ม */
-   margin: -4px 0 50px; /* ระยะห่างด้านบนและล่าง */
+   margin: -4px 0 0; /* ระยะห่างด้านบนและล่าง */
 }
 
 /* รูปแบบของปุ่มพื้นฐาน */
@@ -507,16 +507,30 @@
    align-items: center; 
    width: 100%; 
    background-color: #fff; 
-   padding: 20px;
    box-sizing: border-box;
 }
 
+/* กรอบสำหรับรูปภาพ */
+.image-wrapper {
+   width: 50%; /* กำหนดขนาดให้รูปภาพ */
+   height: 316px; /* ความสูงคงที่ตามที่ระบุ */
+   overflow: hidden; /* ซ่อนส่วนที่เกิน */
+   position: relative;
+}
+
 /* รูป */
-.item-block img {
-   width: 50%; 
-   height: auto; 
-   object-fit: cover; 
-   margin-top: -70px;
+.image-wrapper img {
+   width: 100%; /* ให้รูปภาพเติมเต็มคอนเทนเนอร์ */
+   height: 100%; 
+   object-fit: cover; /* ปรับขนาดรูปให้พอดีกับคอนเทนเนอร์ */
+   transition: transform 0.3s ease-in-out; /* เพิ่ม transition สำหรับการขยาย */
+   border-radius: 0; /* เอาขอบมนออก */
+}
+
+/* ขยายรูปเมื่อ hover */
+.image-wrapper img:hover {
+   transform: scale(1.1); /* ขยายรูป */
+   object-position: center; /* จัดตำแหน่งการขยายให้อยู่ตรงกลาง */
 }
 
 /* ข้อความและปุ่มใน .text-content */
