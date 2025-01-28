@@ -44,7 +44,7 @@
    text-decoration: none;
    font-size: 14px;
    padding: 6px 10px;
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Poppins', sans-serif;
    transition: color 0.3s ease, border-bottom 0.3s ease;
    border-bottom: 2px solid transparent;
 }
@@ -69,7 +69,7 @@
    border: none; /* ลบขอบ */
    color: #000; /* สีข้อความ */
    font-size: 14px;
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Poppins', sans-serif;
    cursor: pointer;
    padding: 0; /* ลบ padding */
    gap: 12px; /* ระยะห่างระหว่างข้อความกับไอคอน */
@@ -146,7 +146,7 @@
    padding: 8px 16px;
    cursor: pointer;
    font-size: 15px;
-   font-family: 'Open Sans', sans-serif;
+   font-family: 'Poppins', sans-serif;
    text-align: left;
    width: 100%;
    border-radius: 5px;
@@ -484,7 +484,7 @@
 .office-text p {
    margin: 8px 5px 0;
    color: #ABB2BE;
-   font-family: 'Raleway', sans-serif;
+   font-family: 'Poppins', sans-serif;
    font-size: 11px;
 }
 
@@ -492,7 +492,6 @@
 .swapped-layout {
    display: flex;
    flex-direction: column; 
-   gap: 30px; 
    padding: 40px; 
    border-radius: 15px; 
    background-color: #f9f9f9; 
@@ -503,7 +502,7 @@
 /* รูปแต่ละบล็อก */
 .item-block {
    display: flex;
-   gap: 30px; 
+   gap: 27px; 
    align-items: center; 
    width: 100%; 
    background-color: #fff; 
@@ -512,10 +511,11 @@
 
 /* กรอบสำหรับรูปภาพ */
 .image-wrapper {
-   width: 50%; /* กำหนดขนาดให้รูปภาพ */
-   height: 316px; /* ความสูงคงที่ตามที่ระบุ */
+   width: 52%; /* กำหนดขนาดให้รูปภาพ */
+   height: auto; /* ความสูงคงที่ตามที่ระบุ */
    overflow: hidden; /* ซ่อนส่วนที่เกิน */
    position: relative;
+   transform: translateY(-10px);
 }
 
 /* รูป */
@@ -523,13 +523,13 @@
    width: 100%; /* ให้รูปภาพเติมเต็มคอนเทนเนอร์ */
    height: 100%; 
    object-fit: cover; /* ปรับขนาดรูปให้พอดีกับคอนเทนเนอร์ */
-   transition: transform 0.3s ease-in-out; /* เพิ่ม transition สำหรับการขยาย */
+   transition: transform 1s ease-in-out; /* เพิ่ม transition สำหรับการขยาย */
    border-radius: 0; /* เอาขอบมนออก */
 }
 
 /* ขยายรูปเมื่อ hover */
 .image-wrapper img:hover {
-   transform: scale(1.1); /* ขยายรูป */
+   transform: scale(1.3); /* ขยายรูป */
    object-position: center; /* จัดตำแหน่งการขยายให้อยู่ตรงกลาง */
 }
 
@@ -550,37 +550,223 @@
    font-size: 20px; /* เพิ่มขนาดตัวอักษร */
    margin-bottom: 10px;
    font-weight: bold;
+   font-family: 'Poppins', sans-serif;
 }
 
 .item-block p {
    color: #6D6E70;
-   font-size: 16px; /* เพิ่มขนาดข้อความ */
+   font-size: 14px; /* เพิ่มขนาดข้อความ */
    line-height: 1.8;
    text-align: left;
+   font-family: 'Poppins', sans-serif;
 }
 
 /* ปุ่ม Discover */
 .discover-button {
-   background-color: #0044cc;
-   color: white;
+   position: relative;
+   color: white; /* สีข้อความ */
    border: none;
-   padding: 12px 24px;
-   font-size: 1rem;
+   width: 120px; /* ความกว้างของปุ่ม */
+   height: 44px; /* ความสูงของปุ่ม */
+   font-size: 16px;
+   font-family: 'Poppins', sans-serif;
+   border-radius: 5px;
    cursor: pointer;
-   border-radius: 8px;
-   transition: all 0.3s ease-in-out;
-   margin-top: 15px;
+   background: #2333BB;
+   overflow: hidden; /* ซ่อนส่วนที่เกิน */
+   z-index: 0;
+   transition: color 0.3s ease;
+   text-align: center; /* จัดตำแหน่งข้อความให้อยู่กลาง */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* เอฟเฟกต์ไหลของพื้นหลัง */
+.discover-button::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: -100%; /* เริ่มจากด้านซ้ายของปุ่ม */
+   width: 100%;
+   height: 100%;
+   background: #6E6E6E; /* สีพื้นหลังไหล */
+   z-index: -1; /* ให้อยู่ด้านล่าง */
+   transition: left 0.6s ease; /* เอฟเฟกต์การไหล */
+}
+
+/* เมื่อ hover */
+.discover-button:hover::before {
+   left: 0; /* ไหลเต็มพื้นที่ปุ่ม */
 }
 
 .discover-button:hover {
-   background-color: #003399;
-   transform: scale(1.05); /* ขยายเล็กน้อยเมื่อโฮเวอร์ */
+   color: white; /* คงสีข้อความเป็นสีขาว */
 }
+
 /* สลับรูป ซ้าย-ขวา */
 .item-block:nth-child(odd) {
-   flex-direction: row; /* บล็อกคี่ */
+   flex-direction: row; 
 }
 
 .item-block:nth-child(even) {
-   flex-direction: row-reverse; /* บล็อกคู่ */
+   flex-direction: row-reverse; 
+}
+
+/* What’s New & Project Reference */
+.zero {
+   background-color: #2333BB; 
+   color: #FFFFFF; 
+}
+
+/* คอนเทนเนอร์หลัก */
+.BlueZero-container {
+   display: flex;
+   justify-content: space-between; /* จัดระยะห่างระหว่างโซน */
+   align-items: flex-start; /* จัดให้อยู่ด้านบน */
+   gap: 20px; /* ระยะห่างระหว่างโซน */
+   max-width: 100%; /* กำหนดให้คอนเทนเนอร์ขยายเต็มความกว้าง */
+   margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+   padding: 0 20px; /* ระยะขอบซ้ายขวา */
+   overflow-x: auto; /* แก้ไขปัญหาเมื่อเนื้อหายาวเกินพื้นที่ */
+   flex-wrap: wrap; /* เมื่อหน้าจอเล็กจะห่อแถว */
+}
+
+/* โซน What’s New */
+.news-container {
+   flex: 1;
+   min-width: 48%;
+   max-width: 48%;
+   background-color: #2333BB;
+   border-radius: 10px;
+   padding: 19px;
+   box-sizing: border-box;
+   text-align: center; /* จัด h2 และปุ่มให้อยู่ตรงกลาง */
+}
+
+.news-container h2 {
+   font-size: 24px;
+   margin-bottom: 20px;
+   color: #FFFFFF;
+   font-family: 'Poppins', sans-serif;
+}
+
+.news-item {
+   display: flex;
+   margin-bottom: 20px;
+   height: 160px; /* ความสูงเท่ากันสำหรับแต่ละรายการ */
+   color: #FFFFFF;
+}
+
+.news-item .image-container {
+   width: 213.33px; /* กำหนดความกว้าง */
+   height: 160px; /* กำหนดความสูง */
+   overflow: hidden;
+   flex-shrink: 0; /* ป้องกันการย่อขนาด */
+   transition: transform 1s ease;
+}
+
+.news-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover; /* ปรับรูปให้เต็มกรอบ */
+}
+
+.news-item:hover .image-container img {
+   transform: scale(1.1); /* ขยายรูปเมื่อ hover */
+}
+
+/* ป้องกันการขยายข้อความ */
+.news-text {
+   margin-left: 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* จัดข้อความให้อยู่ตรงกลางในแนวตั้ง */
+   text-align: left;
+   max-height: 100%; /* ป้องกันข้อความดันกรอบ */
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.news-text p {
+   margin: 5px 0;
+   font-size: 16px;
+   line-height: 1.4;
+   font-family: 'Prompt', sans-serif; 
+}
+
+/* ปุ่ม See More */
+.BlueZero-container button {
+   background-color: #FFFFFF;
+   color: #2333BB;
+   font-size: 16px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-top: 20px; 
+   align-self: center;
+   z-index: 1; 
+   display: block; 
+   margin-left: auto; 
+   margin-right: auto; 
+}
+
+.BlueZero-container button:hover {
+   background-color: #6b75d0;
+}
+
+/* โซน Project Reference */
+.BlueZero-slider {
+   flex: 1;
+   max-width: 792px; /* กำหนดความกว้างสูงสุด */
+   height: 535px; /* กำหนดความสูง */
+   background-color: #2333BB;
+   border-radius: 10px;
+   padding: 20px;
+   text-align: center;
+   overflow: hidden; /* ซ่อนส่วนเกินที่เลื่อนออกไป */
+}
+
+.BlueZero-slider h2 {
+   font-size: 24px;
+   margin-bottom: 70px;
+   color: #FFFFFF;
+   font-family: 'Poppins', sans-serif;
+}
+
+/* แก้ไขให้สไลด์แสดงผลทีละรูป */
+.BlueZero-slides {
+   display: flex; /* จัดเรียงรูปในแนวนอน */
+   transition: transform 0.5s ease-in-out; /* เพิ่มการเลื่อนที่นุ่มนวล */
+   transform: translateX(0); /* เริ่มต้นที่รูปแรก */
+   width: 100%; /* กำหนดความกว้างให้เต็ม */
+}
+
+.BlueZero-slide {
+   flex: 0 0 100%; /* กำหนดให้แต่ละรูปมีขนาด 100% ของพื้นที่ */
+   margin: 0; /* ลบระยะห่างระหว่างรูป */
+   display: flex;
+   justify-content: center; /* จัดรูปให้อยู่ตรงกลางในแนวนอน */
+   align-items: center; /* จัดรูปให้อยู่ตรงกลางในแนวตั้ง */
+   height: 100%; /* ให้พื้นที่ของแต่ละสไลด์มีความสูงเต็ม */
+}
+
+.BlueZero-slide img {
+   width: 85%; /* ทำให้รูปขยายเต็มความกว้างของพื้นที่ */
+   height: auto; /* คงสัดส่วนของรูป */
+   object-fit: cover; /* ป้องกันการยืดรูป */
+   border: none; /* ไม่มีขอบ */
+}
+
+/* การจัดการสำหรับหน้าจอเล็ก */
+@media (max-width: 768px) {
+   .BlueZero-container {
+      flex-wrap: nowrap; /* บังคับให้อยู่ในแถวเดียว */
+      overflow-x: auto; /* เพิ่มการเลื่อนแนวนอน */
+   }
+
+   .news-container, .BlueZero-slider {
+      flex: 0 0 90%; /* ลดขนาดโซนในหน้าจอเล็ก */
+   }
 }

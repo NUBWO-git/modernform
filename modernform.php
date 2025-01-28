@@ -198,6 +198,65 @@ $language = $_SESSION['language'];
          </div>
       </div>
    </div>
+
+   <!-- What’s New & Project Reference -->
+   <div class="zero">
+      <div class="BlueZero-container">
+         <!-- โซน What’s New -->
+         <div class="news-container">
+            <h2>What’s New</h2>
+            <div class="news-item">
+               <div class="image-container">
+                  <img src="./img/Blue Zone/New 1.jpg" alt="News 1">
+               </div>
+               <div class="news-text">
+                  <p>โมเดอร์นฟอร์มได้รับการประเมินหุ้นยั่งยืน SET ESG Ratings ในระดับ A ธันวาคม 2567 News</p>
+               </div>
+            </div>
+            <div class="news-item">
+               <div class="image-container">
+                  <img src="./img/Blue Zone/New 2.jpg" alt="News 2">
+               </div>
+               <div class="news-text">
+                  <p>โมเดอร์นฟอร์มร่วมเป็นสมาชิกแนวร่วมต่อต้านคอร์รัปชันของภาคเอกชนไทยพฤศจิกายน 2567 News</p>
+               </div>
+            </div>
+            <div class="news-item">
+               <div class="image-container">
+                  <img src="./img/Blue Zone/New 3.jpg" alt="News 3">
+               </div>
+               <div class="news-text">
+                  <p>Furtival Sale 2024</p>
+                  <p>พฤศจิกายน 2567</p>
+                  <p>Promotion</p>
+               </div>
+            </div>
+            <button>See More</button>
+         </div>
+
+         <!-- โซน Project Reference -->
+         <div class="BlueZero-slider">
+            <h2>Project Reference</h2>
+            <div class="BlueZero-slides">
+               <div class="BlueZero-slide">
+                  <img src="./img/Project/The Standard 1.png" alt="The Standard">
+               </div>
+               <div class="BlueZero-slide">
+                  <img src="./img/Project/Thonburi Bamrungmuang Hospital 2.png" alt="Thonburi Hospital">
+               </div>
+               <div class="BlueZero-slide">
+                  <img src="./img/Project/Singha Estate PCL 3.png" alt="Singha Estate">
+               </div>
+               <div class="BlueZero-slide">
+                  <img src="./img/Project/Silverskin Coffee Lab 4.png" alt="Silverskin Coffee">
+               </div>
+               <div class="BlueZero-slide">
+                  <img src="./img/Project/Oakwood Suites Bangkok Horel 5.png" alt="Oakwood Suites">
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>
