@@ -453,7 +453,7 @@
    width: 100%;
    height: 100%;
    object-fit: cover;
-   transition: transform 0.3s ease-in-out;
+   transition: transform 1s ease-in-out;
    position: absolute;
    top: 0;
    left: 0;
@@ -672,7 +672,8 @@
    object-fit: cover; /* ปรับรูปให้เต็มกรอบ */
 }
 
-.news-item:hover .image-container img {
+/* ปรับให้ขยายเมื่อเมาส์ชี้ที่ภาพ */
+.news-item .image-container:hover img {
    transform: scale(1.1); /* ขยายรูปเมื่อ hover */
 }
 
@@ -769,4 +770,241 @@
    .news-container, .BlueZero-slider {
       flex: 0 0 90%; /* ลดขนาดโซนในหน้าจอเล็ก */
    }
+}
+
+/* แถบ Store Location & Contact Us & Support */
+.Setup.contact img {
+   width: 24px;
+   height: 24px;
+   vertical-align: middle;
+   margin-right: 8px;
+}
+
+.Setup {
+   display: flex; 
+   flex-direction: row; 
+   justify-content: center; 
+   align-items: center; 
+   width: 1440px; 
+   height: 151px; 
+   margin: 45px auto;
+   gap: 350px; 
+   background-color: #f8f9fadb; 
+   box-sizing: border-box; 
+}
+
+.contact-item {
+   display: flex;
+   flex-direction: column; 
+   align-items: flex-start; 
+   gap: 10px; 
+   position: relative;
+}
+
+.contact-item img {
+   width: 32px; 
+   height: 32px;
+   transition: transform 0.3s ease;
+   position: relative;
+   z-index: 2; /* ให้รูปไอคอนอยู่เหนือวงกลม */
+}
+
+.circle {
+   position: absolute;
+   top: 9px;
+   left: 20px;
+   width: 20px;
+   height: 20px;
+   background-color: #011094;
+   border-radius: 50%;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+   z-index: 1; /* วงกลมอยู่ด้านหลังรูปไอคอน */
+}
+
+/* เมื่อเอาเมาส์ไปชี้ที่ contact-item ให้แสดงวงกลม */
+.contact-item:hover .circle {
+   opacity: 0.2;
+}
+
+/* เอฟเฟกต์เมื่อเอาเมาส์ไปชี้ที่ไอคอน */
+.contact-item:hover img {
+   filter: brightness(1.2);
+}
+
+.contact-item h2 {
+   margin: 0;
+   font-size: 18px;
+   color: #000000;
+   text-align: left; 
+}
+
+.contact-item p {
+   margin: 0;
+   font-size: 14px;
+   color: #82898D;
+   text-align: left; 
+}
+
+/* ไอคอนช่องติดตาม */
+.online-contact {
+   display: flex;
+   justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+   gap: 25px; /* ระยะห่างระหว่างไอคอน */
+   flex-wrap: wrap; /* ให้ขึ้นบรรทัดใหม่ถ้าพื้นที่ไม่พอ */
+   height: 15vh; /* ให้เต็มหน้าจอ */
+}
+
+.online-contact a {
+   display: inline-block;
+   width: 60px;
+   height: 60px;
+   border-radius: 50%; /* ทำให้เป็นวงกลม */
+   overflow: hidden; /* ครอบภาพไม่ให้ล้น */
+   position: relative; /* สำหรับใช้ในการจัดการรูปสองภาพ */
+}
+
+.online-contact a img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover; /* ทำให้รูปเต็มวงกลม */
+   transition: opacity 0.3s ease-in-out; /* เปลี่ยน opacity นุ่มนวล */
+   position: absolute; /* จัดรูปให้ทับกัน */
+}
+
+.online-contact a img:first-child {
+   opacity: 1; /* แสดงรูปแรก */
+}
+
+.online-contact a img:last-child {
+   opacity: 0; /* ซ่อนรูปที่สอง */
+}
+
+/* เมื่อเอาเมาส์ชี้ที่ไอคอน */
+.online-contact a:hover img:first-child {
+   opacity: 0; /* ซ่อนรูปแรก */
+}
+
+.online-contact a:hover img:last-child {
+   opacity: 1; /* แสดงรูปที่สอง */
+}
+
+/* สำหรับหน้าจอเล็ก ปรับขนาดไอคอนให้เล็กลง */
+@media (max-width: 768px) {
+   .online-contact a {
+      width: 50px;
+      height: 50px;
+   }
+}
+
+/* STAY UPDATED */
+/* จัดกล่องทั้งหมด */
+.stay-updated-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 100%;
+   margin-bottom: 30px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+/* ส่วน STAY UPDATED */
+.stay-updated {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+}
+
+.stay-updated h2 {
+   font-size: 30px; 
+   margin: 0 10px; 
+   font-family: 'Inter', sans-serif;
+}
+
+.stay-updated-divider {
+   font-size: 90px;
+   margin: 10px 20px;
+}
+
+/* ช่องค้นหาสำหรับ SIGN UP */
+.signup-search-container {
+   position: relative;
+   width: 300px;
+   height: 50px;
+   border: 1px solid #ccc;
+   border-radius: 30px;
+   padding: 5px 10px;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+.signup-search-input {
+   width: 100%;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   padding: 10px;
+   background: transparent;
+   padding-right: 40px; /* ป้องกันข้อความทับไอคอน */
+}
+
+/* ไอคอนในช่องค้นหา */
+/* ช่องค้นหาสำหรับ SIGN UP */
+.signup-search-container {
+   position: relative;
+   width: 300px;
+   height: 50px;
+   border: 1px solid #ccc;
+   border-radius: 30px;
+   padding: 5px 10px;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+/* ช่องค้นหาของ input */
+.signup-search-input {
+   width: 100%;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   padding: 10px;
+   background: transparent;
+   padding-right: 40px; /* ป้องกันข้อความทับไอคอน */
+}
+
+/* ไอคอนในช่องค้นหา */
+.signup-search-icon {
+   position: absolute;
+   right: 20px; /* ให้รูปอยู่ทางขวาของช่องค้นหา */
+   top: 50%;
+   transform: translateY(-50%); /* จัดให้อยู่กลาง */
+   width: 20px;
+   height: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* ปรับขนาดรูป */
+.signup-search-icon img {
+   width: 45px;
+   height: 45px;
+   object-fit: contain;
+}
+
+/* ข้อความใต้ช่องค้นหา */
+.signup-text-container {
+   text-align: center; /* จัดข้อความให้อยู่กลาง */
+   margin-top: 10px; /* เพิ่มระยะห่างจากช่องค้นหา */
+}
+
+.signup-text-container p {
+   font-size: 14px;
+   color: #555; /* สีข้อความ */
 }

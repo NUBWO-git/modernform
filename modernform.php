@@ -28,6 +28,7 @@ $language = $_SESSION['language'];
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <script src="./modernform.js"></script>
@@ -257,6 +258,115 @@ $language = $_SESSION['language'];
          </div>
       </div>
    </div>
+
+   <!-- แถบ Store Location & Contact Us & Support -->
+   <div class="Setup">
+      <!-- Store Location -->
+      <div class="contact-item">
+         <div class="circle"></div>
+         <img src="./img/icon/location.png" alt="Location Icon">
+         <h2>Store Location</h2>
+         <p>Locate the nearest Modernform store.</p>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="contact-item">
+         <div class="circle"></div>
+         <img src="./img/icon/email.png" alt="Email Icon">
+         <h2>Contact Us</h2>
+         <p>enquiry@modernform.co.th</p>
+      </div>
+
+      <!-- Support -->
+      <div class="contact-item">
+         <div class="circle"></div>
+         <img src="./img/icon/phone-call.png" alt="Phone Icon">
+         <h2>Support</h2>
+         <p>Call center 0 2094 9999</p>
+      </div>
+   </div>
+
+   <!-- ไอคอนช่องทางติดต่อออนไลน์-->
+   <div class="online-contact">
+      <!-- ไอคอน Facebook -->
+      <a href="https://www.facebook.com/yourpage" target="_blank">
+         <img src="./img/online_contact/Facebook.png" alt="Facebook">
+         <img src="./img/online_contact/facebook_color.png">
+      </a>
+
+      <!-- ไอคอน Instagram -->
+      <a href="https://www.instagram.com/yourpage" target="_blank">
+         <img src="./img/online_contact/Instagram.png" alt="Instagram">
+         <img src="./img/online_contact/Instagram_color.png">
+      </a>
+
+      <!-- ไอคอน YouTube -->
+      <a href="https://www.youtube.com/yourpage" target="_blank">
+         <img src="./img/online_contact/YouTube.png" alt="YouTube">
+         <img src="./img/online_contact/YouTube_color.png">
+      </a>
+
+      <!-- ไอคอน Line -->
+      <a href="https://line.me/yourpage" target="_blank">
+         <img src="./img/online_contact/Line.png" alt="Line">
+         <img src="./img/online_contact/Line_color.png">
+      </a>
+
+      <!-- ไอคอน Pinterest -->
+      <a href="https://www.pinterest.com/yourpage" target="_blank">
+         <img src="./img/online_contact/Pinterest.png" alt="Pinterest">
+         <img src="./img/online_contact/Pinterest_color.png">
+      </a>
+
+      <!-- ไอคอน TikTok -->
+      <a href="https://www.tiktok.com/@yourpage" target="_blank">
+         <img src="./img/online_contact/TikTok.png" alt="TikTok">
+         <img src="./img/online_contact/TikTok _color.png">
+      </a>
+
+      <!-- ไอคอน X (Twitter) -->
+      <a href="https://twitter.com/yourpage" target="_blank">
+         <img src="./img/online_contact/X (Twitter).png" alt="X (Twitter)">
+         <img src="./img/online_contact/X (Twitter)_color.png">
+      </a>
+
+      <!-- ไอคอน Threads -->
+      <a href="https://www.threads.net/yourpage" target="_blank">
+         <img src="./img/online_contact/Threads.png" alt="Threads">
+         <img src="./img/online_contact/Threads_color.png">
+      </a>
+
+      <!-- ไอคอน Lemon8 -->
+      <a href="https://www.lemon8-app.com/yourpage" target="_blank">
+         <img src="./img/online_contact/Lemon8.png" alt="Lemon8">
+         <img src="./img/online_contact/Lemon8_color.png">
+      </a>
+   </div>
+
+   <!-- STAY UPDATED -->
+   <div class="stay-updated-container">
+      <!-- ส่วน STAY UPDATED -->
+      <div class="stay-updated">
+         <h2>STAY</h2>
+         <h2>UPDATED</h2>
+      </div>
+      <div class="stay-updated-divider">
+         |
+      </div>
+
+      <!-- ช่องค้นหาสำหรับ SIGN UP -->
+      <div class="signup-search-container">
+         <input type="text" placeholder="Email address" class="signup-search-input">
+         <div class="signup-search-icon">
+            <img src="./img/STAY UPDATED/STAY UPDATED on.1.png" alt="Stay Updated Image">
+         </div>
+      </div>
+      <!-- ข้อความใต้ช่องค้นหา -->
+      <div class="signup-text-container">
+         <p>Sign up to receive updates, news, and special offers!</p>
+      </div>
+   </div>
+
 </body>
 
 </html>
