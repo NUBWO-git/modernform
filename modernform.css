@@ -50,8 +50,7 @@
 }
 
 .nav-links li a:hover {
-   color: #169bdd;
-   border-bottom: 2px solid #169bdd;
+   color: #233388;
 }
 
 /* ตัวแปลภาษาและไอคอน */
@@ -923,8 +922,9 @@
 }
 
 .stay-updated-divider {
-   font-size: 90px;
-   margin: 10px 20px;
+   font-size: 100px;
+   margin: 35px 2px;
+   transform: translateY(-10px);
 }
 
 /* ช่องค้นหาสำหรับ SIGN UP */
@@ -952,19 +952,27 @@
    padding-right: 40px; /* ป้องกันข้อความทับไอคอน */
 }
 
-/* ไอคอนในช่องค้นหา */
+/* กล่องใหญ่ทั้งหมด */
+.signup-container {
+   display: flex;
+   flex-direction: column; /* จัดให้อยู่ในแนวตั้ง */
+   align-items: center; /* จัดให้อยู่ตรงกลาง */
+   text-align: center;
+}
+
 /* ช่องค้นหาสำหรับ SIGN UP */
 .signup-search-container {
    position: relative;
-   width: 300px;
+   width: 320px;
    height: 50px;
    border: 1px solid #ccc;
    border-radius: 30px;
-   padding: 5px 10px;
+   padding: 5px 0px;
    background-color: white;
    display: flex;
    align-items: center;
-   margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+   justify-content: space-between; /* ดันไอคอนไปขวา */
+   margin-bottom: -10px; /* เพิ่มระยะห่างระหว่างช่องค้นหากับข้อความ */
 }
 
 /* ช่องค้นหาของ input */
@@ -981,11 +989,11 @@
 /* ไอคอนในช่องค้นหา */
 .signup-search-icon {
    position: absolute;
-   right: 20px; /* ให้รูปอยู่ทางขวาของช่องค้นหา */
+   right: 10px; /* ให้รูปอยู่ทางขวาของช่องค้นหา */
    top: 50%;
    transform: translateY(-50%); /* จัดให้อยู่กลาง */
-   width: 20px;
-   height: 20px;
+   width: 30px;
+   height: 30px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -1000,11 +1008,90 @@
 
 /* ข้อความใต้ช่องค้นหา */
 .signup-text-container {
-   text-align: center; /* จัดข้อความให้อยู่กลาง */
+   text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
    margin-top: 10px; /* เพิ่มระยะห่างจากช่องค้นหา */
 }
 
 .signup-text-container p {
    font-size: 14px;
    color: #555; /* สีข้อความ */
+   margin: 5px 0;
+   text-align: left; 
+}
+
+/* สไตล์สำหรับเฉพาะข้อความ SIGN UP */
+.signup-highlight {
+   background-color: #011094; /* พื้นหลังสีน้ำเงิน */
+   color: white; /* ตัวหนังสือสีขาว */
+   padding: 0px 4px; /* เพิ่มระยะห่างในกรอบ */
+   font-weight: bold; /* ทำให้ตัวหนา */
+   display: inline-block; /* ให้ขนาดพอดีกับข้อความ */
+   text-transform: uppercase; /* ตัวพิมพ์ใหญ่ทั้งหมด */
+}
+
+/* ข้อความช่องติดต่อทั้งหมด */
+.All-contact-channels {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-direction: row;
+   height: 50vh;
+   width: 100%;
+   gap: 200px; /* ช่องว่างระหว่างส่วนต่าง ๆ */
+}
+
+.contact-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.Allcontact-Box {
+   background-color: black;
+   color: white;
+   width: 270px;
+   height: 41px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px; /* เพิ่มระยะห่างระหว่าง h2 และ p */
+}
+
+.All-contact-channels .contact-section h2 {
+   font-family: 'Inter', sans-serif;
+   margin: 0 10px; 
+   font-size: 20px;
+}
+
+.Allcontact-Box-text {
+   font-size: 16px;
+   margin: 5px 0;
+   margin-top: 20px;
+   font-family: 'Inter', sans-serif;
+   margin-left: -50px;
+   line-height: 1.5;
+}
+
+.All-contact-channels .contact-section .Allcontact-Box-text p:hover {
+   color: blue; 
+   cursor: pointer;
+}
+
+/* © Modernform 2020 */
+.footer-content {
+   position: relative; 
+   width: 100%; 
+   height: 121px; 
+   background-color: #D9D9D9; 
+   color: black; 
+   display: flex;
+   justify-content: center; 
+   align-items: center; 
+}
+
+.footer-content p {
+   color: #6D6E70;
+   margin: 0; 
+   font-family: 'Inter', sans-serif;
+   margin-top: 95px;
 }

@@ -355,18 +355,73 @@ $language = $_SESSION['language'];
       </div>
 
       <!-- ช่องค้นหาสำหรับ SIGN UP -->
-      <div class="signup-search-container">
-         <input type="text" placeholder="Email address" class="signup-search-input">
-         <div class="signup-search-icon">
-            <img src="./img/STAY UPDATED/STAY UPDATED on.1.png" alt="Stay Updated Image">
+      <div class="signup-container">
+         <!-- ช่องค้นหาสำหรับ SIGN UP -->
+         <div class="signup-search-container">
+            <input type="text" placeholder="Email address" class="signup-search-input">
+            <div class="signup-search-icon">
+               <img src="./img/STAY UPDATED/STAY UPDATED on.1.png" alt="Stay Updated Image">
+            </div>
          </div>
-      </div>
-      <!-- ข้อความใต้ช่องค้นหา -->
-      <div class="signup-text-container">
-         <p>Sign up to receive updates, news, and special offers!</p>
+
+         <!-- ข้อความใต้ช่องค้นหา -->
+         <div class="signup-text-container">
+            <p><span class="signup-highlight">SIGN UP</span> to receive inspiration, news, product updates, </p>
+            <p>and special offers from our team.</p>
+         </div>
       </div>
    </div>
 
+   <!-- ช่องทางการติดต่อทั้งหมด -->
+   <div class="All-contact-channels">
+      <!-- PRODUCT INFO -->
+      <div class="contact-section">
+         <h2 class="Allcontact-Box">PRODUCT INFO</h2>
+         <div class="Allcontact-Box-text">
+            <p>Office</p>
+            <p>Steelcase</p>
+            <p>Home</p>
+            <p>Kitchen</p>
+            <p>Walk-in closet & Storage</p>
+            <p>Hardware & Fitting</p>
+            <p>Collection</p>
+            <p>Project Reference</p>
+            <p>Editorial</p>
+            <p>News</p>
+            <p>E-Catalogue</p>
+            <p>Customer Care</p>
+         </div>
+      </div>
+
+      <!-- CORPORATE -->
+      <div class="contact-section">
+         <h2 class="Allcontact-Box">CORPORATE</h2>
+         <div class="Allcontact-Box-text">
+            <p>About Us</p>
+            <p>Investors</p>
+            <p>Professionals</p>
+            <p>Sustainability</p>
+            <p>Career</p>
+            <p>Contact</p>
+         </div>
+      </div>
+
+      <!-- CUSTOMER SERVICE -->
+      <div class="contact-section">
+         <h2 class="Allcontact-Box">CUSTOMER SERVICE</h2>
+         <div class="Allcontact-Box-text">
+            <p>Find Store</p>
+            <p>Warranty</p>
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+         </div>
+      </div>
+   </div>
+
+   <!-- © Modernform 2020 -->
+   <div class="footer-content">
+      <p>© Modernform 2020</p>
+   </div>
 </body>
 
 </html>
