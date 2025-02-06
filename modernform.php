@@ -150,7 +150,7 @@ $language = $_SESSION['language'];
    <!-- ปุ่ม View Product Catalogue & Visit Online Store -->
    <div class="button-container">
       <button class="custom-button catalogue-button">View Product Catalogue</button>
-      <button class="custom-button store-button">Visit Online Store</button>
+      <button class="custom-button store-button" id="storeButton">Visit Online Store</button>
    </div>
 
    <!-- รูปสลับ ซ้ายขวาทั้งตัวหนัง & และรูป -->

@@ -79,3 +79,13 @@ document.addEventListener('DOMContentLoaded', function () {
    // เรียกใช้งานฟังก์ชัน slideImagesBlueZero ทุกๆ 2 วินาที
    setInterval(slideImagesBlueZero, 2000); // 2000 มิลลิวินาที = 2 วินาที
 });
+
+//เชื่อมไปยังหน้าของ Modernform Online Store
+document.addEventListener("DOMContentLoaded", function () {
+   let storeButton = document.getElementById("storeButton");
+   if (storeButton) {
+      storeButton.addEventListener("click", function () {
+         window.location.href = "Online Store/Modernform Online Store.php";
+      });
+   }
+});
