@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //เมนูใน Products
 // ควบคุมการเปิด/ปิดเมนูย่อย
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
    const productsBtn = document.getElementById('productsBtn'); // ค้นหาปุ่ม "Products"
    const submenu = document.getElementById('submenu'); // ค้นหาเมนูย่อย
 
    // ตรวจสอบว่า element มีอยู่หรือไม่
    if (productsBtn && submenu) {
-      productsBtn.addEventListener('click', function(event) {
+      productsBtn.addEventListener('click', function (event) {
          event.preventDefault(); // ป้องกันการรีเฟรชหน้า
          submenu.classList.toggle('show'); // สลับการแสดงเมนูย่อย
       });
@@ -167,44 +167,52 @@ document.addEventListener("DOMContentLoaded", function () {
    });
 });
 
+
+// เลือกหมวดเมนูสินค้า
 document.addEventListener("DOMContentLoaded", function () {
-   // เลือกทุก p ใน Retro-Menu
-   const menuItems = document.querySelectorAll('.Retro-Menu p');
+   initMainMenu();  // เริ่มฟังก์ชันเมนูหลัก
+   initSubMenu(".workspace-menu", ".Workspace-submenu");  // เริ่มฟังก์ชันเมนูย่อย
+});
 
-   menuItems.forEach(item => {
-      item.addEventListener('click', function() {
-         // ถ้าคลิกที่เมนูเดิม ให้ลบคลาส 'active' ออก
-         if (item.classList.contains('active')) {
-            item.classList.remove('active');
-         } else {
-            // ลบคลาส 'active' ออกจากทุกเมนู
-            menuItems.forEach(menu => menu.classList.remove('active'));
+let activeMenu = null; // เก็บเมนูที่ถูกเลือกอยู่
+let activeSubmenu = null; // เก็บเมนูย่อยที่ถูกเลือกอยู่
 
-            // เพิ่มคลาส 'active' ให้กับเมนูที่ถูกคลิก
-            item.classList.add('active');
-         }
+// ฟังก์ชันจัดการเมนูหลัก
+function initMainMenu() {
+   const mainMenuItems = document.querySelectorAll(".Retro-Menu > p");
+   mainMenuItems.forEach(item => {
+      item.addEventListener("click", function () {
+         toggleMainActive(this);  // เมื่อคลิกจะเรียกใช้ฟังก์ชัน toggle
       });
    });
-});
+}
 
-document.addEventListener("DOMContentLoaded", function () {
-   const menuItems = document.querySelectorAll('.workspace-menu, .menu-item'); // เลือกเมนูหลักทั้งหมด
-   
-   menuItems.forEach(item => {
-         const submenu = item.querySelector('.submenu'); // เลือกเมนูย่อยของเมนูหลัก
-         item.addEventListener('click', function() {
-            // ถ้าเมนูย่อยเปิดอยู่ให้ปิดมัน
-            if (submenu && submenu.classList.contains('show')) {
-               submenu.classList.remove('show');
-            } else {
-               // ปิดเมนูย่อยทุกอัน
-               document.querySelectorAll('.submenu').forEach(sub => sub.classList.remove('show'));
-               
-               // เปิดเมนูย่อยที่คลิก
-               if (submenu) {
-                  submenu.classList.add('show');
-               }
-            }
-         });
-   });
-});
+// ฟังก์ชันจัดการเมนูย่อย
+function initSubMenu(triggerSelector, submenuSelector) {
+   const trigger = document.querySelector(triggerSelector);
+   const submenu = document.querySelector(submenuSelector);
+
+   if (trigger && submenu) {
+      trigger.addEventListener("click", function (event) {
+         event.stopPropagation();  // ป้องกันการคลิกซ้อนทับเมนูอื่น ๆ
+         toggleMainActive(trigger);  // คลิกที่เมนูหลัก
+         toggleSubmenu(submenu);  // คลิกที่เมนูย่อย
+      });
+   }
+}
+
+// ฟังก์ชันเปิด-ปิดเมนูหลัก
+function toggleMainActive(menuItem) {
+   // ถ้าเมนูเดียวกันถูกคลิกซ้ำจะเอาสีออก
+   if (menuItem === activeMenu) {
+      menuItem.classList.remove("active");
+      activeMenu = null;
+   } else {
+      // ถ้าเมนูอื่นถูกคลิก ก็จะเอาสีพื้นหลังออกจากเมนูก่อนหน้า
+      if (activeMenu) {
+         activeMenu.classList.remove("active");
+      }
+      menuItem.classList.add("active");
+      activeMenu = menuItem;
+   }
+}

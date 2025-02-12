@@ -483,7 +483,7 @@
    width: auto;
 }
 
-/* เมนูย่อย */
+/* เมนูของ office */
 /* สไตล์ของแถว "office" */
 .office-menu > div {
    display: flex;
@@ -510,87 +510,161 @@
    font-family: "Poppins", sans-serif;
    color: #6E6E6E;
 }
+
 /* เมนูย่อย */
-/* สไตล์ของข้อความในเมนู */
+/* เมนูหลัก */
 .Retro-Menu p {
-   margin: 5px 0; /* ระยะห่างระหว่างบรรทัด */
+   margin: 5px 0;
    font-size: 14px;
    font-family: "Poppins", sans-serif;
-   color: #6E6E6E; /* สีข้อความ */
+   color: #6E6E6E;
    display: flex;
    align-items: center;
-   gap: 5px; /* ระยะห่างระหว่างข้อความและไอคอน */
-   margin-left: 10px; /* ขยับข้อความออกจากซ้าย */
-   justify-content: space-between; /* ทำให้ข้อความอยู่ซ้าย ไอคอนอยู่ขวา */
-   width: 229px; /* ขนาดความกว้าง */
-   height: 32px; /* ขนาดความสูง */
-   padding: 0 10px; /* ช่องว่างภายในกรอบ */
-   border-radius: 5px; /* มุมโค้ง */
-   background-color: #fff; /* สีพื้นหลัง */
+   gap: 5px;
+   margin-left: 10px;
+   justify-content: space-between;
+   width: 229px;
+   height: 32px;
+   padding: 0 10px;
+   border-radius: 5px;
+   background-color: #fff;
+   transition: background-color 0.3s, color 0.3s; /* เพิ่ม transition สำหรับสี */
 }
 
 /* สีพื้นหลังเมื่อ hover */
 .Retro-Menu p:hover {
-   background-color: rgba(35, 51, 136, 0.2); /* สีฟ้าน้ำเงิน 20% */
-   color: #233388; /* สีน้ำเงิน */
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
    cursor: pointer;
 }
 
 /* สีพื้นหลังค้างไว้เมื่อคลิก */
 .Retro-Menu p.active {
-   background-color: rgba(35, 51, 136, 0.2); /* สีฟ้าน้ำเงิน 20% */
-   color: #6E6E6E; /* สีน้ำเงิน */
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
 }
 
 /* เปลี่ยนสีไอคอนเมื่อ active */
 .Retro-Menu p.active .material-icons {
-   color: #233388;
+   color: #6E6E6E;
 }
 
-/* เปลี่ยนสีไอคอนเมื่อ hover */
-.Retro-Menu p:hover .material-icons {
-   color: #233388; /* สีไอคอนเมื่อเอาเมาส์ชี้ */
-}
-
-/* ไอคอนในข้อความ */
-.Retro-Menu .material-icons {
-   font-size: 14px; /* ขนาดไอคอน */
-   color: #6E6E6E; /* สีไอคอน */
-   margin-left: auto;
-}
-
-/* Workspace */
-/* ซ่อนเมนูย่อยเริ่มต้น */
+/* เมนูย่อยของ Workspace */
 .Workspace-submenu {
-   display: none; /* ซ่อนเมนูย่อย */
+   display: none;
    padding-left: 20px;
-   margin-top: 5px; /* ให้มีระยะห่างระหว่างเมนูหลัก */
+   margin-top: 5px;
 }
 
-/* เมื่อเมนูย่อยเปิด ให้แสดง */
+/* เมื่อเปิดเมนูย่อยของ Workspace */
 .Workspace-submenu.show {
    display: block;
 }
 
-/* เมนูย่อยเมื่อคลิก */
-.workspace-menu.active + .Workspace-submenu {
-   display: block; /* แสดงเมนูย่อยเมื่อเมนูหลักถูกคลิก */
-}
-
-/* เมนูหลักเมื่อคลิก */
-.workspace-menu.active {
-   background-color: #99c2ff;
-   color: #233388;
-}
-
+/* สไตล์เมนูย่อย */
 .Workspace-submenu p {
    width: 186px;
    height: 23px;
    padding: 5px;
-   margin: 5px 0; 
-   box-sizing: border-box; 
+   cursor: pointer;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
 }
 
+/* เปลี่ยนสีเมื่อ hover */
+.Workspace-submenu p:hover {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+}
+
+/* กำหนดให้เมนูย่อยใน Workspace ค้างสีเมื่อต้องการ */
+.Workspace-submenu p.active {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* เมนูย่อยของ Desk */
+.Desk-submenu {
+   display: none;
+   padding-left: 20px;
+   margin-top: 5px;
+}
+
+/* เมื่อเปิดเมนูย่อยของ Desk */
+.Desk-submenu.show {
+   display: block;
+}
+
+/* สไตล์เมนูย่อย */
+.Desk-submenu p {
+   width: 189px;
+   height: 18px;
+   padding: 5px;
+   cursor: pointer;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+}
+
+/* เปลี่ยนสีเมื่อ hover */
+.Desk-submenu p:hover {
+   width: 189px;
+   height: 18px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+}
+
+/* กำหนดให้เมนูย่อยใน Desk ค้างสีเมื่อต้องการ */
+.Desk-submenu p.active {
+   width: 189px;
+   height: 18px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* เมนูย่อยของ Chair */
+.Chair-submenu {
+   display: none;
+   padding-left: 20px;
+   margin-top: 5px;
+}
+
+/* เมื่อเปิดเมนูย่อยของ Chair */
+.Chair-submenu.show {
+   display: block;
+}
+
+/* สไตล์เมนูย่อย */
+.Chair-submenu p {
+   width: 189px;
+   height: 18px;
+   padding: 5px;
+   cursor: pointer;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+}
+
+/* เปลี่ยนสีเมื่อ hover */
+.Chair-submenu p:hover {
+   width: 189px;
+   height: 18px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+}
+
+/* กำหนดให้เมนูย่อยใน Chair ค้างสีเมื่อต้องการ */
+.Chair-submenu p.active {
+   width: 189px;
+   height: 18px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
 
 /* แถบแมนูสุดท้าย */
 /* แถบ Store Location & Contact Us & Support */

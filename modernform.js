@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
    let storeButton = document.getElementById("storeButton");
    if (storeButton) {
       storeButton.addEventListener("click", function () {
-         window.location.href = "Online Store/Modernform Online Store.php";
+         window.location.href = "Online Store/Modernform Online Store.html";
       });
    }
 });
