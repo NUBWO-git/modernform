@@ -170,49 +170,178 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // เลือกหมวดเมนูสินค้า
 document.addEventListener("DOMContentLoaded", function () {
-   initMainMenu();  // เริ่มฟังก์ชันเมนูหลัก
-   initSubMenu(".workspace-menu", ".Workspace-submenu");  // เริ่มฟังก์ชันเมนูย่อย
+   initMainMenu();
+   initSubMenu();
 });
 
-let activeMenu = null; // เก็บเมนูที่ถูกเลือกอยู่
-let activeSubmenu = null; // เก็บเมนูย่อยที่ถูกเลือกอยู่
-
-// ฟังก์ชันจัดการเมนูหลัก
 function initMainMenu() {
-   const mainMenuItems = document.querySelectorAll(".Retro-Menu > p");
+   const mainMenuItems = document.querySelectorAll(".Retro-Menu > p.Main-menu");
    mainMenuItems.forEach(item => {
       item.addEventListener("click", function () {
-         toggleMainActive(this);  // เมื่อคลิกจะเรียกใช้ฟังก์ชัน toggle
+         toggleMainMenu(item);
       });
    });
 }
 
-// ฟังก์ชันจัดการเมนูย่อย
-function initSubMenu(triggerSelector, submenuSelector) {
-   const trigger = document.querySelector(triggerSelector);
-   const submenu = document.querySelector(submenuSelector);
-
-   if (trigger && submenu) {
-      trigger.addEventListener("click", function (event) {
-         event.stopPropagation();  // ป้องกันการคลิกซ้อนทับเมนูอื่น ๆ
-         toggleMainActive(trigger);  // คลิกที่เมนูหลัก
-         toggleSubmenu(submenu);  // คลิกที่เมนูย่อย
+function initSubMenu() {
+   const subMenuItems = document.querySelectorAll(".menu");
+   subMenuItems.forEach(item => {
+      item.addEventListener("click", function (event) {
+         event.stopPropagation();  // ป้องกันเมนูหลักปิดเมื่อกดเมนูย่อย
+         toggleSubMenu(item);
       });
+   });
+}
+
+function toggleMainMenu(clickedItem) {
+   const submenu = clickedItem.nextElementSibling;
+   const isActive = clickedItem.classList.contains("active");
+
+   // ✅ ปิดเมนูหลักอื่นๆ และเมนูรองทั้งหมดก่อน
+   closeAllMainMenus();
+   closeAllSubAndSubSubMenus();
+
+   if (!isActive) {
+      clickedItem.classList.add("active");  // ✅ ค้างสีพื้นหลัง
+      if (submenu && submenu.classList.contains("Main-menu-submenu")) {
+         submenu.style.display = "block";  // ✅ แสดงเมนูรอง
+      }
+   } else {
+      clickedItem.classList.remove("active");
+      if (submenu && submenu.classList.contains("Main-menu-submenu")) {
+         submenu.style.display = "none";  // ✅ ซ่อนเมนูรอง
+      }
    }
 }
 
-// ฟังก์ชันเปิด-ปิดเมนูหลัก
-function toggleMainActive(menuItem) {
-   // ถ้าเมนูเดียวกันถูกคลิกซ้ำจะเอาสีออก
-   if (menuItem === activeMenu) {
-      menuItem.classList.remove("active");
-      activeMenu = null;
-   } else {
-      // ถ้าเมนูอื่นถูกคลิก ก็จะเอาสีพื้นหลังออกจากเมนูก่อนหน้า
-      if (activeMenu) {
-         activeMenu.classList.remove("active");
+function toggleSubMenu(clickedItem) {
+   const submenu = clickedItem.nextElementSibling;
+   const isActive = clickedItem.classList.contains("sub-active");
+
+   // ✅ ปิดเมนูรองอื่นๆ ยกเว้นอันที่คลิก
+   closeAllSubMenus(clickedItem);
+
+   if (!isActive) {
+      clickedItem.classList.add("sub-active");  // ✅ ค้างสีเมนูรอง
+      if (submenu && submenu.classList.contains("submenu")) {
+         submenu.classList.add("show");  // ✅ แสดงเมนูย่อย
+         submenu.style.display = "block";
       }
-      menuItem.classList.add("active");
-      activeMenu = menuItem;
+   } else {
+      clickedItem.classList.remove("sub-active");  // ✅ เอาสีออก
+      if (submenu && submenu.classList.contains("submenu")) {
+         submenu.classList.remove("show");  // ✅ ซ่อนเมนูย่อย
+         submenu.style.display = "none";
+      }
    }
+}
+
+// ✅ ให้สีค้างเมื่อกดเมนูย่อย
+document.addEventListener("click", function (event) {
+   if (event.target.closest(".submenu p")) {
+      const submenuItems = document.querySelectorAll(".submenu p");
+      submenuItems.forEach(item => item.classList.remove("active"));
+      event.target.classList.add("active"); // ✅ ค้างสีเมนูย่อยที่ถูกคลิก
+   }
+});
+
+// ฟังก์ชันสำหรับปิดเมนูหลักทั้งหมด
+function closeAllMainMenus() {
+   const mainMenuItems = document.querySelectorAll(".Retro-Menu > p.Main-menu");
+   mainMenuItems.forEach(item => {
+      item.classList.remove("active");
+      const submenu = item.nextElementSibling;
+      if (submenu && submenu.classList.contains("Main-menu-submenu")) {
+         submenu.style.display = "none";
+      }
+   });
+
+   resetAllActiveStates(); // รีเซ็ตสีพื้นหลังของเมนูหลัก
+   resetAllSubmenuActiveStates(); // รีเซ็ตสีพื้นหลังของเมนูย่อย
+}
+
+// ฟังก์ชันสำหรับปิดเมนูรองทั้งหมด
+function closeAllSubMenus(exceptItem) {
+   const subMenuItems = document.querySelectorAll(".menu");
+   subMenuItems.forEach(item => {
+      if (item !== exceptItem) {
+         item.classList.remove("sub-active");
+         const submenu = item.nextElementSibling;
+         if (submenu && submenu.classList.contains("submenu")) {
+            submenu.classList.remove("show");
+            submenu.style.display = "none";  // ✅ ซ่อนเมนูรองที่เปิดอยู่
+         }
+      }
+   });
+
+   resetAllSubmenuActiveStates(); // รีเซ็ตสีพื้นหลังของเมนูย่อย
+}
+
+// รีเซ็ตสีพื้นหลังทั้งหมด (เมนูหลัก + เมนูย่อย)
+function resetAllActiveStates() {
+   document.querySelectorAll(".active, .sub-active").forEach(item => {
+      item.classList.remove("active", "sub-active");
+   });
+}
+
+// รีเซ็ตสีพื้นหลังของเมนูย่อยทั้งหมด
+function resetAllSubmenuActiveStates() {
+   document.querySelectorAll(".submenu p").forEach(item => {
+      item.classList.remove("active"); // ลบ active ออกจากเมนูย่อย
+   });
+}
+
+// ปิดเมนูหลักทั้งหมด
+function closeAllMainMenus() {
+   document.querySelectorAll(".Retro-Menu > p.Main-menu").forEach(item => {
+      item.classList.remove("active");
+      const submenu = item.nextElementSibling;
+      if (submenu && submenu.classList.contains("Main-menu-submenu")) {
+         submenu.style.display = "none";
+      }
+   });
+
+   resetAllActiveStates(); // รีเซ็ตสีพื้นหลังของเมนูหลัก
+   resetAllSubmenuActiveStates(); // รีเซ็ตสีพื้นหลังของเมนูย่อย
+}
+
+// ปิดเมนูรองทั้งหมด
+function closeAllSubAndSubSubMenus() {
+   document.querySelectorAll(".menu").forEach(item => {
+      item.classList.remove("sub-active"); // ปิดเมนูรอง
+   });
+
+   document.querySelectorAll(".submenu").forEach(submenu => {
+      submenu.classList.remove("show"); // ปิดเมนูย่อย
+      submenu.style.display = "none";
+   });
+
+   document.querySelectorAll(".submenu p").forEach(item => {
+      item.classList.remove("active"); // รีเซ็ตสีเมนูย่อย
+   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+   initSubSubMenu();  // แค่แก้ปัญหาเมนูย่อย
+});
+
+function initSubSubMenu() {
+   document.querySelectorAll(".submenu p").forEach(item => {
+      item.addEventListener("click", function (event) {
+         event.stopPropagation();  // ป้องกันปิดเมนูหลัก
+
+         if (item.classList.contains("active")) {
+            item.classList.remove("active"); // ✅ กดซ้ำสีพื้นหลังจะหายไป
+         } else {
+            closeAllSubSubMenus(); // ✅ ลบ active ออกจากเมนูย่อยอื่น
+            item.classList.add("active"); // ✅ ค้างสีเมนูย่อยที่ถูกคลิก
+         }
+      });
+   });
+}
+
+function closeAllSubSubMenus() {
+   document.querySelectorAll(".submenu p").forEach(item => {
+      item.classList.remove("active"); // ✅ ลบสีพื้นหลังของเมนูย่อยทั้งหมด
+   });
 }

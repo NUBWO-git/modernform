@@ -511,8 +511,8 @@
    color: #6E6E6E;
 }
 
-/* เมนูย่อย */
-/* เมนูหลัก */
+/* หมวดสินค้า */
+/* กรอบทั้งหมด */
 .Retro-Menu p {
    margin: 5px 0;
    font-size: 14px;
@@ -549,20 +549,20 @@
    color: #6E6E6E;
 }
 
-/* เมนูย่อยของ Workspace */
-.Workspace-submenu {
+/* Main-menu */
+.Main-menu {
    display: none;
    padding-left: 20px;
    margin-top: 5px;
 }
 
-/* เมื่อเปิดเมนูย่อยของ Workspace */
-.Workspace-submenu.show {
+/* เมื่อเปิดเมนูย่อยของ Main-menu */
+.Main-menu.show {
    display: block;
 }
 
 /* สไตล์เมนูย่อย */
-.Workspace-submenu p {
+.Main-menu p {
    width: 186px;
    height: 23px;
    padding: 5px;
@@ -573,37 +573,37 @@
 }
 
 /* เปลี่ยนสีเมื่อ hover */
-.Workspace-submenu p:hover {
+.Main-menu p:hover {
    width: 186px;
    height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
    color: #233388;
 }
 
-/* กำหนดให้เมนูย่อยใน Workspace ค้างสีเมื่อต้องการ */
-.Workspace-submenu p.active {
+/* กำหนดให้เมนูย่อยใน Main-menu ค้างสีเมื่อต้องการ */
+.Main-menu p.active {
    width: 186px;
    height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
    color: #6E6E6E;
 }
 
-/* เมนูย่อยของ Desk */
-.Desk-submenu {
+/* Main-menu-submenu */
+.Main-menu-submenu {
    display: none;
    padding-left: 20px;
    margin-top: 5px;
 }
 
-/* เมื่อเปิดเมนูย่อยของ Desk */
-.Desk-submenu.show {
+/* เมื่อเปิดเมนูย่อยของ Main-menu-submenu */
+.Main-menu-submenu .show {
    display: block;
 }
 
 /* สไตล์เมนูย่อย */
-.Desk-submenu p {
-   width: 189px;
-   height: 18px;
+.Main-menu-submenu p {
+   width: 186px;
+   height: 23px;
    padding: 5px;
    cursor: pointer;
    font-size: 14px;
@@ -612,37 +612,37 @@
 }
 
 /* เปลี่ยนสีเมื่อ hover */
-.Desk-submenu p:hover {
-   width: 189px;
-   height: 18px;
+.Main-menu-submenu p:hover {
+   width: 186px;
+   height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
    color: #233388;
 }
 
-/* กำหนดให้เมนูย่อยใน Desk ค้างสีเมื่อต้องการ */
-.Desk-submenu p.active {
-   width: 189px;
-   height: 18px;
+/* กำหนดให้เมนูย่อยใน Main-menu-submenu ค้างสีเมื่อต้องการ */
+.Main-menu-submenu p.active {
+   width: 186px;
+   height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
    color: #6E6E6E;
 }
 
-/* เมนูย่อยของ Chair */
-.Chair-submenu {
+/* subemenu */
+.submenu {
    display: none;
    padding-left: 20px;
    margin-top: 5px;
 }
 
-/* เมื่อเปิดเมนูย่อยของ Chair */
-.Chair-submenu.show {
+/* เมื่อเปิดเมนูย่อย */
+.submenu.show {
    display: block;
 }
 
-/* สไตล์เมนูย่อย */
-.Chair-submenu p {
+/* submenu สไตล์เมนูย่อย */
+.submenu p {
    width: 189px;
-   height: 18px;
+   height: 23px;
    padding: 5px;
    cursor: pointer;
    font-size: 14px;
@@ -650,18 +650,26 @@
    color: #6E6E6E;
 }
 
-/* เปลี่ยนสีเมื่อ hover */
-.Chair-submenu p:hover {
+/* submenu เปลี่ยนสีเมื่อ hover */
+.submenu p:hover {
    width: 189px;
-   height: 18px;
+   height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
    color: #233388;
 }
 
-/* กำหนดให้เมนูย่อยใน Chair ค้างสีเมื่อต้องการ */
-.Chair-submenu p.active {
+/*submenu ค้างสีเมื่อต้องการ */ห
+.submenu p.active {
    width: 189px;
-   height: 18px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;  /* ค้างสีในเมนูย่อย */
+}
+
+/* กำหนดสีเมื่อเมนูรองมีคลาส sub-active */
+.menu.sub-active {
+   width: 186px;
+   height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
    color: #6E6E6E;
 }
