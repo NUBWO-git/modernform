@@ -76,23 +76,24 @@ function updateSubSubCategories() {
    }
 }
 
-// โหลดรูปภาพจาก fetch_images.php
 function loadImages() {
-   fetch('fetch_images.php')
-      .then(response => response.json())
+   fetch('Upload.php') // ตรวจสอบให้แน่ใจว่า URL นี้ถูกต้อง
+      .then(response => {
+         if (!response.ok) {
+            throw new Error("Network response was not ok " + response.statusText);
+         }
+         return response.json();
+      })
       .then(images => {
-         console.log("Images received:", images);
          const gallery = document.getElementById("gallery");
          gallery.innerHTML = ""; // เคลียร์ข้อมูลเก่า
 
          if (images.length === 0) {
-            gallery.innerHTML = "<div>ไม่มีรูปภาพในระบบ</div>"; // แสดงข้อความถ้าไม่มีรูปภาพ
+            gallery.innerHTML = "<p>ไม่พบรูปภาพ</p>"; // แสดงข้อความเมื่อไม่มีรูปภาพ
             return;
          }
 
          images.forEach(image => {
-            console.log("Image URL:", image.src);
-            
             const imgElement = document.createElement("img");
             imgElement.src = image.src; 
             imgElement.alt = image.name; 
@@ -110,10 +111,9 @@ function loadImages() {
       .catch(error => console.error("เกิดข้อผิดพลาดในการโหลดรูปภาพ:", error));
 }
 
-// เรียกใช้งานเมื่อโหลดหน้าเว็บ
 document.addEventListener("DOMContentLoaded", function () {
    updateCategories();
-   loadImages();
+   loadImages(); // โหลดรูปภาพเมื่อหน้าโหลดเสร็จ
    document.getElementById("category").addEventListener("change", updateSubCategories);
    document.getElementById("subCategory").addEventListener("change", updateSubSubCategories);
 });

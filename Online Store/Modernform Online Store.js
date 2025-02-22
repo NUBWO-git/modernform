@@ -345,3 +345,46 @@ function closeAllSubSubMenus() {
       item.classList.remove("active"); // ✅ ลบสีพื้นหลังของเมนูย่อยทั้งหมด
    });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+   updateCategories();
+   loadImages(); // โหลดรูปภาพเมื่อหน้าโหลดเสร็จ
+   document.getElementById("category").addEventListener("change", updateSubCategories);
+   document.getElementById("subCategory").addEventListener("change", updateSubSubCategories);
+});
+
+// รูปภาพของสินค้า
+function loadImages() {
+   fetch('Modernform Online Store.php') // ตรวจสอบให้แน่ใจว่า URL นี้ถูกต้อง
+      .then(response => {
+         if (!response.ok) {
+            throw new Error("Network response was not ok " + response.statusText);
+         }
+         return response.json();
+      })
+      .then(images => {
+         const gallery = document.getElementById("gallery");
+         gallery.innerHTML = ""; // เคลียร์ข้อมูลเก่า
+
+         if (images.length === 0) {
+            gallery.innerHTML = "<p>ไม่พบรูปภาพ</p>"; // แสดงข้อความเมื่อไม่มีรูปภาพ
+            return;
+         }
+
+         images.forEach(image => {
+            const imgElement = document.createElement("img");
+            imgElement.src = image.src; 
+            imgElement.alt = image.name; 
+            imgElement.classList.add("gallery-image");
+
+            const nameElement = document.createElement("div");
+            nameElement.textContent = `ชื่อ: ${image.name}`;
+
+            const categoryElement = document.createElement("div");
+            categoryElement.textContent = `หมวดหมู่: ${image.category}`;
+
+            gallery.append(imgElement, nameElement, categoryElement);
+         });
+      })
+      .catch(error => console.error("เกิดข้อผิดพลาดในการโหลดรูปภาพ:", error));
+}

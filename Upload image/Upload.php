@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["image"])) {
 }
 
 // ดึงข้อมูลรูปภาพจากฐานข้อมูล
-$sql = "SELECT filename, name FROM product_data";
+$sql = "SELECT filename, name, category FROM product_data";
 $result = $conn->query($sql);
 
 $images = [];
@@ -79,7 +79,8 @@ if ($result->num_rows > 0) {
    while ($row = $result->fetch_assoc()) {
       $images[] = [
          "src" => "uploads/" . $row["filename"],
-         "name" => $row["name"] // เพิ่มชื่อภาพที่นี่
+         "name" => $row["name"], // เพิ่มชื่อภาพที่นี่
+         "category" => $row["category"]
       ];
    }
 }
