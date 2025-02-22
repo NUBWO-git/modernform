@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="th">
+   <head>
+      <meta charset="UTF-8" />
+      <title>อัปโหลดรูปภาพ</title>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <h2>อัปโหลดรูปภาพ</h2>
+      <form action="upload.php" method="POST" enctype="multipart/form-data">
+         <select name="category" id="category" onchange="updateSubCategories()">
+            <option value="">-- เลือกหมวดหลัก --</option>
+         </select>
+         
+         <select name="subCategory" id="subCategory" onchange="updateSubSubCategories()">
+            <option value="">-- เลือกหมวดย่อย --</option>
+         </select>
+         
+         <select name="subSubCategory" id="subSubCategory">
+            <option value="">-- เลือกหมวดย่อยที่สุด --</option>
+         </select>
+
+         <label for="image">เลือกไฟล์รูปภาพ:</label>
+         <input type="file" name="image" accept="image/*" required />
+
+         <label for="name">ชื่อ:</label>
+         <input type="text" name="name" id="name" required />
+
+         <button type="submit" name="submit">อัปโหลดรูปภาพ</button>
+      </form>
+
+      <h2>รูปภาพที่อัปโหลด</h2>
+      <div class="gallery" id="gallery"></div>
+
+      <script src="Upload.js"></script>  <!-- เรียกใช้ไฟล์ JavaScript แยก -->
+   </body>
+</html>
