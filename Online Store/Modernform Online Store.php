@@ -1,33 +1,31 @@
 <?php
+header('Content-Type: application/json'); // กำหนดให้ส่ง JSON
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "modernform";
 
-// เชื่อมต่อฐานข้อมูล
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
+   die(json_encode(["error" => "Connection failed: " . $conn->connect_error]));
 }
 
-// ดึงข้อมูลรูปภาพจากฐานข้อมูล
-$sql = "SELECT filename FROM product_data";
+$sql = "SELECT filename, name, category FROM product_data";
 $result = $conn->query($sql);
 
 $images = [];
 if ($result->num_rows > 0) {
    while ($row = $result->fetch_assoc()) {
       $images[] = [
-         "src" => "uploads/" . $row["filename"],
-         "name" => $row["name"], // เพิ่มชื่อภาพที่นี่
+         "src" => "Upload image/uploads/" . $row["filename"],
+         "name" => $row["name"],
          "category" => $row["category"]
       ];
    }
+} else {
+   die(json_encode(["error" => "No images found"]));
 }
 
-// ส่งข้อมูลรูปภาพในรูปแบบ JSON
-header('Content-Type: application/json');
 echo json_encode($images);
-
 $conn->close();
-?>

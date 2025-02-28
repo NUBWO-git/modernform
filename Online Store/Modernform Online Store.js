@@ -346,16 +346,36 @@ function closeAllSubSubMenus() {
    });
 }
 
+// ชื่อเมื่อกดเมนู
 document.addEventListener("DOMContentLoaded", function () {
-   updateCategories();
-   loadImages(); // โหลดรูปภาพเมื่อหน้าโหลดเสร็จ
-   document.getElementById("category").addEventListener("change", updateSubCategories);
-   document.getElementById("subCategory").addEventListener("change", updateSubSubCategories);
+   const mainMenus = document.querySelectorAll(".Main-menu");
+   const officeTitle = document.querySelector(".OFFICE-ONE h2");
+   const defaultTitle = "OFFICE"; // ชื่อเมนูหน้าหลัก
+
+   mainMenus.forEach(menu => {
+      menu.addEventListener("click", function () {
+         // ดึงเฉพาะชื่อเมนู ไม่รวมไอคอน
+         const textOnly = menu.childNodes[0].nodeValue.trim();
+         // ตรวจสอบว่าเมนูที่คลิกคือเมนูที่ถูกเลือกอยู่แล้วหรือไม่
+         if (officeTitle.textContent === textOnly.toUpperCase()) {
+            // ถ้าคลิกเมนูเดียวกันอีกครั้ง ให้รีเซ็ตเป็น "OFFICE"
+            officeTitle.textContent = defaultTitle;
+         } else {
+            // อัปเดตชื่อในแถบข้างบน
+            officeTitle.textContent = textOnly.toUpperCase();
+         }
+      });
+   });
 });
 
 // รูปภาพของสินค้า
+document.addEventListener("DOMContentLoaded", function() {
+   loadImages(); // เรียกใช้ฟังก์ชันเมื่อเอกสารโหลดเสร็จ
+});
+
 function loadImages() {
-   fetch('Modernform Online Store.php') // ตรวจสอบให้แน่ใจว่า URL นี้ถูกต้อง
+   // เปลี่ยน URL ให้ตรงกับตำแหน่งของไฟล์ PHP ของคุณ
+   fetch('Modernform Online Store.php')
       .then(response => {
          if (!response.ok) {
             throw new Error("Network response was not ok " + response.statusText);
@@ -373,8 +393,8 @@ function loadImages() {
 
          images.forEach(image => {
             const imgElement = document.createElement("img");
-            imgElement.src = image.src; 
-            imgElement.alt = image.name; 
+            imgElement.src = image.src; // เส้นทางรูปภาพ
+            imgElement.alt = image.name; // ชื่อภาพ
             imgElement.classList.add("gallery-image");
 
             const nameElement = document.createElement("div");
@@ -383,8 +403,14 @@ function loadImages() {
             const categoryElement = document.createElement("div");
             categoryElement.textContent = `หมวดหมู่: ${image.category}`;
 
-            gallery.append(imgElement, nameElement, categoryElement);
+            const productItem = document.createElement("div");
+            productItem.classList.add("product-item");
+            productItem.append(imgElement, nameElement, categoryElement);
+
+            gallery.appendChild(productItem); // เพิ่มผลิตภัณฑ์ลงในแกลเลอรี
          });
       })
       .catch(error => console.error("เกิดข้อผิดพลาดในการโหลดรูปภาพ:", error));
 }
+
+

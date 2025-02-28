@@ -376,7 +376,7 @@
    display: flex;
    background-color: rgba(0, 0, 0, 0.140);
    color: white;
-   font-size: 64px;
+   font-size: 54px;
    font-family: "Inter", sans-serif;
    justify-content: center;
    text-align: center;
@@ -673,6 +673,33 @@
    background-color: rgba(35, 51, 136, 0.2);
    color: #6E6E6E;
 }
+
+/* รูปภาพที่ของสิ้นค้า */
+.gallery {
+   display: flex;
+   flex-wrap: wrap;
+   max-width: 1054px;
+   margin: -555px auto 0 370px;
+   box-sizing: border-box;
+   justify-content: flex-start;
+}
+
+.product-item {
+   border-radius: 5px;
+   padding: 10px;
+   margin: 5px 0;
+   text-align: center;
+   width: calc(25% - 20px);
+   height: 279px;
+   box-sizing: border-box;
+}
+
+.gallery-image {
+   width: 248px;
+   height: 197px;
+   border-radius: 5px;
+}
+
 
 /* แถบแมนูสุดท้าย */
 /* แถบ Store Location & Contact Us & Support */
