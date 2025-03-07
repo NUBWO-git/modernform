@@ -59,112 +59,108 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //แถบเมนูสินค้า
-// การเลือกเมนู
 document.addEventListener("DOMContentLoaded", function () {
    const menuToggle = document.getElementById("menu-toggle");
    const menuOptions = document.getElementById("menu-options");
    const selectedOption = document.getElementById("selected-option");
    const menuItems = document.querySelectorAll("#menu-options li");
+   const gallery = document.getElementById("gallery");
+
+   // ฟังก์ชันเรียกข้อมูลและอัปเดต UI
+   function fetchDataAndUpdate(sortOrder) {
+      fetch(`http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php?sort=${sortOrder}`)
+         .then(response => response.json())
+         .then(data => {
+            gallery.innerHTML = ''; // ล้างข้อมูลเก่า
+            data.forEach(item => {
+               const imgElement = document.createElement("img");
+               imgElement.src = item.src;
+               imgElement.alt = item.name;
+               imgElement.classList.add("gallery-image");
+
+               const nameElement = document.createElement("div");
+               nameElement.textContent = item.name;
+               nameElement.classList.add("gallery-name");
+
+               const categoryElement = document.createElement("div");
+               categoryElement.textContent = item.category;
+               categoryElement.classList.add("gallery-category");
+
+               // สร้าง container ของสินค้า
+               const productItem = document.createElement("div");
+               productItem.classList.add("gallery-item");
+               productItem.append(imgElement, nameElement, categoryElement);
+
+               // สร้างปุ่มสำหรับสินค้า
+               const buttonsContainer = document.createElement("div");
+               buttonsContainer.classList.add("gallery-buttons");
+
+               // ปุ่ม Other
+               const otherButton = document.createElement("button");
+               otherButton.classList.add("gallery-button", "other-button");
+               otherButton.textContent = "Other";
+
+               // ปุ่ม Buy Now
+               const buyNowButton = document.createElement("button");
+               buyNowButton.classList.add("gallery-button", "buy-now-button");
+               buyNowButton.textContent = "Buy Now";
+
+               // เพิ่มปุ่มลงใน container
+               buttonsContainer.append(otherButton, buyNowButton);
+
+               // เพิ่มปุ่มลงใน product item
+               productItem.append(buttonsContainer);
+
+               // เพิ่ม product item ไปยัง gallery
+               gallery.appendChild(productItem);
+            });
+         })
+         .catch(error => console.error('Error fetching data:', error));
+   }
 
    // เปิด/ปิดเมนู
    menuToggle.addEventListener("click", function () {
       if (menuOptions.classList.contains("show")) {
          menuOptions.classList.remove("show");
-         setTimeout(() => {
-            menuOptions.style.display = "none";
-         }, 300);
+         setTimeout(() => (menuOptions.style.display = "none"), 300);
       } else {
          menuOptions.style.display = "block";
-         setTimeout(() => {
-            menuOptions.classList.add("show");
-         }, 10);
+         setTimeout(() => menuOptions.classList.add("show"), 10);
       }
    });
 
-   // เมื่อโหลดเพจครั้งแรก, ให้ "ล่าสุด" แสดงสามเหลี่ยม
+   // กำหนดค่าเริ่มต้น "ล่าสุด"
    const firstMenuItem = document.querySelector('[data-value="ล่าสุด"] .triangle');
-   if (firstMenuItem) {
-      firstMenuItem.style.display = 'inline-block'; // แสดงสามเหลี่ยมใน "ล่าสุด"
-   }
+   if (firstMenuItem) firstMenuItem.style.display = 'inline-block';
 
-   // เมื่อเลือกเมนู
+   // จัดการคลิกเมนู
    menuItems.forEach(item => {
       item.addEventListener("click", function () {
-         const value = item.getAttribute("data-value"); // ดึงค่าของเมนูที่เลือก
-         selectedOption.textContent = value; // เปลี่ยนข้อความที่แสดงในตัวเลือก
+         const value = item.getAttribute("data-value");
+         selectedOption.textContent = value;
 
          // ซ่อนสามเหลี่ยมจากทุกเมนู
-         document.querySelectorAll('.triangle').forEach(triangle => {
-            triangle.style.display = 'none';
-         });
+         document.querySelectorAll('.triangle').forEach(triangle => (triangle.style.display = 'none'));
 
          // แสดงสามเหลี่ยมในเมนูที่เลือก
          const triangle = item.querySelector('.triangle');
-         if (triangle) {
-            triangle.style.display = 'inline-block'; // แสดงสามเหลี่ยม
-         }
+         if (triangle) triangle.style.display = 'inline-block';
 
          // ปิดเมนู
          menuOptions.classList.remove("show");
-         setTimeout(() => {
-            menuOptions.style.display = "none";
-         }, 300);
-      });
-   });
-});
+         setTimeout(() => (menuOptions.style.display = "none"), 300);
 
-// การเลือกเมนู
-document.addEventListener("DOMContentLoaded", function () {
-   const menuToggle = document.getElementById("menu-toggle");
-   const menuOptions = document.getElementById("menu-options");
-   const selectedOption = document.getElementById("selected-option");
-   const menuItems = document.querySelectorAll("#menu-options li");
-
-   // เปิด/ปิดเมนู
-   menuToggle.addEventListener("click", function () {
-      if (menuOptions.classList.contains("show")) {
-         menuOptions.classList.remove("show");
-         setTimeout(() => {
-            menuOptions.style.display = "none";
-         }, 300);
-      } else {
-         menuOptions.style.display = "block";
-         setTimeout(() => {
-            menuOptions.classList.add("show");
-         }, 10);
-      }
-   });
-
-   // เมื่อโหลดเพจครั้งแรก, ให้ "ล่าสุด" แสดงสามเหลี่ยม
-   const firstMenuItem = document.querySelector('[data-value="ล่าสุด"] .triangle');
-   if (firstMenuItem) {
-      firstMenuItem.style.display = 'inline-block'; // แสดงสามเหลี่ยมใน "ล่าสุด"
-   }
-
-   // เมื่อเลือกเมนู
-   menuItems.forEach(item => {
-      item.addEventListener("click", function () {
-         const value = item.getAttribute("data-value"); // ดึงค่าของเมนูที่เลือก
-         selectedOption.textContent = value; // เปลี่ยนข้อความที่แสดงในตัวเลือก
-
-         // ซ่อนสามเหลี่ยมจากทุกเมนู
-         document.querySelectorAll('.triangle').forEach(triangle => {
-            triangle.style.display = 'none';
-         });
-
-         // แสดงสามเหลี่ยมในเมนูที่เลือก
-         const triangle = item.querySelector('.triangle');
-         if (triangle) {
-            triangle.style.display = 'inline-block'; // แสดงสามเหลี่ยม
+         // เรียก API ตามค่าที่เลือก
+         if (value === "ล่าสุด") {
+            fetchDataAndUpdate("ล่าสุด");
+         } else if (value === "ตัวอักษร") {
+            fetchDataAndUpdate("ตัวอักษร");
          }
-
-         // ปิดเมนู
-         menuOptions.classList.remove("show");
-         setTimeout(() => {
-            menuOptions.style.display = "none";
-         }, 300);
       });
    });
+
+   // โหลดข้อมูลเริ่มต้น
+   fetchDataAndUpdate("ล่าสุด");
 });
 
 
@@ -369,13 +365,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // รูปภาพของสินค้า
-document.addEventListener("DOMContentLoaded", function() {
-   loadImages(); // เรียกใช้ฟังก์ชันเมื่อเอกสารโหลดเสร็จ
+document.addEventListener("DOMContentLoaded", function () {
+   loadImages("ล่าสุด"); // ส่งค่าเริ่มต้นไปให้กับ sortOption เช่น 'ล่าสุด'
 });
 
-function loadImages() {
-   // เปลี่ยน URL ให้ตรงกับตำแหน่งของไฟล์ PHP ของคุณ
-   fetch('Modernform Online Store.php')
+function loadImages(sortOption) {
+   console.log(sortOption); // ตรวจสอบว่า sortOption ถูกต้องหรือไม่
+
+   fetch(`Modernform Online Store.php?sort=${sortOption}`)
       .then(response => {
          if (!response.ok) {
             throw new Error("Network response was not ok " + response.statusText);
@@ -384,33 +381,67 @@ function loadImages() {
       })
       .then(images => {
          const gallery = document.getElementById("gallery");
-         gallery.innerHTML = ""; // เคลียร์ข้อมูลเก่า
+         gallery.innerHTML = ""; // ลบสินค้าก่อนที่จะเพิ่มใหม่
 
          if (images.length === 0) {
-            gallery.innerHTML = "<p>ไม่พบรูปภาพ</p>"; // แสดงข้อความเมื่อไม่มีรูปภาพ
+            gallery.innerHTML = "<p>ไม่พบรูปภาพ</p>";
             return;
          }
 
+         // แสดงผลสินค้าบนหน้าเว็บ
          images.forEach(image => {
+            // รูปภาพสินค้า
             const imgElement = document.createElement("img");
-            imgElement.src = image.src; // เส้นทางรูปภาพ
-            imgElement.alt = image.name; // ชื่อภาพ
+            imgElement.src = image.src;
+            imgElement.alt = image.name;
             imgElement.classList.add("gallery-image");
 
+            // ชื่อสินค้า
             const nameElement = document.createElement("div");
-            nameElement.textContent = `ชื่อ: ${image.name}`;
+            nameElement.textContent = image.name;
+            nameElement.classList.add("gallery-name");
 
+            // หมวดหมู่สินค้า
             const categoryElement = document.createElement("div");
-            categoryElement.textContent = `หมวดหมู่: ${image.category}`;
+            categoryElement.textContent = image.category;
+            categoryElement.classList.add("gallery-category");
 
+            // สร้าง container ของสินค้า
             const productItem = document.createElement("div");
-            productItem.classList.add("product-item");
+            productItem.classList.add("gallery-item");
             productItem.append(imgElement, nameElement, categoryElement);
 
-            gallery.appendChild(productItem); // เพิ่มผลิตภัณฑ์ลงในแกลเลอรี
+            // สร้างปุ่มสำหรับสินค้า
+            const buttonsContainer = document.createElement("div");
+            buttonsContainer.classList.add("gallery-buttons");
+
+            // ปุ่ม Other
+            const otherButton = document.createElement("button");
+            otherButton.classList.add("gallery-button", "other-button");
+            otherButton.textContent = "Other";
+
+            // ปุ่ม Buy Now
+            const buyNowButton = document.createElement("button");
+            buyNowButton.classList.add("gallery-button", "buy-now-button");
+            buyNowButton.textContent = "Buy Now";
+
+            // เพิ่มปุ่มเข้าไปใน container
+            buttonsContainer.append(otherButton, buyNowButton);
+            productItem.appendChild(buttonsContainer);
+
+            // เพิ่มสินค้าเข้าไปในแกลเลอรี
+            gallery.appendChild(productItem);
          });
+
+         updateItemCount();
       })
       .catch(error => console.error("เกิดข้อผิดพลาดในการโหลดรูปภาพ:", error));
 }
 
+// นับสินค้าที่แสดงบนหน้า html
+function updateItemCount() {
+   // ใช้ .gallery-item แทน .product-item เนื่องจากสินค้าทุกตัวอยู่ใน .gallery-item
+   let count = document.querySelectorAll("#gallery .gallery-item").length;
+   document.getElementById("itemCount").textContent = count + " รายการ";
+}
 
