@@ -354,14 +354,14 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
    const productList = document.getElementById('gallery');
    const mainMenus = document.querySelectorAll('.Main-menu');
-   const subMenus = document.querySelectorAll('.menu'); // สำหรับเมนูย่อย
-   const subSubMenus = document.querySelectorAll('.submenu p'); // สำหรับเมนูย่อยของหมวดหมู่ย่อย
+   const subMenus = document.querySelectorAll('.menu');
+   const subSubMenus = document.querySelectorAll('.submenu p');
 
-   let products = []; // ตัวแปรสำหรับเก็บข้อมูลสินค้าทั้งหมด
+   let products = [];
+   let currentCategory = null; // เก็บหมวดหมู่ปัจจุบันที่ถูกเลือก
 
-   // ฟังก์ชันสำหรับแสดงสินค้า
    function displayProducts(filteredProducts) {
-      productList.innerHTML = ''; // ลบสินค้าที่แสดงไว้ก่อนหน้า
+      productList.innerHTML = '';
       filteredProducts.forEach(product => {
          const productDiv = document.createElement('div');
          productDiv.classList.add('gallery-item');
@@ -378,7 +378,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
    }
 
-   // ฟังก์ชันดึงข้อมูลสินค้าจาก API
    function fetchProducts(category = null, subCategory = null, subSubCategory = null) {
       const url = new URL('http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php');
       const params = {};
@@ -391,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
          if (params[key]) url.searchParams.append(key, params[key]);
       });
 
-      console.log('Fetching URL:', url.toString()); // Debug URL
+      console.log('Fetching URL:', url.toString());
 
       fetch(url)
          .then(response => {
@@ -401,45 +400,67 @@ document.addEventListener('DOMContentLoaded', function () {
             return response.json();
          })
          .then(data => {
-            products = Array.isArray(data) ? data : []; // ตรวจสอบให้แน่ใจว่าเป็น array
+            products = Array.isArray(data) ? data : [];
             console.log('Fetched products:', products);
             displayProducts(products);
          })
          .catch(error => console.error('Error fetching products:', error));
    }
 
-   // ฟังก์ชันเมื่อคลิกเมนูหลัก
    mainMenus.forEach(menu => {
       menu.addEventListener('click', function () {
          const category = this.dataset.category || null;
-         console.log('Main menu clicked:', category);
-         fetchProducts(category);
+
+         if (currentCategory === category) {
+            // ถ้าคลิกซ้ำ → โหลดสินค้าทั้งหมด
+            console.log('Clicked same menu, resetting filter.');
+            currentCategory = null;
+            fetchProducts();
+         } else {
+            // ถ้าคลิกใหม่ → กรองตามหมวดหมู่
+            console.log('Main menu clicked:', category);
+            currentCategory = category;
+            fetchProducts(category);
+         }
       });
    });
 
-   // ฟังก์ชันเมื่อคลิกเมนูย่อย
    subMenus.forEach(menu => {
       menu.addEventListener('click', function () {
          const category = this.dataset.category || null;
          const subCategory = this.dataset.subcategory || null;
-         console.log('Sub menu clicked:', subCategory);
-         fetchProducts(category, subCategory);
+
+         if (currentCategory === subCategory) {
+            console.log('Clicked same sub-menu, resetting filter.');
+            currentCategory = null;
+            fetchProducts();
+         } else {
+            console.log('Sub menu clicked:', subCategory);
+            currentCategory = subCategory;
+            fetchProducts(category, subCategory);
+         }
       });
    });
 
-   // ฟังก์ชันเมื่อคลิกเมนูย่อยของหมวดหมู่ย่อย
    subSubMenus.forEach(menu => {
       menu.addEventListener('click', function () {
          const category = this.dataset.category || null;
          const subCategory = this.dataset.subcategory || null;
          const subSubCategory = this.dataset.subsub || null;
-         console.log('Sub-sub menu clicked:', subSubCategory);
-         fetchProducts(category, subCategory, subSubCategory);
+
+         if (currentCategory === subSubCategory) {
+            console.log('Clicked same sub-sub-menu, resetting filter.');
+            currentCategory = null;
+            fetchProducts();
+         } else {
+            console.log('Sub-sub menu clicked:', subSubCategory);
+            currentCategory = subSubCategory;
+            fetchProducts(category, subCategory, subSubCategory);
+         }
       });
    });
 
-   // เรียกใช้งานฟังก์ชันเมื่อเริ่มต้น
-   fetchProducts(); // เรียกฟังก์ชันเพื่อดึงข้อมูลสินค้าทั้งหมดในตอนเริ่มต้น
+   fetchProducts();
 });
 
 // รูปภาพของสินค้า
