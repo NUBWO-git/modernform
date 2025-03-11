@@ -686,6 +686,11 @@
    justify-content: flex-start; /* จัดเรียงให้เริ่มจากซ้าย */
    position: relative; /* คงไว้เพื่อให้ z-index ทำงาน */
    z-index: 1; /* ตั้ง z-index ต่ำกว่าของเมนู */
+   
+   width: 1195px; /* ความกว้างของกรอบ */
+   height: 1900px; /* ความสูงของกรอบ */
+   border: 2px solid #ffffff; /* กรอบสีดำ */
+   box-sizing: border-box; /* รวมกรอบในการคำนวณขนาด */
 }
 
 /* สไตล์ของแต่ละรูปภาพสินค้า */

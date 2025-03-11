@@ -12,7 +12,7 @@ const categories = {
       Training: ["Chairs"],
       Auditorium: []
    },
-   "Lounge area": ["Office", "Executive", "Occasional", "Ergonomic"],
+   "Lounge area": ["Sofa", "Lounge chair", "Coffee table", "Row seat"],
    "Collaboration space": {
       Table: ["Bench"],
       Seating: ["Sofa", "Lounge chair", "Occasional chair", "Stool", "Barstool"],
