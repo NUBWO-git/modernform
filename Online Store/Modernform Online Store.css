@@ -392,16 +392,23 @@
 }
 
 /* แถบเมนูสินค้า */
+/* ใช้ Flexbox แทน Position Absolute */
+.office-container {
+   display: flex;
+   align-items: flex-start;
+   gap: 50px;
+   max-width: 1480px;
+   margin-top: 30px;
+}
+
 /* ปรับ .office-menu */
 .office-menu {
-   position: absolute; /* หรือ fixed */
-   top: 670px;
+   position: relative;
+   top: 0;
    left: 30px;
    width: 250px;
-   height: 150vh;
-   overflow-y: auto; /* ให้สกอลล์แทน */
-   background: white; /* ปรับสีพื้นหลัง */
-   z-index: 100; /* ให้เมนูอยู่ด้านบน */
+   height: auto;
+   background: white;
 }
 
 /* ปรับสไตล์ของข้อความ "เรียงตาม: ล่าสุด" */
@@ -415,12 +422,12 @@
    cursor: pointer;
    color: #6E6E6E;
    font-family: "Poppins", sans-serif;
-   justify-content: flex-end; /* ทำให้ "เรียงตาม: ล่าสุด" ชิดขวา */
+   justify-content: flex-end;
 }
 
 /* ปรับให้ "ล่าสุด" เป็นสีน้ำเงิน */
 #selected-option {
-   color: #233388; /* สีของ "ล่าสุด" */
+   color: #233388;
    font-weight: normal;
    font-family: "Poppins", sans-serif;
 }
@@ -429,12 +436,12 @@
 #menu-options {
    display: none;
    position: absolute;
-   top: 2%; /* ให้แสดงอยู่ใต้เมนู */
+   top: 2%;
    left: 105px;
    border: 1px solid #ccc;
    background-color: #fff;
    width: 140px;
-   height: auto; /* ความสูงตามเนื้อหา */
+   height: auto;
    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
    border-radius: 5px;
    padding: 5px 10px;
@@ -471,7 +478,8 @@
    border-top: 5px solid transparent;
    border-bottom: 5px solid transparent;
    border-right: 6px solid #233388;
-   margin-left: auto; /* ทำให้สามเหลี่ยมไปอยู่ขวาสุด */
+   margin-left: auto;
+   /* ทำให้สามเหลี่ยมไปอยู่ขวาสุด */
 }
 
 .text-icon {
@@ -485,18 +493,18 @@
 
 /* เมนูของ office */
 /* สไตล์ของแถว "office" */
-.office-menu > div {
+.office-menu>div {
    display: flex;
    flex-direction: column;
-   align-items: flex-start; 
+   align-items: flex-start;
 }
 
 .character {
    display: flex;
    flex-direction: column;
    align-items: flex-start;
-   border-bottom: 2px solid #ccc; /* เส้นข้างล่าง */
-   padding-bottom: 10px; /* เพิ่มช่องว่างใต้เส้น */
+   border-bottom: 2px solid #ccc;
+   padding-bottom: 10px;
 }
 
 .character h2 {
@@ -528,7 +536,7 @@
    padding: 0 10px;
    border-radius: 5px;
    background-color: #fff;
-   transition: background-color 0.3s, color 0.3s; /* เพิ่ม transition สำหรับสี */
+   transition: background-color 0.3s, color 0.3s;
 }
 
 /* สีพื้นหลังเมื่อ hover */
@@ -555,7 +563,7 @@
    padding-left: 20px;
    margin-top: 5px;
    position: relative;
-   z-index: 3; /* ตั้ง z-index สูงสุดสำหรับเมนูหลัก */
+   z-index: 3;
 }
 
 /* เมื่อเปิดเมนูย่อยของ Main-menu */
@@ -665,7 +673,7 @@
    width: 189px;
    height: 23px;
    background-color: rgba(35, 51, 136, 0.2);
-   color: #6E6E6E;  /* ค้างสีในเมนูย่อย */
+   color: #6E6E6E;
 }
 
 /* กำหนดสีเมื่อเมนูรองมีคลาส sub-active */
@@ -680,41 +688,43 @@
 .gallery {
    display: flex;
    flex-wrap: wrap;
-   max-width: 1200px;
-   margin: 20px auto 0 300px; /* ปรับขยับให้เว้นจากเมนู */
+   width: 100vw;
+   height: auto;
+   margin: 0;
    box-sizing: border-box;
-   justify-content: flex-start; /* จัดเรียงให้เริ่มจากซ้าย */
-   position: relative; /* คงไว้เพื่อให้ z-index ทำงาน */
-   z-index: 1; /* ตั้ง z-index ต่ำกว่าของเมนู */
-   
-   width: 1195px; /* ความกว้างของกรอบ */
-   height: 1900px; /* ความสูงของกรอบ */
-   border: 2px solid #ffffff; /* กรอบสีดำ */
-   box-sizing: border-box; /* รวมกรอบในการคำนวณขนาด */
+   justify-content: flex-start;
+   position: relative;
+   margin-top: 50px;
+   gap: 40px;
 }
 
 /* สไตล์ของแต่ละรูปภาพสินค้า */
 .gallery-item {
-   border-radius: 5px;
-   padding: 10px;
-   margin: 5px 0;
-   text-align: center;
-   width: calc(25% - 20px);
+   width: 248px;  /* กำหนดขนาดให้ตรงกับรูป */
    height: auto;
+   border-radius: 5px;
+   padding: 5px;
+   text-align: center;
    box-sizing: border-box;
    position: relative;
-   z-index: 2;
    display: flex;
    flex-direction: column;
    align-items: flex-start;
+   margin: 5px 0; /* ปรับ margin ด้านข้างเป็น 0 ให้รูปชิดกัน */
+}
+
+/* แสดงเฉพาะ 6 แถวแรก (6 x 4 = 24 รูป) */
+.gallery-item:nth-child(-n+24) {
+   display: flex;
 }
 
 /* สไตล์สำหรับรูปภาพ */
 .gallery-image {
-   width: 248px;   
-   height: 179px;  
+   width: 248px;  /* กำหนดให้กว้าง 248px ตามที่ต้องการ */
+   height: 179px; /* กำหนดให้สูง 179px */
    border-radius: 5px;
-   margin-left: 10px; 
+   margin-bottom: 10px;
+   object-fit: cover; /* ป้องกันภาพบิดเบี้ยว */
 }
 
 /* สไตล์ของชื่อสินค้า */
@@ -722,9 +732,9 @@
    margin: 5px 0;
    font-size: 16px;
    color: #000000;
-   text-align: left; /* ทำให้ข้อความชิดซ้าย */
-   width: 100%; /* ให้ข้อความใช้ความกว้างทั้งหมด */
-   margin-left: 15px; /* เพิ่มระยะห่างทางซ้ายสำหรับชื่อสินค้า */
+   text-align: left;
+   width: 100%;
+   margin-left: 15px;
    font-family: "Poppins", sans-serif;
    font-weight: bold;
 }
@@ -732,28 +742,30 @@
 /* สไตล์ของหมวดหมู่สินค้า */
 .gallery-category {
    margin: 5px 0;
-   font-size: 10px;  /* ขนาดตัวหนังสือหมวดหมู่ */
+   font-size: 10px;
    color: #666;
-   text-align: left; /* ทำให้ข้อความชิดซ้าย */
-   width: 100%; /* ให้ข้อความใช้ความกว้างทั้งหมด */
-   margin-left: 15px; /* เพิ่มระยะห่างทางซ้ายสำหรับหมวดหมู่ */
+   text-align: left;
+   width: 100%;
+   margin-left: 15px;
+
    font-family: "Poppins", sans-serif;
    font-weight: normal;
 }
 
-/* สไตล์ของปุ่ม */
+/* สไตล์ของปุ่มที่อยู่ใน .gallery-buttons */
 .gallery-buttons {
    display: flex;
-   justify-content: space-between; /* ปุ่มจะห่างกัน */
+   justify-content: space-between;
    margin-top: 10px;
-   width: 100%; /* ให้ปุ่มเต็มความกว้าง */
-   padding: 0 10px; /* เพิ่ม padding ซ้ายขวาให้ปุ่มมีระยะห่าง */
+   width: 100%;
+   padding: 0 10px;
 }
 
+/* สไตล์ของปุ่ม .gallery-button */
 .gallery-button {
-   width: 113px;  /* กำหนดความกว้างของปุ่ม */
-   height: 37px;  /* กำหนดความสูงของปุ่ม */
-   padding: 10px 20px;  /* ปรับการเว้นระยะภายใน */
+   width: 120px;      /* กำหนดขนาดกว้างของปุ่ม */
+   height: 37px;      /* กำหนดขนาดสูงของปุ่ม */
+   padding: 0 10px;   /* ลดการ padding จากซ้ายและขวา */
    background-color: #233388;
    color: white;
    border: none;
@@ -761,52 +773,64 @@
    cursor: pointer;
    text-align: center;
    font-size: 14px;
-   margin: 0 5px; /* ระยะห่างระหว่างปุ่ม */
-}
-/* สไตล์ของปุ่ม */
-.gallery-buttons {
+   margin: 0 5px;
    display: flex;
-   justify-content: space-between; /* ปุ่มจะห่างกัน */
-   margin-top: 10px;
-   width: 100%; /* ให้ปุ่มเต็มความกว้าง */
-   padding: 0 10px; /* เพิ่ม padding ซ้ายขวาให้ปุ่มมีระยะห่าง */
-}
-
-/* สไตล์ของปุ่มทั่วไป */
-.gallery-button {
-   width: 113px;  /* กำหนดความกว้างของปุ่ม */
-   height: 37px;  /* กำหนดความสูงของปุ่ม */
-   padding: 10px 20px;  /* ปรับการเว้นระยะภายใน */
-   border-radius: 5px;
-   cursor: pointer;
-   text-align: center;
-   font-size: 14px;
-   margin: 0 5px; /* ระยะห่างระหว่างปุ่ม */
+   align-items: center;
+   justify-content: center;
 }
 
 /* ปุ่ม Other */
 .other-button {
    background-color: white;
-   color: #000000; /* ตัวหนังสือสีน้ำเงิน */
-   border: 2px solid #233388; /* ขอบเป็นสีน้ำเงิน */
+   color: #000000;
+   border: 2px solid #233388;
 }
 
 .other-button:hover {
-   background-color: #233388; /* เมื่อ hover ให้พื้นหลังเป็นสีน้ำเงิน */
-   color: white; /* ตัวหนังสือเป็นสีขาว */
+   background-color: #233388;
+   color: white;
 }
 
 /* ปุ่ม Buy Now */
 .buy-now-button {
-   background-color: #233388; /* พื้นหลังเป็นสีน้ำเงิน */
-   color: white; /* ตัวหนังสือเป็นสีขาว */
-   border: 2px solid #233388; /* ขอบเป็นสีน้ำเงิน */
+   background-color: #233388;
+   color: white;
+   border: 2px solid #233388;
 }
 
 .buy-now-button:hover {
-   background-color: white; /* เมื่อ hover ให้พื้นหลังเป็นสีขาว */
-   color: #233388; /* ตัวหนังสือเป็นสีน้ำเงิน */
-   border: 2px solid #233388; /* ขอบเป็นสีน้ำเงิน */
+   background-color: white;
+   color: #233388;
+   border: 2px solid #233388;
+}
+
+/* รู้หน้าที่นับตามจำนวนเลข */
+.pagination {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 20px;
+}
+
+.pagination-button,
+.page-number {
+   cursor: pointer;
+   border: none;
+   background: #E6F2FF;
+   color: #233388;
+   padding: 10px 15px;
+   margin: 5px;
+   border-radius: 5px;
+   font-size: 16px;
+   font-weight: bold;
+   min-width: 40px;
+   text-align: center;
+   transition: background 0.3s, color 0.3s;
+}
+
+.page-number.active {
+   background-color: #233388;
+   color: #ffffff;
 }
 
 /* แถบแมนูสุดท้าย */
@@ -826,9 +850,10 @@
    width: 1440px;
    height: 151px;
    margin: 45px auto;
-   gap: 700px;
+   gap: 350px;
    background-color: #f8f9fadb;
    box-sizing: border-box;
+   margin-top: 30px;
 }
 
 .contact-item {
