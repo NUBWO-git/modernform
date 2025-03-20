@@ -65,57 +65,98 @@ document.addEventListener("DOMContentLoaded", function () {
    const selectedOption = document.getElementById("selected-option");
    const menuItems = document.querySelectorAll("#menu-options li");
    const gallery = document.getElementById("gallery");
+   const pagination = document.getElementById("pagination");
+
+   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   let currentPage = 1;
+   let totalItems = 0;
+   let totalPages = 0;
+   let currentData = [];
 
    // ฟังก์ชันเรียกข้อมูลและอัปเดต UI
    function fetchDataAndUpdate(sortOrder) {
       fetch(`http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php?sort=${sortOrder}`)
          .then(response => response.json())
          .then(data => {
+            currentData = data; // เก็บข้อมูลทั้งหมด
+            totalItems = data.length; // จำนวนรูปทั้งหมด
+            totalPages = Math.ceil(totalItems / itemsPerPage); // คำนวณจำนวนหน้า
+
             gallery.innerHTML = ''; // ล้างข้อมูลเก่า
-            data.forEach(item => {
-               const imgElement = document.createElement("img");
-               imgElement.src = item.src;
-               imgElement.alt = item.name;
-               imgElement.classList.add("gallery-image");
-
-               const nameElement = document.createElement("div");
-               nameElement.textContent = item.name;
-               nameElement.classList.add("gallery-name");
-
-               const categoryElement = document.createElement("div");
-               categoryElement.textContent = item.category;
-               categoryElement.classList.add("gallery-category");
-
-               // สร้าง container ของสินค้า
-               const productItem = document.createElement("div");
-               productItem.classList.add("gallery-item");
-               productItem.append(imgElement, nameElement, categoryElement);
-
-               // สร้างปุ่มสำหรับสินค้า
-               const buttonsContainer = document.createElement("div");
-               buttonsContainer.classList.add("gallery-buttons");
-
-               // ปุ่ม Other
-               const otherButton = document.createElement("button");
-               otherButton.classList.add("gallery-button", "other-button");
-               otherButton.textContent = "Other";
-
-               // ปุ่ม Buy Now
-               const buyNowButton = document.createElement("button");
-               buyNowButton.classList.add("gallery-button", "buy-now-button");
-               buyNowButton.textContent = "Buy Now";
-
-               // เพิ่มปุ่มลงใน container
-               buttonsContainer.append(otherButton, buyNowButton);
-
-               // เพิ่มปุ่มลงใน product item
-               productItem.append(buttonsContainer);
-
-               // เพิ่ม product item ไปยัง gallery
-               gallery.appendChild(productItem);
-            });
+            renderGallery(currentPage); // เรียกใช้ฟังก์ชันแสดงรูปในหน้าแรก
+            renderPagination(); // สร้างปุ่มเปลี่ยนหน้า
          })
          .catch(error => console.error('Error fetching data:', error));
+   }
+
+   // ฟังก์ชันแสดงรูปในแต่ละหน้า
+   function renderGallery(page) {
+      gallery.innerHTML = ''; // ล้างข้อมูลเก่า
+      let start = (page - 1) * itemsPerPage;
+      let end = start + itemsPerPage;
+
+      for (let i = start; i < end && i < totalItems; i++) {
+         const item = currentData[i];
+         const imgElement = document.createElement("img");
+         imgElement.src = item.src;
+         imgElement.alt = item.name;
+         imgElement.classList.add("gallery-image");
+
+         const nameElement = document.createElement("div");
+         nameElement.textContent = item.name;
+         nameElement.classList.add("gallery-name");
+
+         const categoryElement = document.createElement("div");
+         categoryElement.textContent = item.category;
+         categoryElement.classList.add("gallery-category");
+
+         // สร้าง container ของสินค้า
+         const productItem = document.createElement("div");
+         productItem.classList.add("gallery-item");
+         productItem.append(imgElement, nameElement, categoryElement);
+
+         // สร้างปุ่มสำหรับสินค้า
+         const buttonsContainer = document.createElement("div");
+         buttonsContainer.classList.add("gallery-buttons");
+
+         // ปุ่ม Other
+         const otherButton = document.createElement("button");
+         otherButton.classList.add("gallery-button", "other-button");
+         otherButton.textContent = "Other";
+
+         // ปุ่ม Buy Now
+         const buyNowButton = document.createElement("button");
+         buyNowButton.classList.add("gallery-button", "buy-now-button");
+         buyNowButton.textContent = "Buy Now";
+
+         // เพิ่มปุ่มลงใน container
+         buttonsContainer.append(otherButton, buyNowButton);
+
+         // เพิ่มปุ่มลงใน product item
+         productItem.append(buttonsContainer);
+
+         // เพิ่ม product item ไปยัง gallery
+         gallery.appendChild(productItem);
+      }
+   }
+
+   // ฟังก์ชันแสดงปุ่มเปลี่ยนหน้า
+   function renderPagination() {
+      pagination.innerHTML = ''; // ล้างปุ่มหน้าเก่า
+      for (let i = 1; i <= totalPages; i++) {
+         const pageButton = document.createElement("button");
+         pageButton.textContent = i;
+         pageButton.classList.add("page-button");
+         if (i === currentPage) pageButton.classList.add("active");
+
+         pageButton.addEventListener("click", function () {
+            currentPage = i;
+            renderGallery(currentPage);
+            renderPagination();
+         });
+
+         pagination.appendChild(pageButton);
+      }
    }
 
    // เปิด/ปิดเมนู
@@ -162,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
    // โหลดข้อมูลเริ่มต้น
    fetchDataAndUpdate("ล่าสุด");
 });
+
 
 
 // เลือกหมวดเมนูสินค้า
@@ -354,24 +396,47 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
    const productList = document.getElementById('gallery');
    const mainMenus = document.querySelectorAll('.Main-menu');
-   const subMenus = document.querySelectorAll('.menu'); // สำหรับเมนูย่อย
-   const subSubMenus = document.querySelectorAll('.submenu p'); // สำหรับเมนูย่อยของหมวดหมู่ย่อย
+   const subMenus = document.querySelectorAll('.menu');
+   const subSubMenus = document.querySelectorAll('.submenu p');
+   const pagination = document.getElementById("pagination");
 
-   let products = []; // ตัวแปรสำหรับเก็บข้อมูลสินค้าทั้งหมด
-   let currentCategory = null; // หมวดหมู่หลัก
-   let currentSubCategory = null; // หมวดหมู่อย่างย่อย
-   let currentSubSubCategory = null; // หมวดหมู่ย่อยของหมวดหมู่อย่างย่อย
+   let products = [];
+   let currentCategory = null;
+   let currentSubCategory = null;
+   let currentSubSubCategory = null;
+   let currentPage = 1;
+   const itemsPerPage = 24; // จำนวนสินค้าต่อหน้า
 
-   // ฟังก์ชันสำหรับอัปเดตจำนวนสินค้าที่แสดงในหน้า HTML
    function updateItemCount() {
-      const count = document.querySelectorAll("#gallery .gallery-item").length;
-      document.getElementById("itemCount").textContent = count + " รายการ"; // อัปเดตจำนวนสินค้า
+      const count = products.length; // จำนวนสินค้าทั้งหมดที่ดึงมา
+      document.getElementById("itemCount").textContent = count + " รายการ"; // แสดงจำนวนทั้งหมด
+   }   
+
+   function renderPagination(totalItems) {
+      const totalPages = Math.ceil(totalItems / itemsPerPage); // คำนวณจำนวนหน้า
+      pagination.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+         let pageLink = document.createElement('span');
+         pageLink.textContent = i;
+         pageLink.classList.add('page-number');
+         if (i === currentPage) pageLink.classList.add('active');
+
+         pageLink.addEventListener('click', function () {
+            currentPage = i;
+            fetchProducts(currentCategory, currentSubCategory, currentSubSubCategory);
+         });
+
+         pagination.appendChild(pageLink);
+      }
    }
 
-   // ฟังก์ชันสำหรับแสดงสินค้า
    function displayProducts(filteredProducts) {
-      productList.innerHTML = ''; // ลบสินค้าที่แสดงไว้ก่อนหน้า
-      filteredProducts.forEach(product => {
+      productList.innerHTML = '';
+      const startIdx = (currentPage - 1) * itemsPerPage;
+      const endIdx = currentPage * itemsPerPage;
+      const productsToDisplay = filteredProducts.slice(startIdx, endIdx);
+
+      productsToDisplay.forEach(product => {
          const productDiv = document.createElement('div');
          productDiv.classList.add('gallery-item');
          productDiv.innerHTML = `
@@ -382,15 +447,14 @@ document.addEventListener('DOMContentLoaded', function () {
                      <button class="gallery-button other-button">Other</button>
                      <button class="gallery-button buy-now-button">Buy Now</button>
                </div>
-               `;
+         `;
          productList.appendChild(productDiv);
       });
 
-      // เรียกใช้งาน updateItemCount เพื่อให้อัปเดตจำนวนสินค้า
       updateItemCount();
+      renderPagination(filteredProducts.length); // เรียกใช้การแสดงหน้าหลังแสดงสินค้า
    }
 
-   // ฟังก์ชันดึงข้อมูลสินค้าจาก API
    function fetchProducts(category = null, subCategory = null, subSubCategory = null) {
       const url = new URL('http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php');
       const params = {};
@@ -403,19 +467,17 @@ document.addEventListener('DOMContentLoaded', function () {
          if (params[key]) url.searchParams.append(key, params[key]);
       });
 
-      console.log('Fetching URL:', url.toString()); // Debug URL
+      console.log('Fetching URL:', url.toString());
 
       fetch(url)
          .then(response => {
-            if (!response.ok) {
-               throw new Error(`HTTP error! Status: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
             return response.json();
          })
          .then(data => {
-            products = Array.isArray(data) ? data : []; // ตรวจสอบให้แน่ใจว่าเป็น array
+            products = Array.isArray(data) ? data : [];
             console.log('Fetched products:', products);
-            displayProducts(products); // แสดงสินค้าหลังจากได้ข้อมูล
+            displayProducts(products);
          })
          .catch(error => console.error('Error fetching products:', error));
    }
@@ -426,12 +488,17 @@ document.addEventListener('DOMContentLoaded', function () {
          const category = this.dataset.category || null;
 
          if (category === currentCategory) {
-            currentCategory = null; // ถ้าคลิกซ้ำให้กลับไปแสดงสินค้าทั้งหมด
-            fetchProducts(); // แสดงสินค้าทั้งหมด
+            currentCategory = null;
+            currentSubCategory = null;
+            currentSubSubCategory = null;
          } else {
             currentCategory = category;
-            fetchProducts(category); // กรองสินค้าตามหมวดหมู่หลัก
+            currentSubCategory = null;
+            currentSubSubCategory = null;
          }
+
+         currentPage = 1; // รีเซ็ตหน้าเป็นหน้าแรก
+         fetchProducts(currentCategory);
          console.log('Main menu clicked:', category);
       });
    });
@@ -439,16 +506,18 @@ document.addEventListener('DOMContentLoaded', function () {
    // ฟังก์ชันเมื่อคลิกเมนูย่อย
    subMenus.forEach(menu => {
       menu.addEventListener('click', function () {
-         const category = this.dataset.category || null;
          const subCategory = this.dataset.subcategory || null;
 
          if (subCategory === currentSubCategory) {
-            currentSubCategory = null; // ถ้าคลิกซ้ำให้กลับไปแสดงสินค้าหมวดหมู่หลัก
-            fetchProducts(currentCategory); // กรองสินค้าตามหมวดหมู่หลัก
+            currentSubCategory = null;
+            currentSubSubCategory = null;
          } else {
             currentSubCategory = subCategory;
-            fetchProducts(currentCategory, subCategory); // กรองสินค้าตามหมวดหมู่หลักและหมวดหมู่นั้น
+            currentSubSubCategory = null;
          }
+
+         currentPage = 1; // รีเซ็ตหน้าเป็นหน้าแรก
+         fetchProducts(currentCategory, currentSubCategory);
          console.log('Sub menu clicked:', subCategory);
       });
    });
@@ -456,33 +525,26 @@ document.addEventListener('DOMContentLoaded', function () {
    // ฟังก์ชันเมื่อคลิกเมนูย่อยของหมวดหมู่ย่อย
    subSubMenus.forEach(menu => {
       menu.addEventListener('click', function () {
-         const category = this.dataset.category || null;
-         const subCategory = this.dataset.subcategory || null;
          const subSubCategory = this.dataset.subsub || null;
 
          if (subSubCategory === currentSubSubCategory) {
-            currentSubSubCategory = null; // ถ้าคลิกซ้ำให้กลับไปแสดงสินค้าตามหมวดหมู่ย่อย
-            fetchProducts(currentCategory, currentSubCategory); // กรองสินค้าตามหมวดหมู่หลักและหมวดหมู่นั้น
+            currentSubSubCategory = null;
          } else {
             currentSubSubCategory = subSubCategory;
-            fetchProducts(currentCategory, currentSubCategory, subSubCategory); // กรองสินค้าตามหมวดหมู่ทั้งหมด
          }
+
+         currentPage = 1; // รีเซ็ตหน้าเป็นหน้าแรก
+         fetchProducts(currentCategory, currentSubCategory, currentSubSubCategory);
          console.log('Sub-sub menu clicked:', subSubCategory);
       });
    });
 
-   // เรียกใช้งานฟังก์ชันเมื่อเริ่มต้น
-   fetchProducts(); // เรียกฟังก์ชันเพื่อดึงข้อมูลสินค้าทั้งหมดในตอนเริ่มต้น
+   fetchProducts(); // โหลดสินค้าทั้งหมดตอนเริ่มต้น
 });
-
 
 // รูปภาพของสินค้า
-document.addEventListener("DOMContentLoaded", function () {
-   loadImages("ล่าสุด"); // ส่งค่าเริ่มต้นไปให้กับ sortOption เช่น 'ล่าสุด'
-});
-
 function loadImages(sortOption) {
-   console.log(sortOption); // ตรวจสอบว่า sortOption ถูกต้องหรือไม่
+   console.log(sortOption);
 
    fetch(`Modernform Online Store.php?sort=${sortOption}`)
       .then(response => {
@@ -492,57 +554,49 @@ function loadImages(sortOption) {
          return response.json();
       })
       .then(images => {
-         const gallery = document.getElementById("gallery");
-         gallery.innerHTML = ""; // ลบสินค้าก่อนที่จะเพิ่มใหม่
+         const imageContainer = document.getElementById("image-container");
+         imageContainer.innerHTML = ""; // ล้างข้อมูลก่อนเพิ่มใหม่
 
          if (images.length === 0) {
-            gallery.innerHTML = "<p>ไม่พบรูปภาพ</p>";
+            imageContainer.innerHTML = "<p>ไม่พบรูปภาพ</p>";
             return;
          }
 
          // แสดงผลสินค้าบนหน้าเว็บ
          images.forEach(image => {
-            // รูปภาพสินค้า
             const imgElement = document.createElement("img");
             imgElement.src = image.src;
             imgElement.alt = image.name;
             imgElement.classList.add("gallery-image");
 
-            // ชื่อสินค้า
             const nameElement = document.createElement("div");
             nameElement.textContent = image.name;
             nameElement.classList.add("gallery-name");
 
-            // หมวดหมู่สินค้า
             const categoryElement = document.createElement("div");
             categoryElement.textContent = image.category;
             categoryElement.classList.add("gallery-category");
 
-            // สร้าง container ของสินค้า
             const productItem = document.createElement("div");
             productItem.classList.add("gallery-item");
             productItem.append(imgElement, nameElement, categoryElement);
 
-            // สร้างปุ่มสำหรับสินค้า
             const buttonsContainer = document.createElement("div");
             buttonsContainer.classList.add("gallery-buttons");
 
-            // ปุ่ม Other
             const otherButton = document.createElement("button");
             otherButton.classList.add("gallery-button", "other-button");
             otherButton.textContent = "Other";
 
-            // ปุ่ม Buy Now
             const buyNowButton = document.createElement("button");
             buyNowButton.classList.add("gallery-button", "buy-now-button");
             buyNowButton.textContent = "Buy Now";
 
-            // เพิ่มปุ่มเข้าไปใน container
             buttonsContainer.append(otherButton, buyNowButton);
             productItem.appendChild(buttonsContainer);
 
-            // เพิ่มสินค้าเข้าไปในแกลเลอรี
-            gallery.appendChild(productItem);
+            // **เปลี่ยนจาก gallery เป็น imageContainer**
+            imageContainer.appendChild(productItem);
          });
 
          updateItemCount();
@@ -556,66 +610,134 @@ function updateItemCount() {
    document.getElementById("itemCount").textContent = count + " รายการ";
 }
 
-//ถ้ารูปครบ 24 รูป จะซ้อนไว้ข้างหลัง
+// ตัวนับหน้าเมื่อรูปครบ 24 รูป 
 document.addEventListener("DOMContentLoaded", function () {
-   const prevPage = document.getElementById("prevPage");
-   const nextPage = document.getElementById("nextPage");
-   const pageNumbers = document.getElementById("pageNumbers");
-   const galleryItems = document.querySelectorAll(".gallery-item"); // ดึงสินค้าทั้งหมด
+   const gallery = document.getElementById("gallery");
+   const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // จำนวนสินค้าต่อหน้า
+   const itemsPerPage = 24; // 24 รูปต่อหน้า
    let currentPage = 1;
-   let totalPages = Math.ceil(galleryItems.length / itemsPerPage); // คำนวณจำนวนหน้า
+   let totalItems = 0;
+   let totalPages = 0;
+   let images = [];
 
-   function showItemsForPage(page) {
-      galleryItems.forEach((item, index) => {
-         let start = (page - 1) * itemsPerPage;
-         let end = start + itemsPerPage;
-         item.style.display = index >= start && index < end ? "flex" : "none";
+   // ฟังก์ชันดึงข้อมูลจาก API
+   async function fetchImages() {
+      try {
+         console.log("Fetching images...");
+         const response = await fetch("http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php");
+   
+         if (!response.ok) {
+            throw new Error("Failed to fetch data from API");
+         }
+   
+         images = await response.json();
+         console.log("Images received:", images); // Debugging
+   
+         totalItems = images.length;
+         totalPages = Math.ceil(totalItems / itemsPerPage); // คำนวณจำนวนหน้าจากจำนวนรูปภาพ
+   
+         if (totalItems > 0) {
+            currentPage = 1; // รีเซ็ตให้กลับไปที่หน้าแรกเสมอ
+            renderPagination(); // สร้างปุ่มเพจก่อน
+            renderGallery(); // แล้วค่อยโหลด 24 รูปแรก
+         } else {
+            gallery.innerHTML = "<p>No images found.</p>"; // ถ้าไม่มีรูป
+         }
+      } catch (error) {
+         console.error("Error fetching images:", error);
+         gallery.innerHTML = "<p>Error loading images.</p>";
+      }
+   }
+
+   // ฟังก์ชันแสดงรูปในแต่ละหน้า
+   function renderGallery() {
+      gallery.innerHTML = ""; // ล้างข้อมูลเก่า
+      let start = (currentPage - 1) * itemsPerPage;
+      let end = start + itemsPerPage;
+   
+      console.log(`Rendering images from index ${start} to ${end} (Total: ${totalItems})`); // Debugging
+   
+      for (let i = start; i < end && i < totalItems; i++) {
+         const image = images[i];
+   
+         const imgElement = document.createElement("img");
+         imgElement.src = image.src;
+         imgElement.alt = image.name;
+         imgElement.classList.add("gallery-image");
+   
+         const nameElement = document.createElement("div");
+         nameElement.textContent = image.name;
+         nameElement.classList.add("gallery-name");
+   
+         const categoryElement = document.createElement("div");
+         categoryElement.textContent = image.category;
+         categoryElement.classList.add("gallery-category");
+   
+         const productItem = document.createElement("div");
+         productItem.classList.add("gallery-item");
+         productItem.append(imgElement, nameElement, categoryElement);
+   
+         const buttonsContainer = document.createElement("div");
+         buttonsContainer.classList.add("gallery-buttons");
+   
+         const otherButton = document.createElement("button");
+         otherButton.classList.add("gallery-button", "other-button");
+         otherButton.textContent = "Other";
+   
+         const buyNowButton = document.createElement("button");
+         buyNowButton.classList.add("gallery-button", "buy-now-button");
+         buyNowButton.textContent = "Buy Now";
+   
+         buttonsContainer.append(otherButton, buyNowButton);
+         productItem.appendChild(buttonsContainer);
+   
+         gallery.appendChild(productItem);
+      }
+   }
+
+   // ฟังก์ชันแสดงตัวเลขหน้า
+   function renderPagination() {
+      pagination.innerHTML = "";
+      for (let i = 1; i <= totalPages; i++) {
+         let pageLink = document.createElement("span");
+         pageLink.textContent = i;
+         pageLink.classList.add("page-number");
+         if (i === currentPage) pageLink.classList.add("active");
+
+         pageLink.addEventListener("click", function () {
+            currentPage = i; // เปลี่ยนหน้า
+            renderGallery();
+            renderPagination();
+         });
+
+         pagination.appendChild(pageLink);
+      }
+
+      console.log("Pagination HTML:", pagination.innerHTML); // Debugging
+   }
+
+   // ฟังก์ชันสำหรับคลิกซ้ำเพื่อรีเฟรช
+   function refreshPage() {
+      currentPage = 1; // รีเซ็ตหน้าไปที่หน้าแรก
+      fetchImages(); // เรียกให้ดึงข้อมูลใหม่
+   }
+
+   // ตั้งเวลาให้ทำงานเมื่อคลิกบนเมนู
+   const refreshButton = document.getElementById('refreshButton');
+   if (refreshButton) {
+      refreshButton.addEventListener('click', function () {
+         refreshPage(); // เรียกการรีเฟรชข้อมูลเมื่อคลิก
       });
    }
 
-   function updatePagination() {
-      pageNumbers.innerHTML = ""; // ล้างเลขหน้าทุกครั้งก่อนอัปเดต
-
-      for (let i = 1; i <= totalPages; i++) {
-         let pageButton = document.createElement("button");
-         pageButton.textContent = i;
-         pageButton.classList.add("page-number");
-
-         if (i === currentPage) {
-            pageButton.classList.add("active");
-         }
-
-         pageButton.addEventListener("click", () => {
-            currentPage = i;
-            showItemsForPage(currentPage);
-            updatePagination();
-         });
-
-         pageNumbers.appendChild(pageButton);
-      }
-
-      prevPage.disabled = currentPage === 1;
-      nextPage.disabled = currentPage === totalPages;
-   }
-
-   prevPage.addEventListener("click", () => {
-      if (currentPage > 1) {
-         currentPage--;
-         showItemsForPage(currentPage);
-         updatePagination();
-      }
+   // คลิกเมนูเพื่อรีเฟรช
+   const menuButtons = document.querySelectorAll('.menu'); // ใช้เมนูที่มีคลาส `.menu`
+   menuButtons.forEach(button => {
+      button.addEventListener('click', function () {
+         refreshPage(); // เมื่อคลิกที่เมนูจะทำการรีเฟรชหน้า
+      });
    });
 
-   nextPage.addEventListener("click", () => {
-      if (currentPage < totalPages) {
-         currentPage++;
-         showItemsForPage(currentPage);
-         updatePagination();
-      }
-   });
-
-   showItemsForPage(currentPage);
-   updatePagination();
+   fetchImages(); // เรียกฟังก์ชันดึงข้อมูลเริ่มต้น
 });

@@ -436,8 +436,8 @@
 #menu-options {
    display: none;
    position: absolute;
-   top: 2%;
-   left: 105px;
+   top: 4%;
+   left: 95px;
    border: 1px solid #ccc;
    background-color: #fff;
    width: 140px;
@@ -696,6 +696,8 @@
    position: relative;
    margin-top: 50px;
    gap: 40px;
+   position: relative; /* เพื่อจัดการตำแหน่งของ pagination */
+   padding-bottom: 50px; /* ให้มีช่องว่างด้านล่าง */
 }
 
 /* สไตล์ของแต่ละรูปภาพสินค้า */
@@ -806,31 +808,25 @@
 
 /* รู้หน้าที่นับตามจำนวนเลข */
 .pagination {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   position: relative;  /* ต้องใช้ตำแหน่ง relative หรือ absolute */
+   z-index: 10;         /* ให้มันอยู่ข้างบนสุด */
+   text-align: center;
    margin-top: 20px;
 }
 
-.pagination-button,
 .page-number {
+   display: inline-block;
+   padding: 8px 12px;
+   margin: 0 5px;
    cursor: pointer;
-   border: none;
-   background: #E6F2FF;
-   color: #233388;
-   padding: 10px 15px;
-   margin: 5px;
-   border-radius: 5px;
-   font-size: 16px;
-   font-weight: bold;
-   min-width: 40px;
-   text-align: center;
-   transition: background 0.3s, color 0.3s;
+   border: 1px solid #ddd;
+   border-radius: 4px;
 }
 
 .page-number.active {
-   background-color: #233388;
-   color: #ffffff;
+   background-color: #007bff;
+   color: white;
+   font-weight: bold;
 }
 
 /* แถบแมนูสุดท้าย */
