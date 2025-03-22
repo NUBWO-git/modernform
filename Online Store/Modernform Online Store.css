@@ -808,25 +808,56 @@
 
 /* รู้หน้าที่นับตามจำนวนเลข */
 .pagination {
-   position: relative;  /* ต้องใช้ตำแหน่ง relative หรือ absolute */
-   z-index: 10;         /* ให้มันอยู่ข้างบนสุด */
-   text-align: center;
-   margin-top: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+   margin-left: 180px; /* ขยับไปทางซ้าย 20px */
 }
 
-.page-number {
-   display: inline-block;
-   padding: 8px 12px;
-   margin: 0 5px;
+.page-number,
+.page-prev,
+.page-next {
+   display: flex;
+   justify-content: center;
+   align-items: center;
    cursor: pointer;
-   border: 1px solid #ddd;
    border-radius: 4px;
 }
 
-.page-number.active {
-   background-color: #007bff;
-   color: white;
+/* ปิดเอฟเฟกต์ของไอคอน */
+.page-prev, .page-next {
+   width: 40px;
+   height: 32px;
+   background-color: #f8f9fa;  /* สีพื้นหลังของไอคอน */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* ไม่ให้ไอคอนมีการเปลี่ยนสีเมื่อ hover หรือ active */
+.page-prev:hover, .page-next:hover,
+.page-prev:active, .page-next:active {
+   background-color: #f8f9fa;  /* สีพื้นหลังยังคงเหมือนเดิม */
+   color: inherit;             /* ไม่เปลี่ยนสีตัวอักษร */
+}
+
+/* ✅ ปรับขนาดตัวเลข */
+.page-number {
+   width: 32px;
+   height: 32px;
+   font-family: 'Poppins', sans-serif; /* ✅ ใช้ฟอนต์ Poppins */
+   font-size: 16px;
    font-weight: bold;
+   color: #4E5D78; /* ✅ สีตัวเลขปกติ */
+   text-align: center;
+   background-color: white; /* ✅ ปกติ พื้นหลังสีขาว */
+}
+
+/* ✅ เมื่อคลิก (Active) */
+.page-number.active {
+   background-color: #E6F2FF; /* ✅ เปลี่ยนเป็นสี #E6F2FF เมื่อ active */
+   color: #233388; /* ✅ เปลี่ยนสีตัวเลขเมื่อ active */
 }
 
 /* แถบแมนูสุดท้าย */

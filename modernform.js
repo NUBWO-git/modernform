@@ -80,12 +80,29 @@ document.addEventListener('DOMContentLoaded', function () {
    setInterval(slideImagesBlueZero, 2000); // 2000 มิลลิวินาที = 2 วินาที
 });
 
-//เชื่อมไปยังหน้าของ Modernform Online Store
+//เชื่อมไปยังหน้าของ 
 document.addEventListener("DOMContentLoaded", function () {
-   let storeButton = document.getElementById("storeButton");
-   if (storeButton) {
-      storeButton.addEventListener("click", function () {
-         window.location.href = "Online Store/Modernform Online Store.html";
+   let elements = document.querySelectorAll("p, #storeButton");  // เลือกทั้ง <p> และ <button> ที่มี id = "storeButton"
+   
+   elements.forEach(function(element) {
+      element.addEventListener("click", function () {
+         let targetUrl = "";
+         
+         if (element.tagName === "P") {
+            // ตรวจสอบข้อความใน <p>
+            if (element.textContent.trim() === "Office") {
+               targetUrl = "Online Store/Modernform Online Store.html";  // สำหรับ "Office"
+            } else if (element.textContent.trim() === "Steelcase") {
+               targetUrl = "Online Store/Steelcase/Steelcase.html";  // สำหรับ "Steelcase"
+            }
+         } else if (element.id === "storeButton") {
+            // สำหรับปุ่ม
+            targetUrl = "Online Store/Steelcase/Steelcase.html";  // ปรับลิงก์ของปุ่มตามต้องการ
+         }
+         
+         if (targetUrl) {
+            window.location.href = targetUrl;  // ไปที่ URL ที่กำหนด
+         }
       });
-   }
+   });
 });
