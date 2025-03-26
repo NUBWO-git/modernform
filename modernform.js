@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
    setInterval(slideImagesBlueZero, 2000); // 2000 มิลลิวินาที = 2 วินาที
 });
 
-//เชื่อมไปยังหน้าของ 
+//เชื่อมไปยังหน้า
 document.addEventListener("DOMContentLoaded", function () {
    let elements = document.querySelectorAll("p, #storeButton");  // เลือกทั้ง <p> และ <button> ที่มี id = "storeButton"
    
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
          } else if (element.id === "storeButton") {
             // สำหรับปุ่ม
-            targetUrl = "Online Store/Steelcase/Steelcase.html";  // ปรับลิงก์ของปุ่มตามต้องการ
+            targetUrl = "Online Store/Modernform Online Store.html";  // ปรับลิงก์ของปุ่มตามต้องการ
          }
          
          if (targetUrl) {

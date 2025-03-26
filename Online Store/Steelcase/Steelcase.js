@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
          const fullText = button.getAttribute('data-full-text');
          if (buttonLang === selectedLang) {
             // เพิ่มไอคอนในปุ่มที่เลือก
-            button.innerHTML = `<img src="./img/National flag/${buttonLang}.png" alt="${buttonLang} Icon" class="icon"> ${fullText} <span class="material-symbols-outlined">arrow_left</span>`;
+            button.innerHTML = `<img src="./img/Products/${buttonLang}.png" alt="${buttonLang} Icon" class="icon"> ${fullText} <span class="material-symbols-outlined">arrow_left</span>`;
          } else {
             // รีเซ็ตปุ่มอื่นๆ ให้ไม่มีไอคอน
-            button.innerHTML = `<img src="./img/National flag/${buttonLang}.png" alt="${buttonLang} Icon" class="icon"> ${fullText}`;
+            button.innerHTML = `<img src="./img/Products/${buttonLang}.png" alt="${buttonLang} Icon" class="icon"> ${fullText}`;
          }
       });
    }
@@ -248,23 +248,17 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
    const productList = document.getElementById('gallery');
    const mainMenus = document.querySelectorAll('.Main-menu');
-   const subMenus = document.querySelectorAll('.menu');
-   const subSubMenus = document.querySelectorAll('.submenu p');
    const pagination = document.getElementById("pagination");
 
    let products = [];
    let currentCategory = null;
-   let currentSubCategory = null;
-   let currentSubSubCategory = null;
    let currentPage = 1;
    const itemsPerPage = 24; // จำนวนสินค้าต่อหน้า
 
-   function updateItemCount() {
-      const count = products.length; // จำนวนสินค้าทั้งหมดที่ดึงมา
-      document.getElementById("itemCount").textContent = count + " รายการ"; // แสดงจำนวนทั้งหมด
+   function updateItemCount(count) {
+      document.getElementById("itemCount").textContent = count + " รายการ"; 
    }
 
-   // ฟังก์ชันที่ใช้ในการแสดงสินค้า
    function displayProducts(filteredProducts) {
       productList.innerHTML = '';
       const startIdx = (currentPage - 1) * itemsPerPage;
@@ -286,28 +280,33 @@ document.addEventListener('DOMContentLoaded', function () {
          productList.appendChild(productDiv);
       });
 
-      updateItemCount();
-      renderPagination(filteredProducts.length); // เรียกใช้การแสดงหน้าหลังแสดงสินค้า
+      updateItemCount(filteredProducts.length);
+      renderPagination(filteredProducts.length);
    }
 
-   // ฟังก์ชันการแบ่งหน้า
    function renderPagination(totalItems) {
-      const totalPages = Math.ceil(totalItems / itemsPerPage); // คำนวณจำนวนหน้า
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
       pagination.innerHTML = '';
 
-      // ปุ่ม Previous
+      // เพิ่มเงื่อนไขที่จะแสดง pagination เฉพาะเมื่อสินค้ามากกว่า 24 รายการ
+      if (totalItems <= 24) {
+         pagination.style.display = 'none'; // ซ่อน pagination ถ้ามีสินค้าน้อยกว่า 25 รายการ
+         return;
+      } else {
+         pagination.style.display = 'flex'; // แสดง pagination ถ้ามีสินค้ามากกว่า 24 รายการ
+      }
+
       const prevButton = document.createElement('span');
-      prevButton.innerHTML = '<span class="material-icons">chevron_left</span>'; // ไอคอนลูกศรซ้าย
+      prevButton.innerHTML = '<span class="material-icons">chevron_left</span>';
       prevButton.classList.add('page-prev');
       prevButton.addEventListener('click', function () {
          if (currentPage > 1) {
             currentPage--;
-            fetchProducts(currentCategory, currentSubCategory, currentSubSubCategory);
+            fetchProducts(currentCategory);
          }
       });
       pagination.appendChild(prevButton);
 
-      // สร้างปุ่มเลขหน้า
       for (let i = 1; i <= totalPages; i++) {
          let pageLink = document.createElement('span');
          pageLink.textContent = i;
@@ -316,37 +315,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
          pageLink.addEventListener('click', function () {
             currentPage = i;
-            fetchProducts(currentCategory, currentSubCategory, currentSubSubCategory);
+            fetchProducts(currentCategory);
          });
 
          pagination.appendChild(pageLink);
       }
 
-      // ปุ่ม Next
       const nextButton = document.createElement('span');
-      nextButton.innerHTML = '<span class="material-icons">chevron_right</span>'; // ไอคอนลูกศรขวา
+      nextButton.innerHTML = '<span class="material-icons">chevron_right</span>';
       nextButton.classList.add('page-next');
       nextButton.addEventListener('click', function () {
          if (currentPage < totalPages) {
             currentPage++;
-            fetchProducts(currentCategory, currentSubCategory, currentSubSubCategory);
+            fetchProducts(currentCategory);
          }
       });
       pagination.appendChild(nextButton);
    }
 
-   // ฟังก์ชันสำหรับดึงข้อมูลสินค้า
-   function fetchProducts(category = null, subCategory = null, subSubCategory = null) {
-      const url = new URL('http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php');
-      const params = {};
-
-      if (category) params.category = category;
-      if (subCategory) params.subCategory = subCategory;
-      if (subSubCategory) params.subSubCategory = subSubCategory;
-
-      Object.keys(params).forEach(key => {
-         if (params[key]) url.searchParams.append(key, params[key]);
-      });
+   function fetchProducts(category = null) {
+      const url = new URL('http://localhost/modernform/Online%20Store/Steelcase/Steelcase.php');
+      if (category) {
+         url.searchParams.append("category", category);
+      }
 
       console.log('Fetching URL:', url.toString());
 
@@ -363,72 +354,24 @@ document.addEventListener('DOMContentLoaded', function () {
          .catch(error => console.error('Error fetching products:', error));
    }
 
-   // ฟังก์ชันเมื่อคลิกเมนูหลัก
    mainMenus.forEach(menu => {
       menu.addEventListener('click', function () {
          const category = this.dataset.category || null;
-
-         if (category === currentCategory) {
-            currentCategory = null;
-            currentSubCategory = null;
-            currentSubSubCategory = null;
-         } else {
-            currentCategory = category;
-            currentSubCategory = null;
-            currentSubSubCategory = null;
-         }
-
-         currentPage = 1; // รีเซ็ตหน้าเป็นหน้าแรก
+         currentCategory = category === currentCategory ? null : category;
+         currentPage = 1; 
          fetchProducts(currentCategory);
          console.log('Main menu clicked:', category);
       });
    });
 
-   // ฟังก์ชันเมื่อคลิกเมนูย่อย
-   subMenus.forEach(menu => {
-      menu.addEventListener('click', function () {
-         const subCategory = this.dataset.subcategory || null;
-
-         if (subCategory === currentSubCategory) {
-            currentSubCategory = null;
-            currentSubSubCategory = null;
-         } else {
-            currentSubCategory = subCategory;
-            currentSubSubCategory = null;
-         }
-
-         currentPage = 1; // รีเซ็ตหน้าเป็นหน้าแรก
-         fetchProducts(currentCategory, currentSubCategory);
-         console.log('Sub menu clicked:', subCategory);
-      });
-   });
-
-   // ฟังก์ชันเมื่อคลิกเมนูย่อยของหมวดหมู่ย่อย
-   subSubMenus.forEach(menu => {
-      menu.addEventListener('click', function () {
-         const subSubCategory = this.dataset.subsub || null;
-
-         if (subSubCategory === currentSubSubCategory) {
-            currentSubSubCategory = null;
-         } else {
-            currentSubSubCategory = subSubCategory;
-         }
-
-         currentPage = 1; // รีเซ็ตหน้าเป็นหน้าแรก
-         fetchProducts(currentCategory, currentSubCategory, currentSubSubCategory);
-         console.log('Sub-sub menu clicked:', subSubCategory);
-      });
-   });
-
-   fetchProducts(); // โหลดสินค้าทั้งหมดตอนเริ่มต้น
+   fetchProducts();
 });
-
 
 // รูปภาพของสินค้า
 function loadImages(sortOption) {
    console.log(sortOption);
 
-   fetch(`Modernform Online Store.php?sort=${sortOption}`)
+   fetch(`Steelcase.php?sort=${sortOption}`)
       .then(response => {
          if (!response.ok) {
             throw new Error("Network response was not ok " + response.statusText);
@@ -492,7 +435,6 @@ function updateItemCount() {
    document.getElementById("itemCount").textContent = count + " รายการ";
 }
 
-// ตัวนับหน้าเมื่อรูปครบ 24 รูป 
 document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
@@ -507,7 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
    async function fetchImages() {
       try {
          console.log("Fetching images...");
-         const response = await fetch("http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.php");
+         const response = await fetch("http://localhost/modernform/Online%20Store/Steelcase/Steelcase.php");
    
          if (!response.ok) {
             throw new Error("Failed to fetch data from API");
@@ -520,8 +462,8 @@ document.addEventListener("DOMContentLoaded", function () {
    
          if (totalItems > 0) {
             currentPage = 1; // รีเซ็ตให้กลับไปที่หน้าแรกเสมอ
-            renderPagination(); // สร้างปุ่มเพจก่อน
-            renderGallery(); // แล้วค่อยโหลด 24 รูปแรก
+            renderGallery(); // แสดงรูปภาพ
+            renderPagination(); // แสดงปุ่มเพจ
          } else {
             gallery.innerHTML = "<p>No images found.</p>"; // ถ้าไม่มีรูป
          }
@@ -536,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gallery.innerHTML = ""; // ล้างข้อมูลเก่า
       let start = (currentPage - 1) * itemsPerPage;
       let end = start + itemsPerPage;
-   
+
       console.log(`Rendering images from index ${start} to ${end} (Total: ${totalItems})`); // Debugging
    
       for (let i = start; i < end && i < totalItems; i++) {
@@ -580,7 +522,13 @@ document.addEventListener("DOMContentLoaded", function () {
    // ฟังก์ชันแสดงตัวเลขหน้า
    function renderPagination() {
       pagination.innerHTML = "";
-      
+   
+      // ถ้าจำนวนรูปภาพน้อยกว่าหรือเท่ากับ 24 รูป
+      if (totalItems <= itemsPerPage) {
+         // ไม่แสดงปุ่มเพจ
+         return;
+      }
+
       // ปุ่ม Previous
       const prevButton = document.createElement("span");
       prevButton.innerHTML = '<span class="material-icons">chevron_left</span>'; // ไอคอนลูกศรซ้าย
@@ -641,7 +589,7 @@ document.addEventListener("DOMContentLoaded", function () {
    }
 
    // คลิกเมนูเพื่อรีเฟรช
-   const menuButtons = document.querySelectorAll('.menu'); // ใช้เมนูที่มีคลาส `.menu`
+   const menuButtons = document.querySelectorAll('.menu'); // ใช้เมนูที่มีคลาส .menu
    menuButtons.forEach(button => {
       button.addEventListener('click', function () {
          refreshPage(); // เมื่อคลิกที่เมนูจะทำการรีเฟรชหน้า
@@ -649,4 +597,27 @@ document.addEventListener("DOMContentLoaded", function () {
    });
 
    fetchImages(); // เรียกฟังก์ชันดึงข้อมูลเริ่มต้น
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+   const pElements = document.querySelectorAll('.Allcontact-Box-text p');
+
+   pElements.forEach(function(p) {
+      p.addEventListener('click', function () {
+         const currentURL = window.location.href;
+
+         // ถ้าคลิกที่ข้อความ "Office" และ URL ไม่ใช่ URL ของ "Steelcase"
+         if (p.textContent === "Office") {
+            window.location.href = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
+         }
+         // ถ้าคลิกที่ข้อความ "Steelcase" และ URL คือ "Steelcase.html" อยู่แล้ว
+         if (p.textContent === "Steelcase") {
+            if (currentURL === "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html") {
+               location.reload();  // รีเฟรชหน้าเว็บ
+            } else {
+               window.location.href = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
+            }
+         }
+      });
+   });
 });

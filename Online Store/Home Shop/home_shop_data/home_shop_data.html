@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+   <head>
+      <meta charset="UTF-8" />
+      <title>อัปโหลดรูปภาพ</title>
+      <link rel="stylesheet" href="home_shop_data.css">
+   </head>
+   <body>
+      <h2>อัปโหลดรูปภาพ</h2>
+      <form action="home_shop_data.php" method="POST" enctype="multipart/form-data">
+         <!-- หมวดหมู่หลัก -->
+         <select name="main_menu" id="main_menu" onchange="updateSubCategories()">
+            <option value="">-- เลือกหมวดหลัก --</option>
+            <!-- ตัวเลือกหมวดหมู่หลักจะถูกเติมโดย JavaScript -->
+         </select>
+         
+         <!-- หมวดหมู่อย่างย่อย -->
+         <select name="sub_menu" id="sub_menu" onchange="updateSubSubCategories()">
+            <option value="">-- เลือกหมวดย่อย --</option>
+            <!-- ตัวเลือกหมวดหมู่อย่างย่อยจะถูกเติมโดย JavaScript -->
+         </select>
+         
+         <!-- หมวดหมู่ย่อยที่สุด -->
+         <select name="sub_sub_menu" id="sub_sub_menu">
+            <option value="">-- เลือกหมวดย่อยที่สุด --</option>
+            <!-- ตัวเลือกหมวดหมู่ย่อยที่สุดจะถูกเติมโดย JavaScript -->
+         </select>
+
+         <!-- อัปโหลดไฟล์ -->
+         <label for="image">เลือกไฟล์รูปภาพ:</label>
+         <input type="file" name="image" accept="image/*" required />
+
+         <!-- ชื่อ -->
+         <label for="name">ชื่อ:</label>
+         <input type="text" name="name" id="name" required />
+
+         <button type="submit" name="submit">อัปโหลดรูปภาพ</button>
+      </form>
+
+      <h2>รูปภาพที่อัปโหลด</h2>
+      <div class="gallery" id="gallery"></div>
+
+      <script src="home_shop_data.js"></script>  <!-- เรียกใช้ไฟล์ JavaScript แยก -->
+   </body>
+</html>

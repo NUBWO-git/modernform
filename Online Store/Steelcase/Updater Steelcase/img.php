@@ -12,6 +12,8 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+$response = []; // ตัวแปรเพื่อเก็บข้อมูลตอบกลับ
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["image"])) {
    // รับข้อมูลจากฟอร์ม
    $name = htmlspecialchars(trim($_POST["name"] ?? ""));
@@ -19,13 +21,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["image"])) {
 
    // ตรวจสอบค่าที่จำเป็น
    if (empty($name) || empty($category)) {
-      die("กรุณากรอกข้อมูลให้ครบถ้วน!");
+      $response['status'] = 'error';
+      $response['message'] = 'กรุณากรอกข้อมูลให้ครบถ้วน!';
+      echo json_encode($response);
+      exit;
    }
 
    // ตรวจสอบไฟล์ที่อัปโหลด
    $file = $_FILES["image"];
    if ($file["error"] !== UPLOAD_ERR_OK) {
-      die("เกิดข้อผิดพลาดในการอัปโหลดไฟล์");
+      $response['status'] = 'error';
+      $response['message'] = 'เกิดข้อผิดพลาดในการอัปโหลดไฟล์';
+      echo json_encode($response);
+      exit;
    }
 
    // ตั้งค่าโฟลเดอร์สำหรับการอัปโหลดไฟล์
@@ -42,12 +50,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["image"])) {
    // ตรวจสอบประเภทไฟล์
    $allowedTypes = ["jpg", "jpeg", "png", "gif"];
    if (!in_array($fileType, $allowedTypes)) {
-      die("อนุญาตให้แนบเฉพาะไฟล์ .jpg, .jpeg, .png, .gif เท่านั้น");
+      $response['status'] = 'error';
+      $response['message'] = 'อนุญาตให้แนบเฉพาะไฟล์ .jpg, .jpeg, .png, .gif เท่านั้น';
+      echo json_encode($response);
+      exit;
    }
 
    // ตรวจสอบขนาดไฟล์
    if ($file["size"] > 5 * 1024 * 1024) { // 5MB
-      die("ไฟล์ต้องไม่เกิน 5MB");
+      $response['status'] = 'error';
+      $response['message'] = 'ไฟล์ต้องไม่เกิน 5MB';
+      echo json_encode($response);
+      exit;
    }
 
    // ย้ายไฟล์ไปยังโฟลเดอร์
@@ -58,15 +72,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["image"])) {
       $stmt->bind_param("sss", $name, $category, $newFileName);
 
       if ($stmt->execute()) {
-         echo "อัปโหลดและบันทึกข้อมูลสำเร็จ!";
+         $response['status'] = 'success';
+         $response['message'] = 'อัปโหลดและบันทึกข้อมูลสำเร็จ!';
+         $response['data'] = [
+            'name' => $name,
+            'category' => $category,
+            'image_url' => $targetFilePath
+         ];
       } else {
-         echo "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . $conn->error;
+         $response['status'] = 'error';
+         $response['message'] = 'เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' . $conn->error;
       }
 
       $stmt->close();
    } else {
-      echo "เกิดข้อผิดพลาดในการอัปโหลดไฟล์";
+      $response['status'] = 'error';
+      $response['message'] = 'เกิดข้อผิดพลาดในการอัปโหลดไฟล์';
    }
 }
 
 $conn->close();
+
+// ส่งข้อมูลในรูปแบบ JSON
+echo json_encode($response);
