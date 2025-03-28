@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
          productDiv.innerHTML = `
             <img src="${product.src}" alt="${product.name}" class="gallery-image">
             <div class="gallery-name">${product.name}</div>
-            <div class="gallery-category">${product.main_menu}</div>
+            <div class="gallery-category">${product.category}</div>
             <div class="gallery-buttons">
                   <button class="gallery-button other-button">Other</button>
                   <button class="gallery-button buy-now-button">Buy Now</button>
@@ -343,13 +343,13 @@ document.addEventListener('DOMContentLoaded', function () {
    }
 
    // ฟังก์ชันสำหรับดึงข้อมูลสินค้า
-   function fetchProducts(main_menu = null, sub_menu = null, sub_sub_menu = null) {
-      const url = new URL('http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.php');
+   function fetchProducts(category = null, subCategory = null, subSubCategory = null) {
+      const url = new URL('http://localhost/modernform/Online%20Store/Hardware/Hardware.php');
       const params = {};
 
-      if (main_menu) params.main_menu = main_menu;
-      if (sub_menu) params.sub_menu = sub_menu;
-      if (sub_sub_menu) params.sub_sub_menu = sub_sub_menu;
+      if (category) params.category = category;
+      if (subCategory) params.subCategory = subCategory;
+      if (subSubCategory) params.subSubCategory = subSubCategory;
 
       Object.keys(params).forEach(key => {
          if (params[key]) url.searchParams.append(key, params[key]);
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function loadImages(sortOption) {
    console.log(sortOption);
 
-   fetch(`./Home Shop.php?sort=${sortOption}`)
+   fetch(`Hardware.php?sort=${sortOption}`)
       .then(response => {
          if (!response.ok) {
             throw new Error("Network response was not ok " + response.statusText);
@@ -503,7 +503,7 @@ function updateItemCount() {
 async function fetchImages() {
    try {
       console.log("Fetching images...");
-      const response = await fetch("http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.php");
+      const response = await fetch("http://localhost/modernform/Online%20Store/Hardware/Hardware.php");
 
       if (!response.ok) {
          throw new Error("Failed to fetch data from API");

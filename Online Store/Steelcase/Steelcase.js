@@ -226,7 +226,7 @@ function closeAllSubSubMenus() {
 document.addEventListener("DOMContentLoaded", function () {
    const mainMenus = document.querySelectorAll(".Main-menu");
    const officeTitle = document.querySelector(".OFFICE-ONE h2");
-   const defaultTitle = "OFFICE"; // ชื่อเมนูหน้าหลัก
+   const defaultTitle = "Steelcase"; // ชื่อเมนูหน้าหลัก
 
    mainMenus.forEach(menu => {
       menu.addEventListener("click", function () {
@@ -605,18 +605,36 @@ document.addEventListener('DOMContentLoaded', function () {
    pElements.forEach(function(p) {
       p.addEventListener('click', function () {
          const currentURL = window.location.href;
+         let targetUrl = "";
 
-         // ถ้าคลิกที่ข้อความ "Office" และ URL ไม่ใช่ URL ของ "Steelcase"
-         if (p.textContent === "Office") {
-            window.location.href = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
+         switch (p.textContent.trim()) {
+            case "Office":
+               targetUrl = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
+               break;
+            case "Steelcase":
+               targetUrl = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
+               if (currentURL === targetUrl) {
+                  location.reload();
+                  return;
+               }
+               break;
+            case "Home":
+               targetUrl = "http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.html";
+               break;
+            case "Kitchen":
+               targetUrl = "http://localhost/modernform/Online%20Store/Kitchen/Kitchen.html";
+               break;
+            case "Walk-in Closet & Storage":
+               targetUrl = "http://localhost/modernform/Online%20Store/Walk/Walk.html";
+               break;
+            case "Hardware & Fitting":
+               targetUrl = "http://localhost/modernform/Online%20Store/Hardware/Hardware.html";
+               break;
          }
-         // ถ้าคลิกที่ข้อความ "Steelcase" และ URL คือ "Steelcase.html" อยู่แล้ว
-         if (p.textContent === "Steelcase") {
-            if (currentURL === "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html") {
-               location.reload();  // รีเฟรชหน้าเว็บ
-            } else {
-               window.location.href = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
-            }
+
+         if (targetUrl) {
+            console.log("Navigating to:", targetUrl);
+            window.location.href = targetUrl;
          }
       });
    });

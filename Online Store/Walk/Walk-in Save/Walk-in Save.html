@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="Walk-in Save.css" />
+   <title>อัปโหลดรูปภาพและเลือกหมวดหมู่</title>
+</head>
+
+<script src="Walk-in Save.js"></script>
+
+<body>
+   <form action="Walk-in Save.php" method="POST" enctype="multipart/form-data">
+      <label for="name">ชื่อสินค้า:</label>
+      <input type="text" name="name" id="name" required />
+      
+      <label for="image">เลือกไฟล์รูปภาพ:</label>
+      <input type="file" name="image" id="image" required />
+      
+      <label for="category">เลือกหมวดหมู่:</label>
+      <select name="category" id="category" required>
+         <option value="Bookshelf & Multimedia">Bookshelf & Multimedia</option>
+         <option value="Wall decoration">Wall decoration</option>
+         <option value="Walk-in closets">Walk-in closet</option>
+         <option value="Wardrobe">Wardrobe</option>
+         <option value="Partition & Sliding Door">Partition & Sliding Door</option>
+      </select>
+      
+      <button type="submit" name="submit">อัปโหลด</button>
+   </form>
+</body>
+</html>

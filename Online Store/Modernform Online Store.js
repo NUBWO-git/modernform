@@ -835,32 +835,40 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
    const pElements = document.querySelectorAll('.Allcontact-Box-text p');
 
-   pElements.forEach(function (p) {
+   pElements.forEach(function(p) {
       p.addEventListener('click', function () {
-         console.log("Clicked on:", p.textContent);  // เช็กข้อความที่ถูกคลิก
-
          const currentURL = window.location.href;
+         let targetUrl = "";
 
-         // ถ้าคลิกที่ข้อความ "Steelcase"
-         if (p.textContent === "Steelcase") {
-            if (currentURL === "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html") {
-               location.reload();
-            } else {
-               window.location.href = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
-            }
+         switch (p.textContent.trim()) {
+            case "Office":
+               targetUrl = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
+               break;
+            case "Steelcase":
+               targetUrl = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
+               if (currentURL === targetUrl) {
+                  location.reload();
+                  return;
+               }
+               break;
+            case "Home":
+               targetUrl = "http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.html";
+               break;
+            case "Kitchen":
+               targetUrl = "http://localhost/modernform/Online%20Store/Kitchen/Kitchen.html";
+               break;
+            case "Walk-in Closet & Storage":
+               targetUrl = "http://localhost/modernform/Online%20Store/Walk/Walk.html";
+               break;
+            case "Hardware & Fitting":
+               targetUrl = "http://localhost/modernform/Online%20Store/Hardware/Hardware.html";
+               break;
          }
 
-         // ถ้าคลิกที่ข้อความ "Office"
-         if (p.textContent === "Office") {
-            window.location.href = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
-         }
-
-         // ถ้าคลิกที่ข้อความ "Home"
-         if (p.textContent === "Home") {
-            console.log("Navigating to Home Shop...");  // เช็กว่าไปที่ Home Shop หรือไม่
-            window.location.href = "http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.html";
+         if (targetUrl) {
+            console.log("Navigating to:", targetUrl);
+            window.location.href = targetUrl;
          }
       });
    });
 });
-

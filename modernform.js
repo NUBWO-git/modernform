@@ -82,26 +82,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //เชื่อมไปยังหน้า
 document.addEventListener("DOMContentLoaded", function () {
-   let elements = document.querySelectorAll("p, #storeButton");  // เลือกทั้ง <p> และ <button> ที่มี id = "storeButton"
-   
-   elements.forEach(function(element) {
+   let elements = document.querySelectorAll("p, #storeButton");
+
+   elements.forEach(function (element) {
       element.addEventListener("click", function () {
          let targetUrl = "";
-         
+
          if (element.tagName === "P") {
-            // ตรวจสอบข้อความใน <p>
-            if (element.textContent.trim() === "Office") {
-               targetUrl = "Online Store/Modernform Online Store.html";  // สำหรับ "Office"
-            } else if (element.textContent.trim() === "Steelcase") {
-               targetUrl = "Online Store/Steelcase/Steelcase.html";  // สำหรับ "Steelcase"
+            let text = element.textContent.trim();
+
+            switch (text) {
+               case "Office":
+                  targetUrl = "Online%20Store/Modernform%20Online%20Store.html";
+                  break;
+               case "Steelcase":
+                  targetUrl = "Online%20Store/Steelcase/Steelcase.html";
+                  break;
+               case "Home":
+                  targetUrl = "Online%20Store/Home%20Shop/Home%20Shop.html";
+                  break;
+               case "Kitchen":
+                  targetUrl = "Online%20Store/Kitchen/Kitchen.html";
+                  break;
+               case "Walk-in closet & Storage":
+                  targetUrl = "Online%20Store/Walk/Walk.html";
+                  break;
+               case "Hardware & Fitting":
+                  targetUrl = "Online%20Store/Hardware/Hardware.html";
+                  break;
             }
          } else if (element.id === "storeButton") {
-            // สำหรับปุ่ม
-            targetUrl = "Online Store/Modernform Online Store.html";  // ปรับลิงก์ของปุ่มตามต้องการ
+            targetUrl = "Online%20Store/Modernform%20Online%20Store.html";
          }
-         
+
+         console.log("Target URL:", targetUrl);  // Debugging
+
          if (targetUrl) {
-            window.location.href = targetUrl;  // ไปที่ URL ที่กำหนด
+            window.location.href = targetUrl;
          }
       });
    });

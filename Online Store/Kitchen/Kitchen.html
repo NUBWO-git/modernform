@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Kitchen</title>
+      <link rel="stylesheet" href="Kitchen.css" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+   </head>
+
+   <script src="./Kitchen.js"></script>
+
+   <body>
+      <!-- zone แถบเมนู -->
+      <nav class="navbar">
+         <div class="logo-menu">
+            <div class="logo">
+               <img src="./img/Logo/Logo 2.png" alt="Logo" />
+            </div>
+            <ul class="nav-links">
+               <li>
+                  <a href="#" id="productsBtn">Products</a>
+                  <!-- เมนูย่อยที่ถูกซ่อนไว้ -->
+                  <ul class="products-submenu" id="submenu">
+                     <div class="products-container">
+                        <!-- Office -->
+                        <div class="product-item">
+                           <img src="./img/office Logo/office.png" />
+                              <div class="product-text">
+                                 <h2>Office</h2>
+                                 <div class="product-details">
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Gaming</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Workspace</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Executive</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Meeting & Conference</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Lounge area</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Collaboration space</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Storage</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Itoki</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Workplace Planning</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Solution</p>
+                                    <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Modernform x PDM</p>
+                                 </div>
+                              </div>
+                        </div>
+
+                        <!-- Steelcase -->
+                        <div class="product-item">
+                           <img src="./img/office Logo/Steelcase.png" />
+                           <div class="product-text">
+                              <h2>STEELCASE</h2>
+                              <div class="product-details">
+                                 <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Ergonomic chair</p>
+                                 <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Adjustable desk</p>
+                                 <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Working accessories</p>
+                                 <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Worklounge</p>
+                                 <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Occasional chairs</p>
+                                 <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Storage</p>
+                              </div>
+                           </div>
+                     </div>
+
+                     <!-- Home -->
+                     <div class="product-item">
+                        <img src="./img/office Logo/Home.png" />
+                        <div class="product-text">
+                           <h2>Home</h2>
+                           <div class="product-details">
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Living room</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Dining room</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Bedroom</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Series</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Kitchen -->
+                     <div class="product-item">
+                        <img src="./img/office Logo/KITCHEN .png" />
+                        <div class="product-text">
+                           <h2>KITCHEN</h2>
+                           <div class="product-details">
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Kitchens</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Kitchen Accessories</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Barstool</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Walk-in Closet & Storage -->
+                     <div class="product-item">
+                        <img src="./img/office Logo/WALK-IN CLOSET & STORAGE.png" />
+                        <div class="product-text">
+                           <h2>WALK-IN CLOSET & STORAGE</h2>
+                           <div class="product-details">
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Bookshelf & Multimedia</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Wall decoration</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Walk-in closet</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Wardrobe</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Partition & Sliding Door</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Hardware & Fitting -->
+                     <div class="product-item">
+                        <img src="./img/office Logo/HARDWARE & FITTING .png" />
+                        <div class="product-text">
+                           <h2>HARDWARE & FITTING</h2>
+                           <div class="product-details">
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Furniture Fitting</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Architectural Hardware</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Surfacing and Flooring Material</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Fire-rated & Decorative Doors</p>
+                              <p><i class="fa-solid fa-chevron-right arrow-icon"></i>Elevator Decoration</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </ul>
+            </li>
+            <li><a href="#">Collection</a></li>
+            <li><a href="#">Project Reference</a></li>
+            <li><a href="#">E-Catalogue</a></li>
+            <li><a href="#">Export</a></li>
+            <li><a href="#">Online Store</a></li>
+            </ul>
+         </div>
+         <div class="language-and-icons">
+            <button id="translateButton">En</button>
+            <ul id="languageMenu" class="languageMenu" style="display: none">
+               <li>
+                  <button onclick="selectLanguage('Th')" data-lang="Th" data-full-text="Th - ภาษาไทย">
+                     <img src="img/Products/Th.png" alt="Thai Icon" class="icon"/>Th - ภาษาไทย
+                  </button>
+               </li>
+               <li>
+                  <button onclick="selectLanguage('En')" data-lang="En" data-full-text="En - English">
+                     <img src="img/Products/En.png" alt="English Icon" class="icon"/>En - English
+                  </button>
+               </li>
+            </ul>
+
+            <!-- ไอคอนค้นหาและ GPS -->
+            <div class="search-icon">
+               <span class="material-symbols-outlined">search</span>
+            </div>
+            <div class="gps-icon">
+               <span class="material-symbols-outlined">location_on</span>
+            </div>
+         </div>
+      </nav>
+
+      <!-- เมนูและระบบอื่นๆ -->
+      <div class="OFFICE-TWE">
+         <img src="./img/background/snapedit_1743040675267.jpeg" />
+      </div>
+      <div class="OFFICE-ONE">
+         <h2>Kitchen</h2>
+      </div>
+
+      <!-- ข้อความเรื่มต้น -->
+      <div class="message-one">
+         <p>ตอบรับรูปแบบชีวิตทุกไลฟ์สไตล์ด้วยชุดห้องครัวและชุดเคาน์เตอร์ครัวจาก<strong> Modernform</strong> ที่ออกแบบมาเพื่อตอบโจทย์การใช้งานห้องครัวของคนยุคใหม่ได้อย่างลงตัว ด้วยเฟอร์นิเจอร์ครัวที่คัดสรรมาอย่างพิถีพิถัน </p>
+         <p>การันตีในเรื่องคุณภาพของวัสดุที่เลือกใช้ ให้ความคงทน มีอายุการใช้งานที่ยาวนาน พร้อมดีไซน์ทันสมัย เรียบหรู โดยมีแบบห้องครัวให้เลือกหลากหลายสไตล์ ตอบรับกับทุกความต้องการและรสนิยมของผู้ใช้</p>
+      </div>
+
+      <div class="office-container">
+         <!-- เมนูหมวดสินค้า -->
+         <div class="office-menu">
+            <!-- แถวเมนูออฟฟิศ -->
+            <div class="character">
+               <h2>Kitchen</h2>
+               <p id="itemCount">0 รายการ</p>
+            </div>
+            <div id="product-list" class="Retro-Menu">
+               <p class="Main-menu" data-category="Kitchens">Kitchens</p>
+               <p class="Main-menu" data-category="Kitchen Accessories">Kitchen Accessories</p>
+               <p class="Main-menu" data-category="Barstool">Barstool</p>
+            </div>
+         </div>
+
+         <!-- รูปภาพของสินค้า -->
+         <div id="gallery" class="gallery"></div>
+      </div>
+
+      <div id="pagination" class="pagination"></div>
+
+      <!-- แถบ Store Location & Contact Us & Support -->
+      <div class="Setup">
+      <!-- Store Location -->
+      <div class="contact-item">
+         <div class="circle"></div>
+         <img src="./img/Message sent/location.png" alt="Location Icon">
+         <h2>Store Location</h2>
+         <p>Locate the nearest Modernform store.</p>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="contact-item">
+         <div class="circle"></div>
+         <img src="./img/Message sent/email.png" alt="Email Icon">
+         <h2>Contact Us</h2>
+         <p>enquiry@modernform.co.th</p>
+      </div>
+
+      <!-- Support -->
+      <div class="contact-item">
+         <div class="circle"></div>
+         <img src="./img/Message sent/phone-call.png" alt="Phone Icon">
+         <h2>Support</h2>
+         <p>Call center 0 2094 9999</p>
+      </div>
+   </div>
+
+   <!-- ไอคอนช่องทางติดต่อออนไลน์-->
+   <div class="online-contact">
+      <!-- ไอคอน Facebook -->
+      <a href="https://www.facebook.com/yourpage" target="_blank">
+         <img src="./img/Social/Facebook.png" alt="Facebook">
+         <img src="./img/Social/facebook_color.png">
+      </a>
+
+      <!-- ไอคอน Instagram -->
+      <a href="https://www.instagram.com/yourpage" target="_blank">
+         <img src="./img/Social/Instagram.png" alt="Instagram">
+         <img src="./img/Social/Instagram_color.png">
+      </a>
+
+      <!-- ไอคอน YouTube -->
+      <a href="https://www.youtube.com/yourpage" target="_blank">
+         <img src="./img/Social/YouTube.png" alt="YouTube">
+         <img src="./img/Social/YouTube_color.png">
+      </a>
+
+      <!-- ไอคอน Line -->
+      <a href="https://line.me/yourpage" target="_blank">
+         <img src="./img/Social/Line.png" alt="Line">
+         <img src="./img/Social/Line_color.png">
+      </a>
+
+      <!-- ไอคอน Pinterest -->
+      <a href="https://www.pinterest.com/yourpage" target="_blank">
+         <img src="./img/Social/Pinterest.png" alt="Pinterest">
+         <img src="./img/Social/Pinterest_color.png">
+      </a>
+
+      <!-- ไอคอน TikTok -->
+      <a href="https://www.tiktok.com/@yourpage" target="_blank">
+         <img src="./img/Social/TikTok.png" alt="TikTok">
+         <img src="./img/Social/TikTok _color.png">
+      </a>
+
+      <!-- ไอคอน X (Twitter) -->
+      <a href="https://twitter.com/yourpage" target="_blank">
+         <img src="./img/Social/X (Twitter).png" alt="X (Twitter)">
+         <img src="./img/Social/X (Twitter)_color.png">
+      </a>
+
+      <!-- ไอคอน Threads -->
+      <a href="https://www.threads.net/yourpage" target="_blank">
+         <img src="./img/Social/Threads.png" alt="Threads">
+         <img src="./img/Social/Threads_color.png">
+      </a>
+
+      <!-- ไอคอน Lemon8 -->
+      <a href="https://www.lemon8-app.com/yourpage" target="_blank">
+         <img src="./img/Social/Lemon8.png" alt="Lemon8">
+         <img src="./img/Social/Lemon8_color.png">
+      </a>
+   </div>
+
+   <!-- STAY UPDATED -->
+   <div class="stay-updated-container">
+      <!-- ส่วน STAY UPDATED -->
+      <div class="stay-updated">
+         <h2>STAY</h2>
+         <h2>UPDATED</h2>
+      </div>
+      <div class="stay-updated-divider">
+         |
+      </div>
+
+      <!-- ช่องค้นหาสำหรับ SIGN UP -->
+      <div class="signup-container">
+         <!-- ช่องค้นหาสำหรับ SIGN UP -->
+         <div class="signup-search-container">
+            <input type="text" placeholder="Email address" class="signup-search-input">
+            <div class="signup-search-icon">
+               <img src="./img/Message sent/STAY UPDATED on.1.png" alt="Stay Updated Image">
+            </div>
+         </div>
+
+         <!-- ข้อความใต้ช่องค้นหา -->
+         <div class="signup-text-container">
+            <p><span class="signup-highlight">SIGN UP</span> to receive inspiration, news, product updates, </p>
+            <p>and special offers from our team.</p>
+         </div>
+      </div>
+   </div>
+
+   <!-- ช่องทางการติดต่อทั้งหมด -->
+   <div class="All-contact-channels">
+      <!-- PRODUCT INFO -->
+      <div class="contact-section">
+         <h2 class="Allcontact-Box">PRODUCT INFO</h2>
+         <div class="Allcontact-Box-text">
+            <p>Office</p>
+            <p>Steelcase</p>
+            <p>Home</p>
+            <p>Kitchen</p>
+            <p>Walk-in closet & Storage</p>
+            <p>Hardware & Fitting</p>
+            <p>Collection</p>
+            <p>Project Reference</p>
+            <p>Editorial</p>
+            <p>News</p>
+            <p>E-Catalogue</p>
+            <p>Customer Care</p>
+         </div>
+      </div>
+
+      <!-- CORPORATE -->
+      <div class="contact-section">
+         <h2 class="Allcontact-Box">CORPORATE</h2>
+         <div class="Allcontact-Box-text">
+            <p>About Us</p>
+            <p>Investors</p>
+            <p>Professionals</p>
+            <p>Sustainability</p>
+            <p>Career</p>
+            <p>Contact</p>
+         </div>
+      </div>
+
+      <!-- CUSTOMER SERVICE -->
+      <div class="contact-section">
+         <h2 class="Allcontact-Box">CUSTOMER SERVICE</h2>
+         <div class="Allcontact-Box-text">
+            <p>Find Store</p>
+            <p>Warranty</p>
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+         </div>
+      </div>
+   </div>
+
+   <!-- © Modernform 2020 -->
+   <div class="footer-content">
+      <p>© Modernform 2020</p>
+   </div>
+   </body>
+</html>
