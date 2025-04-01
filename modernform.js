@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //เชื่อมไปยังหน้า
 document.addEventListener("DOMContentLoaded", function () {
-   let elements = document.querySelectorAll("p, #storeButton");
+   let elements = document.querySelectorAll("p, #storeButton, #newButton");
 
    elements.forEach(function (element) {
       element.addEventListener("click", function () {
@@ -113,6 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
          } else if (element.id === "storeButton") {
             targetUrl = "Online%20Store/Modernform%20Online%20Store.html";
+         } else if (element.id === "newButton") { // เพิ่มปุ่มใหม่
+            targetUrl = "./PET COLLECTION/PET COLLECTION.html";
          }
 
          console.log("Target URL:", targetUrl);  // Debugging
