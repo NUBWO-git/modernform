@@ -873,42 +873,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //ลิ้ง URL
-document.addEventListener('DOMContentLoaded', function () {
-   const pElements = document.querySelectorAll('.Allcontact-Box-text p');
+document.addEventListener("DOMContentLoaded", function () {
+   let elements = document.querySelectorAll("p, #storeButton, #newButton");
 
-   pElements.forEach(function (p) {
-      p.addEventListener('click', function () {
-         const currentURL = window.location.href;
+   elements.forEach(function (element) {
+      element.addEventListener("click", function () {
          let targetUrl = "";
+         console.log("Clicked element:", element);  // ตรวจสอบว่า element ที่คลิกคืออะไร
 
-         switch (p.textContent.trim()) {
-            case "Office":
-               targetUrl = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
-               break;
-            case "Steelcase":
-               targetUrl = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
-               if (currentURL === targetUrl) {
-                  location.reload();
-                  return;
-               }
-               break;
-            case "Home":
-               targetUrl = "http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.html";
-               break;
-            case "Kitchen":
-               targetUrl = "http://localhost/modernform/Online%20Store/Kitchen/Kitchen.html";
-               break;
-            case "Walk-in Closet & Storage":
-               targetUrl = "http://localhost/modernform/Online%20Store/Walk/Walk.html";
-               break;
-            case "Hardware & Fitting":
-               targetUrl = "http://localhost/modernform/Online%20Store/Hardware/Hardware.html";
-               break;
-         }
+         if (element.tagName === "P") {
+            let text = element.textContent.trim();
+
+            switch (text) {
+               case "Office":
+                  targetUrl = "Online%20Store/Modernform%20Online%20Store.html";
+                  break;
+               case "Steelcase":
+                  targetUrl = "Online%20Store/Steelcase/Steelcase.html";
+                  break;
+               case "Home":
+                  targetUrl = "Online%20Store/Home%20Shop/Home%20Shop.html";
+                  break;
+               case "Kitchen":
+                  targetUrl = "Online%20Store/Kitchen/Kitchen.html";
+                  break;
+               case "Walk-in closet & Storage":
+                  targetUrl = "Online%20Store/Walk/Walk.html";
+                  break;
+               case "Hardware & Fitting":
+                  targetUrl = "Online%20Store/Hardware/Hardware.html";
+                  break;
+            }
+         } else if (element.id === "storeButton") {
+            targetUrl = "http://localhost/modernform/PET%20COLLECTION/MILLY%20COLLECTION/MILLY%20COLLECTION.html";
+         } 
+
+         console.log("Target URL:", targetUrl);  // Debugging
 
          if (targetUrl) {
-            console.log("Navigating to:", targetUrl);
-            window.location.href = targetUrl;
+            window.location.href = targetUrl;  // ลองดูว่าไปถึงตรงนี้หรือไม่
          }
       });
    });
