@@ -481,7 +481,7 @@
    margin: 5px 0;
 }
 
-button {
+.button-center {
    width: 119px;
    height: 44px;
    background-color: #233388;
@@ -492,7 +492,7 @@ button {
    margin-top: auto; /* ดันปุ่มไปล่าง */
 }
 
-button:hover {
+.button-center:hover {
    background-color: #005bb5;
 }
 

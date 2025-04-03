@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   const itemsPerPage = 20; // 20 รูปต่อหน้า
    let currentPage = 1;
    let totalItems = 0;
    let totalPages = 0;
@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   const itemsPerPage = 20; // 20 รูปต่อหน้า
    let currentPage = 1;
    let totalItems = 0;
    let totalPages = 0;
@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function () {
    let products = [];
    let currentCategory = null;
    let currentPage = 1;
-   const itemsPerPage = 24; // จำนวนสินค้าต่อหน้า
+   const itemsPerPage = 20; // จำนวนสินค้าต่อหน้า
 
    function updateItemCount() {
       const count = products.length; // จำนวนสินค้าทั้งหมดที่ดึงมา
@@ -710,12 +710,12 @@ function updateItemCount() {
 }
 
 
-// ตัวนับหน้าเมื่อรูปครบ 24 รูป 
+// ตัวนับหน้าเมื่อรูปครบ 20 รูป 
 document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   const itemsPerPage = 20; // 20 รูปต่อหน้า
    let currentPage = 1;
    let totalItems = 0;
    let totalPages = 0;

@@ -430,8 +430,7 @@
 .text-advert {
    display: flex;
    flex-direction: column;
-   align-items: center; /* จัดให้อยู่ตรงกลางในแนวนอน */
-   text-align: center; /* จัดข้อความให้ตรงกลาง */
+   align-items: flex-start; /* จัดให้อยู่ชิดซ้าย */
 }
 
 .text-advert h2 {
@@ -446,6 +445,7 @@
    font-size: 12px;
    width: 100%; /* ใช้ความกว้างเต็ม */
    margin-top: 10px; /* เพิ่มระยะห่างระหว่าง p แต่ละตัว */
+   text-align: left; /* จัดข้อความให้อยู่ชิดซ้าย */
 }
 
 .text-advert {
@@ -469,19 +469,26 @@
 }
 
 .center-box .description {
-   flex-grow: 1; /* ทำให้ p อยู่กลาง */
+   flex-grow: 1; /* ทำให้กล่องขยายตัว */
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   justify-content: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+   align-items: flex-start; /* จัดเนื้อหาภายในให้ชิดซ้าย */
 }
 
 .center-box p {
    font-family: "Poppins", sans-serif;
-   font-size: 14px;
-   margin: 5px 0;
+   font-size: 13px;
+   margin: 8px 0;
+   text-align: left; /* จัดข้อความใน p ให้ชิดซ้าย */
 }
 
-button {
+/* ทำให้ตัวอักษรภาษาอังกฤษเป็นตัวหนา */
+.center-box p strong {
+   font-weight: bold;
+}
+
+.button-center {
    width: 119px;
    height: 44px;
    background-color: #233388;
@@ -492,7 +499,7 @@ button {
    margin-top: auto; /* ดันปุ่มไปล่าง */
 }
 
-button:hover {
+.button-center:hover {
    background-color: #005bb5;
 }
 
@@ -501,19 +508,61 @@ button:hover {
    width: 1004px;
    height: 568px;
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    align-items: center;
-   justify-content: center;
+   justify-content: space-between;
    background-color: #D9D9D9;
    padding: 20px;
    box-sizing: border-box;
    text-align: center;
 }
 
-.advert-item.large .image-advert img {
-   width: 950px;
-   height: 500px;
+.advert-item.large > div {
+   width: 48%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.advert-item.large img {
+   width: 333px;
+   height: 237px;
    object-fit: cover;
+}
+
+.advert-item.large h2 {
+   font-family: "Poppins", sans-serif;
+   font-size: 20px;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+.advert-item.large p {
+   font-family: "Poppins", sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+   margin-top: 10px;
+   margin-bottom: 15px;
+   text-align: left;
+}
+
+/* Multi-function: ระยะห่างข้างล่าง */
+.multi-function img {
+   margin-bottom: 40px; /* ระยะห่างด้านล่างของรูป */
+}
+
+.multi-function p {
+   margin-top: 10px; /* ระยะห่างระหว่างข้อความกับรูป */
+}
+
+/* Free Stand: ระยะห่างข้างบน */
+.free-stand img {
+   margin-top: 40px; /* ระยะห่างด้านบนของรูป */
+}
+
+.free-stand p {
+   margin-bottom: 30px; /* ระยะห่างระหว่างข้อความกับรูป */
 }
 
 .advert-item.large .text-advert {
@@ -556,19 +605,6 @@ button:hover {
    font-size: 20px;
    text-align: center;
    font-family: "Poppins", sans-serif;
-}
-
-/* Media Queries สำหรับขนาดหน้าจอเล็ก */
-@media (max-width: 768px) {
-   .advert-item {
-      width: 48%;
-   }
-}
-
-@media (max-width: 480px) {
-   .advert-item {
-      width: 100%;
-   }
 }
 
 /* แถบเมนูสินค้า */
@@ -917,7 +953,7 @@ button:hover {
 
 /* สไตล์สำหรับชื่อสินค้า */
 .gallery-name {
-   font-size: 16px;
+   font-size: 12px;
    color: #000000;
    font-family: "Poppins", sans-serif;
    font-weight: bold;

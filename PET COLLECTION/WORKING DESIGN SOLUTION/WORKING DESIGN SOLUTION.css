@@ -1,0 +1,1382 @@
+/* รีเซ็ตค่าการแสดงผลเบื้องต้น */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+/* ตั้งค่ารูปแบบแถบเมนู */
+.navbar {
+   background-color: #ffffff;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0px 20px;
+   border-bottom: 2px solid #ddd;
+   top: 0;
+   z-index: 1000;
+   box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
+   /* เพิ่มเงา */
+}
+
+/* โลโก้และเมนูรวมกัน */
+.navbar .logo-menu {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+/* โลโก้ */
+.navbar .logo img {
+   height: 65px;
+   width: auto;
+}
+
+/* เมนู */
+.nav-links {
+   list-style: none;
+   display: flex;
+   gap: 15px;
+   margin: 0;
+   /* ลบ margin */
+}
+
+.nav-links li a {
+   color: #000000;
+   text-decoration: none;
+   font-size: 14px;
+   padding: 6px 10px;
+   font-family: 'Poppins', sans-serif;
+   transition: color 0.3s ease, border-bottom 0.3s ease;
+   border-bottom: 2px solid transparent;
+}
+
+.nav-links li a:hover {
+   color: #233388;
+}
+
+/* ตัวแปลภาษาและไอคอน */
+.language-and-icons {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+/* ปุ่มเปลี่ยนภาษา */
+#translateButton {
+   display: flex;
+   align-items: center;
+   background: none;
+   border: none;
+   color: #000;
+   font-size: 14px;
+   font-family: 'Poppins', sans-serif;
+   cursor: pointer;
+   padding: 0;
+   gap: 12px;
+   transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#translateButton:hover {
+   color: #169bdd;
+   transform: none;
+}
+
+/* ไอคอนในปุ่มเปลี่ยนภาษา */
+#translateButton .arrow-icon {
+   font-size: 16px;
+   position: relative;
+   top: 2px;
+   line-height: 1;
+   vertical-align: middle;
+}
+
+/* ไอคอนค้นหาและ GPS */
+.search-icon,
+.gps-icon {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   font-size: 20px;
+   color: #374957;
+   transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* ขยับตำแหน่งไอคอน */
+.search-icon {
+   position: relative;
+   top: 1px;
+}
+
+.gps-icon {
+   position: relative;
+   ;
+   top: 1px;
+}
+
+.search-icon:hover,
+.gps-icon:hover {
+   color: #169bdd;
+}
+
+/* เมนูภาษา */
+.languageMenu {
+   position: absolute;
+   top: 60px;
+   right: 60px;
+   background-color: #ffffff;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   list-style: none;
+   display: none;
+   border-radius: 8px;
+   z-index: 999;
+   width: 210px;
+   animation: fadeIn 0.3s ease;
+}
+
+.languageMenu li {
+   margin-bottom: 12px;
+}
+
+.languageMenu li:last-child {
+   margin-bottom: 0;
+}
+
+.languageMenu li button {
+   display: flex;
+   align-items: center;
+   background-color: transparent;
+   border: none;
+   padding: 8px 16px;
+   cursor: pointer;
+   font-size: 15px;
+   font-family: 'Poppins', sans-serif;
+   text-align: left;
+   width: 100%;
+   border-radius: 5px;
+   gap: 10px;
+   line-height: 1.5;
+   color: #000000;
+   justify-content: flex-start;
+}
+
+.languageMenu li button .icon {
+   order: -1;
+}
+
+/* เพิ่มการเปลี่ยนสีเมื่อ hover */
+.languageMenu li button:hover {
+   background-color: #E6F2FF;
+   color: #169bdd;
+}
+
+/* เปลี่ยนสีปุ่มที่ถูกเลือก */
+.languageMenu li button.selected {
+   background-color: #169bdd;
+   color: #ffffff;
+}
+
+/* ไอคอนในเมนูภาษา */
+.languageMenu .icon {
+   width: 20px;
+   /* ขนาดไอคอน */
+   height: 20px;
+   object-fit: cover;
+   vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+   .languageMenu {
+      top: 50px;
+      right: 15px;
+      padding: 10px;
+   }
+
+   .languageMenu .icon {
+      width: 16px;
+      height: 16px;
+   }
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* เมนูใน Products */
+/* ซ่อนเมนูย่อยตอนเริ่มต้น */
+.products-submenu {
+   display: none;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   gap: 20px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   margin-top: 3px;
+   position: absolute;
+   left: 10px;
+   top: 9%;
+   background-color: #fff;
+   z-index: 10;
+   width: calc(100% - 20px);
+   max-height: 520px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+   padding-left: 10px;
+}
+
+/* แสดงเมนูย่อยเมื่อคลิก */
+.products-submenu.show {
+   display: flex;
+}
+
+/* เพิ่มสไตล์สำหรับเมนูย่อย */
+.products-submenu li {
+   margin-bottom: 10px;
+}
+
+/* สไตล์ลิงค์ในเมนูย่อย */
+.products-submenu li a {
+   text-decoration: none;
+   color: #333;
+   padding: 8px 15px;
+   display: block;
+   border-radius: 6px;
+   transition: background-color 0.3s;
+}
+
+/* เพิ่มสีเมื่อเมาส์ไปเหนือ */
+.products-submenu li a:hover {
+   background-color: #f0f0f0;
+}
+
+/* ปรับขนาดแถบเลื่อน */
+.products-submenu::-webkit-scrollbar {
+   width: 10px;
+   height: 120px;
+}
+
+.products-submenu::-webkit-scrollbar-thumb {
+   background-color: #888;
+   border-radius: 10px;
+   transition: background-color 0.3s;
+}
+
+.products-submenu::-webkit-scrollbar-thumb:hover {
+   background-color: #555;
+}
+
+/* เมนูย่อย */
+.products-container {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   justify-items: center;
+   gap: 20px;
+}
+
+.product-item {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background: #fff;
+   width: 293.33px;
+   margin-bottom: 25px;
+   padding: 10px;
+   box-sizing: border-box;
+   margin: 0 90px;
+}
+
+.product-item img {
+   width: 100%;
+   height: 220px;
+   object-fit: cover;
+   margin-bottom: 10px;
+}
+
+.product-text {
+   text-align: center;
+}
+
+.product-text h2 {
+   width: 274px;
+   height: 28px;
+   background: black;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: "Inter", sans-serif;
+   font-size: 18px;
+   margin-bottom: 10px;
+}
+
+.product-details {
+   text-align: left;
+   width: 100%;
+}
+
+.product-details p {
+   font-size: 14px;
+   margin: 3px 20px;
+   color: #6E6E6E;
+   font-family: "Poppins", sans-serif;
+   display: flex;
+   align-items: center;
+   gap: 0px;
+   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, gap 0.3s ease-in-out;
+}
+
+.product-details p i {
+   font-size: 8px;
+   width: 8px;
+   height: 8px;
+   opacity: 0;
+   transform: translateX(-10px);
+   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.product-details p:hover {
+   color: blue;
+   gap: 4px;
+   transform: translateX(5px);
+}
+
+.product-details p:hover i {
+   font-size: 8px;
+   width: 8px;
+   height: 8px;
+   opacity: 1;
+   /* แสดงไอคอน */
+   transform: translateX(0);
+}
+
+.product-details p:hover {
+   cursor: default;
+}
+
+/* สู้หน้าหลัก */
+.OFFICE-TWE img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.OFFICE-ONE {
+   display: flex;
+   background-color: rgba(0, 0, 0, 0.140);
+   color: white;
+   font-size: 54px;
+   font-family: "Inter", sans-serif;
+   justify-content: center;
+   text-align: center;
+   transform: translateY(-180px);
+}
+
+/* ข้อความแถวแรก */
+.message-one {
+   margin-top: -80px;
+   font-size: 16px;
+   text-align: center;
+   font-family: "Poppins", sans-serif;
+}
+
+/* โฆษณา */
+.advert {
+   display: flex;
+   justify-content: space-between;
+   gap: 20px;
+   flex-wrap: wrap;
+   margin-top: -6%; /* ใช้ค่าลบขยับขึ้น */
+}
+
+.advert-item {
+   width: 490px; /* กำหนดขนาดความกว้างเป็น 455px */
+   height: 568px; /* กำหนดขนาดความสูงเป็น 568px */
+   background-color: #D9D9D9;
+   padding: 20px;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   align-items: center; /* จัดให้อยู่ตรงกลางในแนวนอน */
+   justify-content: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+}
+
+/* ส่วนที่ 1 */
+.image-advert {
+   width: 100%;
+   display: flex;
+   justify-content: center; /* ให้รูปอยู่กลางแนวนอน */
+   align-items: center; /* ให้รูปอยู่กลางแนวตั้ง */
+   margin-bottom: 15px; /* เพิ่มระยะห่างระหว่างรูปกับข้อความ */
+}
+
+.image-advert img {
+   width: 70%; /* กำหนดความกว้างของรูป */
+   height: auto;
+   object-fit: cover; /* เพื่อป้องกันการผิดสัดส่วน */
+}
+
+.text-advert {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start; /* จัดให้อยู่ชิดซ้าย */
+}
+
+.text-advert h2 {
+   font-family: "Poppins", sans-serif;
+   font-size: 20px;
+   width: 100%; /* ใช้ความกว้างเต็ม */
+   margin-bottom: 10px; /* เพิ่มระยะห่างระหว่าง h2 กับ p */
+}
+
+.text-advert p {
+   font-family: "Poppins", sans-serif;
+   font-size: 12px;
+   width: 100%; /* ใช้ความกว้างเต็ม */
+   margin-top: 10px; /* เพิ่มระยะห่างระหว่าง p แต่ละตัว */
+   text-align: left; /* จัดข้อความให้อยู่ชิดซ้าย */
+}
+
+.text-advert {
+   text-align: center;
+   width: 80%; /* ทำให้ความกว้างเท่ากับรูป */
+}
+
+.center-box {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   height: 100%;
+   padding: 20px;
+}
+
+.center-box h2 {
+   font-family: "Poppins", sans-serif;
+   font-size: 18px;
+   margin-bottom: 10px;
+}
+
+.center-box .description {
+   flex-grow: 1; /* ทำให้กล่องขยายตัว */
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+   align-items: flex-start; /* จัดเนื้อหาภายในให้ชิดซ้าย */
+}
+
+.center-box p {
+   font-family: "Poppins", sans-serif;
+   font-size: 13px;
+   margin: 8px 0;
+   text-align: left; /* จัดข้อความใน p ให้ชิดซ้าย */
+}
+
+/* ทำให้ตัวอักษรภาษาอังกฤษเป็นตัวหนา */
+.center-box p strong {
+   font-weight: bold;
+}
+
+.button-center {
+   width: 119px;
+   height: 44px;
+   background-color: #233388;
+   color: white;
+   border: 2px solid white;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-top: auto; /* ดันปุ่มไปล่าง */
+}
+
+.button-center:hover {
+   background-color: #005bb5;
+}
+
+/* ส่วนที่ 2 */
+.advert-item.large {
+   width: 1004px;
+   height: auto; /* ให้สูงตามเนื้อหา */
+   display: flex;
+   flex-direction: column; /* จัดให้อยู่เป็นแนวตั้ง */
+   align-items: center;
+   justify-content: center;
+   background-color: #D9D9D9;
+   padding: 20px;
+   box-sizing: border-box;
+   text-align: center;
+   gap: 20px; /* ระยะห่างระหว่างแถว */
+}
+
+/* จัดเรียงแถวรูปภาพ */
+.image-row {
+   display: flex;
+   justify-content: center;
+   gap: 200px; /* ระยะห่างระหว่างรูป */
+}
+
+/* จัดรูปภาพและตัวหนังสือให้อยู่ตรงกลาง */
+.image-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+}
+
+/* ขนาดของรูป */
+.image-container img {
+   width: 300px;
+   height: 200px;
+   object-fit: cover;
+}
+
+/* จัดรูปที่อยู่แถวล่างให้อยู่ตรงกลาง */
+.image-row.center {
+   display: flex;
+   justify-content: center;
+}
+
+.advert-item.large h2 {
+   font-family: "Poppins", sans-serif;
+   font-size: 20px;
+   font-weight: bold;
+   margin-top: 10px; /* เพิ่มระยะห่างระหว่างรูปกับตัวหนังสือ */
+}
+
+.advert-item.large p {
+   font-family: "Poppins", sans-serif;
+   font-size: 16px;
+   font-weight: 500;
+   margin-top: 5px;
+   text-align: left;
+}
+
+.advert-item.large .text-advert {
+   margin-top: 20px;
+   width: 60%;
+   text-align: left; /* ทำให้ข้อความใน p ชิดซ้าย */
+}
+
+.advert-item.large .text-advert h2 {
+   text-align: center; /* ทำให้ h2 อยู่กลาง */
+}
+
+.advert-item.medium {
+   width: 487px;
+   height: 568px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   background-color: #D9D9D9;
+   padding: 20px;
+   box-sizing: border-box;
+}
+
+.advert-item.medium .image-advert {
+   width: 333px;
+   height: 237px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.advert-item.medium .image-advert img {
+   width: 90%;
+   height: 90%;
+   object-fit: cover;
+}
+
+.advert-item.medium h2 {
+   font-size: 20px;
+   text-align: center;
+   font-family: "Poppins", sans-serif;
+}
+
+/* แถบเมนูสินค้า */
+/* ใช้ Flexbox แทน Position Absolute */
+.office-container {
+   display: flex;
+   align-items: flex-start;
+   gap: 50px;
+   max-width: 1480px;
+   margin-top: 30px;
+}
+
+/* ปรับ .office-menu */
+.office-menu {
+   position: relative;
+   top: 0;
+   left: 30px;
+   width: 250px;
+   height: auto;
+   background: white;
+}
+
+/* ปรับสไตล์ของข้อความ "เรียงตาม: ล่าสุด" */
+.office-menu p {
+   margin: 0;
+   font-size: 12px;
+   font-weight: normal;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   cursor: pointer;
+   color: #6E6E6E;
+   font-family: "Poppins", sans-serif;
+   justify-content: flex-end;
+}
+
+/* ปรับให้ "ล่าสุด" เป็นสีน้ำเงิน */
+#selected-option {
+   color: #233388;
+   font-weight: normal;
+   font-family: "Poppins", sans-serif;
+}
+
+/* สไตล์ของตัวเลือกเมนู */
+#menu-options {
+   display: none;
+   position: absolute;
+   top: 4%;
+   left: 95px;
+   border: 1px solid #ccc;
+   background-color: #fff;
+   width: 140px;
+   height: auto;
+   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+   border-radius: 5px;
+   padding: 5px 10px;
+   flex-direction: column;
+}
+
+#menu-options li {
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   cursor: pointer;
+   padding: 3px 10px;
+   font-size: 12px;
+   color: #233388;
+   transition: background-color 0.3s ease;
+   white-space: nowrap;
+}
+
+#menu-options li:hover {
+   background-color: #f0f0f0;
+}
+
+#menu-options li .material-icons,
+#menu-options li .text-icon {
+   font-size: 12px;
+   vertical-align: middle;
+   width: 18px;
+   text-align: center;
+}
+
+#menu-options li .triangle {
+   width: 0;
+   height: 0;
+   border-top: 5px solid transparent;
+   border-bottom: 5px solid transparent;
+   border-right: 6px solid #233388;
+   margin-left: auto;
+   /* ทำให้สามเหลี่ยมไปอยู่ขวาสุด */
+}
+
+.text-icon {
+   font-family: "Poppins", sans-serif;
+   font-size: 12px;
+   font-weight: normal;
+   color: #233388;
+   text-align: left;
+   width: auto;
+}
+
+/* เมนูของ office */
+/* สไตล์ของแถว "office" */
+.office-menu>div {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+}
+
+.character {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   border-bottom: 2px solid #ccc;
+   padding-bottom: 10px;
+}
+
+.character h2 {
+   margin: 0;
+   font-size: 20px;
+   font-family: "Poppins", sans-serif;
+}
+
+.character p {
+   font-size: 11px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+}
+
+/* หมวดสินค้า */
+/* กรอบทั้งหมด */
+.Retro-Menu p {
+   margin: 5px 0;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   margin-left: 10px;
+   justify-content: space-between;
+   width: 229px;
+   height: 32px;
+   padding: 0 10px;
+   border-radius: 5px;
+   background-color: #fff;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+/* สีพื้นหลังเมื่อ hover */
+.Retro-Menu p:hover {
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+   cursor: pointer;
+}
+
+/* สีพื้นหลังค้างไว้เมื่อคลิก */
+.Retro-Menu p.active {
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* เปลี่ยนสีไอคอนเมื่อ active */
+.Retro-Menu p.active .material-icons {
+   color: #6E6E6E;
+}
+
+/* Main-menu */
+.Main-menu {
+   display: none;
+   padding-left: 20px;
+   margin-top: 5px;
+   position: relative;
+   z-index: 3;
+}
+
+/* เมื่อเปิดเมนูย่อยของ Main-menu */
+.Main-menu.show {
+   display: block;
+}
+
+/* สไตล์เมนูย่อย */
+.Main-menu p {
+   width: 186px;
+   height: 23px;
+   padding: 5px;
+   cursor: pointer;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+}
+
+/* เปลี่ยนสีเมื่อ hover */
+.Main-menu p:hover {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+}
+
+/* กำหนดให้เมนูย่อยใน Main-menu ค้างสีเมื่อต้องการ */
+.Main-menu p.active {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* Main-menu-submenu */
+.Main-menu-submenu {
+   display: none;
+   padding-left: 20px;
+   margin-top: 5px;
+}
+
+/* เมื่อเปิดเมนูย่อยของ Main-menu-submenu */
+.Main-menu-submenu .show {
+   display: block;
+}
+
+/* สไตล์เมนูย่อย */
+.Main-menu-submenu p {
+   width: 186px;
+   height: 23px;
+   padding: 5px;
+   cursor: pointer;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+}
+
+/* เปลี่ยนสีเมื่อ hover */
+.Main-menu-submenu p:hover {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+}
+
+/* กำหนดให้เมนูย่อยใน Main-menu-submenu ค้างสีเมื่อต้องการ */
+.Main-menu-submenu p.active {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* subemenu */
+.submenu {
+   display: none;
+   padding-left: 20px;
+   margin-top: 5px;
+}
+
+/* เมื่อเปิดเมนูย่อย */
+.submenu.show {
+   display: block;
+}
+
+/* submenu สไตล์เมนูย่อย */
+.submenu p {
+   width: 189px;
+   height: 23px;
+   padding: 5px;
+   cursor: pointer;
+   font-size: 14px;
+   font-family: "Poppins", sans-serif;
+   color: #6E6E6E;
+}
+
+/* submenu เปลี่ยนสีเมื่อ hover */
+.submenu p:hover {
+   width: 189px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #233388;
+}
+
+/*submenu ค้างสีเมื่อต้องการ */
+.submenu p.active {
+   width: 189px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* กำหนดสีเมื่อเมนูรองมีคลาส sub-active */
+.menu.sub-active {
+   width: 186px;
+   height: 23px;
+   background-color: rgba(35, 51, 136, 0.2);
+   color: #6E6E6E;
+}
+
+/* รูปภาพของสินค้า */
+.gallery {
+   display: flex;
+   flex-wrap: wrap;
+   width: 100vw;
+   height: auto;
+   margin: 0;
+   box-sizing: border-box;
+   justify-content: flex-start;
+   position: sticky; /* ใช้ sticky หรือ fixed */
+   top: 0;  /* ให้ .gallery ติดอยู่ที่ด้านบน */
+   gap: 40px;
+   padding-bottom: 50px;
+   z-index: 10;  /* เพื่อให้แน่ใจว่า .gallery จะอยู่เหนือส่วนอื่นๆ */
+}
+
+/* สไตล์ของ .gallery-item */
+.gallery-item {
+   width: 248px;
+   height: 253px;
+   border-radius: 20px;
+   padding: 0;
+   text-align: center;
+   box-sizing: border-box;
+   position: relative;  /* ใช้ relative แทน fixed หรือ absolute */
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   margin: 5px 0;
+   background-color: #639BDB;
+}
+
+/* สไตล์ของรูปภาพ */
+.gallery-image {
+   width: 100%;  /* ให้รูปภาพเต็มความกว้างของ .gallery-item */
+   height: 179px;
+   border-radius: 5px;
+   margin-top: 0; /* ชิดขอบบนสุด */
+   margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+   object-fit: cover; /* ทำให้ไม่บิดเบี้ยว */
+}
+
+/* ✅ คอนเทนเนอร์ของชื่อสินค้า + ปุ่ม Buy Now */
+.gallery-name-container {
+   display: flex;
+   justify-content: space-between; /* ✅ ทำให้ชื่อสินค้าอยู่ซ้าย ปุ่มอยู่ขวา */
+   align-items: center;
+   width: 100%;
+   padding: 2px 6px;
+}
+
+/* สไตล์สำหรับชื่อสินค้า */
+.gallery-name {
+   font-size: 12px;
+   color: #000000;
+   font-family: "Poppins", sans-serif;
+   font-weight: bold;
+   text-align: left;
+   flex: 1; /* ✅ ทำให้ชื่อสินค้าใช้พื้นที่เหลือ */
+   margin-top: -19px;
+   margin-bottom: 10px
+}
+
+/* สไตล์ของหมวดหมู่สินค้า */
+.gallery-category {
+   font-size: 10px;
+   color: #000000;
+   text-align: left;
+   width: 100%;
+   padding-left: 10px;
+   font-family: "Poppins", sans-serif;
+   margin-top: -10px;
+}
+
+/* สไตล์ของปุ่ม Buy Now */
+.buy-now-button {
+   background-color: #233388;
+   color: white;
+   border: 2px solid #233388;
+   width: 100px;      /* ✅ ปรับให้เล็กลงเพื่อให้ไม่ล้น */
+   height: 30px;      /* ✅ ลดความสูงลง */
+   border-radius: 5px;
+   cursor: pointer;
+   text-align: center;
+   font-size: 14px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* ✅ เปลี่ยนเป็นสีเทาเมื่อเอาเมาส์ชี้ */
+.buy-now-button:hover {
+   background-color: #A9A9A9; /* ✅ สีเทา */
+   border: 2px solid #A9A9A9;
+}
+
+/* แสดงเฉพาะ 6 แถวแรก (6 x 4 = 24 รูป) */
+.gallery-item:nth-child(-n+24) {
+   display: flex;
+}
+
+/* รู้หน้าที่นับตามจำนวนเลข */
+.pagination {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+   margin-left: 180px; /* ขยับไปทางซ้าย 20px */
+}
+
+.page-number,
+.page-prev,
+.page-next {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   border-radius: 4px;
+}
+
+/* ปิดเอฟเฟกต์ของไอคอน */
+.page-prev, .page-next {
+   width: 40px;
+   height: 32px;
+   background-color: #f8f9fa;  /* สีพื้นหลังของไอคอน */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* ไม่ให้ไอคอนมีการเปลี่ยนสีเมื่อ hover หรือ active */
+.page-prev:hover, .page-next:hover,
+.page-prev:active, .page-next:active {
+   background-color: #f8f9fa;  /* สีพื้นหลังยังคงเหมือนเดิม */
+   color: inherit;             /* ไม่เปลี่ยนสีตัวอักษร */
+}
+
+/* ✅ ปรับขนาดตัวเลข */
+.page-number {
+   width: 32px;
+   height: 32px;
+   font-family: 'Poppins', sans-serif; /* ✅ ใช้ฟอนต์ Poppins */
+   font-size: 16px;
+   font-weight: bold;
+   color: #4E5D78; /* ✅ สีตัวเลขปกติ */
+   text-align: center;
+   background-color: white; /* ✅ ปกติ พื้นหลังสีขาว */
+}
+
+/* ✅ เมื่อคลิก (Active) */
+.page-number.active {
+   background-color: #E6F2FF; /* ✅ เปลี่ยนเป็นสี #E6F2FF เมื่อ active */
+   color: #233388; /* ✅ เปลี่ยนสีตัวเลขเมื่อ active */
+}
+
+/* แถบแมนูสุดท้าย */
+/* แถบ Store Location & Contact Us & Support */
+.Setup.contact img {
+   width: 24px;
+   height: 24px;
+   vertical-align: middle;
+   margin-right: 8px;
+}
+
+.Setup {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   width: 1440px;
+   height: 151px;
+   margin: 45px auto;
+   gap: 350px;
+   background-color: #f8f9fadb;
+   box-sizing: border-box;
+   margin-top: 30px;
+}
+
+.contact-item {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 10px;
+   position: relative;
+}
+
+.contact-item img {
+   width: 32px;
+   height: 32px;
+   transition: transform 0.3s ease;
+   position: relative;
+   z-index: 2;
+   /* ให้รูปไอคอนอยู่เหนือวงกลม */
+}
+
+.circle {
+   position: absolute;
+   top: 9px;
+   left: 20px;
+   width: 20px;
+   height: 20px;
+   background-color: #011094;
+   border-radius: 50%;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+   z-index: 1;
+   /* วงกลมอยู่ด้านหลังรูปไอคอน */
+}
+
+/* เมื่อเอาเมาส์ไปชี้ที่ contact-item ให้แสดงวงกลม */
+.contact-item:hover .circle {
+   opacity: 0.2;
+}
+
+/* เอฟเฟกต์เมื่อเอาเมาส์ไปชี้ที่ไอคอน */
+.contact-item:hover img {
+   filter: brightness(1.2);
+}
+
+.contact-item h2 {
+   margin: 0;
+   font-size: 18px;
+   color: #000000;
+   text-align: left;
+}
+
+.contact-item p {
+   margin: 0;
+   font-size: 14px;
+   color: #82898D;
+   text-align: left;
+}
+
+/* ไอคอนช่องติดตาม */
+.online-contact {
+   display: flex;
+   justify-content: center;
+   gap: 25px;
+   flex-wrap: wrap;
+   height: 15vh;
+}
+
+.online-contact a {
+   display: inline-block;
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   overflow: hidden;
+   position: relative;
+}
+
+.online-contact a img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: opacity 0.3s ease-in-out;
+   position: absolute;
+}
+
+.online-contact a img:first-child {
+   opacity: 1;
+}
+
+.online-contact a img:last-child {
+   opacity: 0;
+}
+
+/* เมื่อเอาเมาส์ชี้ที่ไอคอน */
+.online-contact a:hover img:first-child {
+   opacity: 0;
+}
+
+.online-contact a:hover img:last-child {
+   opacity: 1;
+}
+
+/* สำหรับหน้าจอเล็ก ปรับขนาดไอคอนให้เล็กลง */
+@media (max-width: 768px) {
+   .online-contact a {
+      width: 50px;
+      height: 50px;
+   }
+}
+
+/* STAY UPDATED */
+/* จัดกล่องทั้งหมด */
+.stay-updated-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 100%;
+   margin-bottom: 30px;
+   /* เพิ่มระยะห่างด้านล่าง */
+}
+
+/* ส่วน STAY UPDATED */
+.stay-updated {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+}
+
+.stay-updated h2 {
+   font-size: 30px;
+   margin: 0 10px;
+   font-family: 'Inter', sans-serif;
+}
+
+.stay-updated-divider {
+   font-size: 100px;
+   margin: 35px 2px;
+   transform: translateY(-10px);
+}
+
+/* ช่องค้นหาสำหรับ SIGN UP */
+.signup-search-container {
+   position: relative;
+   width: 300px;
+   height: 50px;
+   border: 1px solid #ccc;
+   border-radius: 30px;
+   padding: 5px 10px;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 20px;
+}
+
+.signup-search-input {
+   width: 100%;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   padding: 10px;
+   background: transparent;
+   padding-right: 40px;
+}
+
+/* กล่องใหญ่ทั้งหมด */
+.signup-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+}
+
+/* ช่องค้นหาสำหรับ SIGN UP */
+.signup-search-container {
+   position: relative;
+   width: 320px;
+   height: 50px;
+   border: 1px solid #ccc;
+   border-radius: 30px;
+   padding: 5px 0px;
+   background-color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: -10px;
+}
+
+/* ช่องค้นหาของ input */
+.signup-search-input {
+   width: 100%;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   padding: 10px;
+   background: transparent;
+   padding-right: 40px;
+}
+
+/* ไอคอนในช่องค้นหา */
+.signup-search-icon {
+   position: absolute;
+   right: 10px;
+   top: 50%;
+   transform: translateY(-50%);
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+/* ปรับขนาดรูป */
+.signup-search-icon img {
+   width: 45px;
+   height: 45px;
+   object-fit: contain;
+}
+
+/* ข้อความใต้ช่องค้นหา */
+.signup-text-container {
+   text-align: center;
+   margin-top: 10px;
+}
+
+.signup-text-container p {
+   font-size: 14px;
+   color: #555;
+   margin: 5px 0;
+   text-align: left;
+}
+
+/* สไตล์สำหรับเฉพาะข้อความ SIGN UP */
+.signup-highlight {
+   background-color: #011094;
+   color: white;
+   padding: 0px 4px;
+   font-weight: bold;
+   display: inline-block;
+   text-transform: uppercase;
+}
+
+/* ข้อความช่องติดต่อทั้งหมด */
+.All-contact-channels {
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   flex-direction: row;
+   height: 50vh;
+   width: 100%;
+   gap: 200px;
+}
+
+.contact-section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.Allcontact-Box {
+   background-color: black;
+   color: white;
+   width: 270px;
+   height: 41px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.All-contact-channels .contact-section h2 {
+   font-family: 'Inter', sans-serif;
+   margin: 0 10px;
+   font-size: 20px;
+}
+
+.Allcontact-Box-text {
+   font-size: 16px;
+   margin: 5px 0;
+   margin-top: 20px;
+   font-family: 'Inter', sans-serif;
+   margin-left: -50px;
+   line-height: 1.5;
+}
+
+.All-contact-channels .contact-section .Allcontact-Box-text p:hover {
+   color: blue;
+   cursor: pointer;
+}
+
+/* © Modernform 2020 */
+.footer-content {
+   position: relative;
+   width: 100%;
+   height: 121px;
+   background-color: #D9D9D9;
+   color: black;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.footer-content p {
+   color: #6D6E70;
+   margin: 0;
+   font-family: 'Inter', sans-serif;
+   margin-top: 95px;
+}

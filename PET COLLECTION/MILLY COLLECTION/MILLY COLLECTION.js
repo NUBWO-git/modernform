@@ -67,14 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   const itemsPerPage = 20 // 24 รูปต่อหน้า
    let currentPage = 1;
    let totalItems = 0;
    let totalPages = 0;
 
    // ฟังก์ชันเรียกข้อมูลและอัปเดต UI
    function fetchDataAndUpdate(sortOrder) {
-      fetch(`http://localhost/modernform/PET%20COLLECTION/CHATEAU/CHATEAU.php?sort=${sortOrder}`)
+      fetch(`http://localhost/modernform/PET%20COLLECTION/MILLY%20COLLECTION/MILLY%20COLLECTION.php?sort=${sortOrder}`)
          .then(response => response.json())
          .then(data => {
             currentData = data; // เก็บข้อมูลทั้งหมด
@@ -134,6 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
    // ฟังก์ชันแสดงปุ่มเปลี่ยนหน้า
    function renderPagination() {
       pagination.innerHTML = ''; // ล้างปุ่มหน้าเก่า
+
+      // หากจำนวนรูปทั้งหมดไม่เกิน 20 รูป ไม่แสดง pagination
+      if (totalItems <= itemsPerPage) {
+         return; // ไม่ทำอะไร
+      }
+
       // ปุ่ม Previous
       const prevButton = document.createElement("span");
       prevButton.innerHTML = '<span class="material-icons">chevron_left</span>'; // ไอคอนลูกศรซ้าย
@@ -147,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       pagination.appendChild(prevButton);
 
+      // แสดงปุ่มหน้า
       for (let i = 1; i <= totalPages; i++) {
          let pageLink = document.createElement('span');  // ใช้ 'span' แทน 'button'
          pageLink.textContent = i;
@@ -389,7 +396,7 @@ function closeAllSubSubMenus() {
 document.addEventListener("DOMContentLoaded", function () {
    const mainMenus = document.querySelectorAll(".Main-menu");
    const officeTitle = document.querySelector(".OFFICE-ONE h2");
-   const defaultTitle = "CHATEAU D’AX"; // ชื่อเมนูหน้าหลัก
+   const defaultTitle = "MILLY COLLECTION"; // ชื่อเมนูหน้าหลัก
 
    mainMenus.forEach(menu => {
       menu.addEventListener("click", function () {
@@ -416,7 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   const itemsPerPage = 20; // 20 รูปต่อหน้า
    let currentPage = 1;
    let totalItems = 0;
    let totalPages = 0;
@@ -424,7 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
    // ฟังก์ชันเรียกข้อมูลและอัปเดต UI
    function fetchDataAndUpdate(sortOrder) {
-      fetch(`http://localhost/modernform/PET%20COLLECTION/CHATEAU/CHATEAU.php?sort=${sortOrder}`)
+      fetch(`http://localhost/modernform/PET%20COLLECTION/MILLY%20COLLECTION/MILLY%20COLLECTION.php?sort=${sortOrder}`)
          .then(response => response.json())
          .then(data => {
             currentData = data; // เก็บข้อมูลทั้งหมด
@@ -488,6 +495,12 @@ document.addEventListener("DOMContentLoaded", function () {
    // ฟังก์ชันแสดงปุ่มเปลี่ยนหน้า
    function renderPagination() {
       pagination.innerHTML = ''; // ล้างปุ่มหน้าเก่า
+
+      // ถ้าจำนวนรูปไม่เกิน 20 รูป จะไม่แสดง pagination
+      if (totalItems <= itemsPerPage) {
+         return;  // ไม่ทำอะไรเลย ถ้าไม่เกินจำนวน 20 รูป
+      }
+
       // ปุ่ม Previous
       const prevButton = document.createElement("span");
       prevButton.innerHTML = '<span class="material-icons">chevron_left</span>'; // ไอคอนลูกศรซ้าย
@@ -553,7 +566,7 @@ document.addEventListener('DOMContentLoaded', function () {
    let products = [];
    let currentCategory = null;
    let currentPage = 1;
-   const itemsPerPage = 24; // จำนวนสินค้าต่อหน้า
+   const itemsPerPage = 20; // จำนวนสินค้าต่อหน้า
 
    function updateItemCount() {
       const count = products.length; // จำนวนสินค้าทั้งหมดที่ดึงมา
@@ -659,7 +672,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    // ฟังก์ชันสำหรับดึงข้อมูลสินค้า
    function fetchProducts(category = null) {
-      const url = new URL('http://localhost/modernform/PET%20COLLECTION/CHATEAU/CHATEAU.php');
+      const url = new URL('http://localhost/modernform/PET%20COLLECTION/MILLY%20COLLECTION/MILLY%20COLLECTION.php');
       const params = {};
 
       if (category) params.category = category;  // เพิ่มเงื่อนไขในการส่งหมวดหมู่
@@ -715,7 +728,7 @@ document.addEventListener("DOMContentLoaded", function () {
    const gallery = document.getElementById("gallery");
    const pagination = document.getElementById("pagination");
 
-   const itemsPerPage = 24; // 24 รูปต่อหน้า
+   const itemsPerPage = 20 // 24 รูปต่อหน้า
    let currentPage = 1;
    let totalItems = 0;
    let totalPages = 0;
@@ -725,7 +738,7 @@ document.addEventListener("DOMContentLoaded", function () {
    async function fetchImages() {
       try {
          console.log("Fetching images...");
-         const response = await fetch("http://localhost/modernform/PET%20COLLECTION/CHATEAU/CHATEAU.php");
+         const response = await fetch("http://localhost/modernform/PET%20COLLECTION/MILLY%20COLLECTION/MILLY%20COLLECTION.php");
 
          if (!response.ok) {
             throw new Error("Failed to fetch data from API");
@@ -873,42 +886,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //ลิ้ง URL
-document.addEventListener('DOMContentLoaded', function () {
-   const pElements = document.querySelectorAll('.Allcontact-Box-text p');
+document.addEventListener("DOMContentLoaded", function () {
+   let elements = document.querySelectorAll("p, #storeButton, #newButton");
 
-   pElements.forEach(function (p) {
-      p.addEventListener('click', function () {
-         const currentURL = window.location.href;
+   elements.forEach(function (element) {
+      element.addEventListener("click", function () {
          let targetUrl = "";
+         console.log("Clicked element:", element);  // ตรวจสอบว่า element ที่คลิกคืออะไร
 
-         switch (p.textContent.trim()) {
-            case "Office":
-               targetUrl = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
-               break;
-            case "Steelcase":
-               targetUrl = "http://localhost/modernform/Online%20Store/Steelcase/Steelcase.html";
-               if (currentURL === targetUrl) {
-                  location.reload();
-                  return;
-               }
-               break;
-            case "Home":
-               targetUrl = "http://localhost/modernform/Online%20Store/Home%20Shop/Home%20Shop.html";
-               break;
-            case "Kitchen":
-               targetUrl = "http://localhost/modernform/Online%20Store/Kitchen/Kitchen.html";
-               break;
-            case "Walk-in Closet & Storage":
-               targetUrl = "http://localhost/modernform/Online%20Store/Walk/Walk.html";
-               break;
-            case "Hardware & Fitting":
-               targetUrl = "http://localhost/modernform/Online%20Store/Hardware/Hardware.html";
-               break;
+         if (element.tagName === "P") {
+            let text = element.textContent.trim();
+
+            switch (text) {
+               case "Office":
+                  targetUrl = "Online%20Store/Modernform%20Online%20Store.html";
+                  break;
+               case "Steelcase":
+                  targetUrl = "Online%20Store/Steelcase/Steelcase.html";
+                  break;
+               case "Home":
+                  targetUrl = "Online%20Store/Home%20Shop/Home%20Shop.html";
+                  break;
+               case "Kitchen":
+                  targetUrl = "Online%20Store/Kitchen/Kitchen.html";
+                  break;
+               case "Walk-in closet & Storage":
+                  targetUrl = "Online%20Store/Walk/Walk.html";
+                  break;
+               case "Hardware & Fitting":
+                  targetUrl = "Online%20Store/Hardware/Hardware.html";
+                  break;
+            }
+         } else if (element.id === "storeButton") {
+            targetUrl = "http://localhost/modernform/PET%20COLLECTION/WORKING%20DESIGN%20SOLUTION/WORKING%20DESIGN%20SOLUTION.html";
          }
 
+         console.log("Target URL:", targetUrl);  // Debugging
+
          if (targetUrl) {
-            console.log("Navigating to:", targetUrl);
-            window.location.href = targetUrl;
+            window.location.href = targetUrl;  // ลองดูว่าไปถึงตรงนี้หรือไม่
          }
       });
    });
