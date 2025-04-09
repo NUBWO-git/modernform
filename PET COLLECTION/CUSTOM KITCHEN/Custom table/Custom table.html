@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="Custom table.css" />
+   <title>อัปโหลดรูปภาพ</title>
+</head>
+
+<script src="Custom table.js"></script>
+
+<body>
+   <h2>อัปโหลดรูปภาพและข้อมูล</h2>
+   <form action="Custom table.php" method="post" enctype="multipart/form-data">
+      <label for="image">เลือกภาพ:</label>
+      <input type="file" name="image" id="image" required><br><br>
+
+      <label for="name">ชื่อ:</label>
+      <input type="text" name="name" id="name" required><br><br>
+
+      <label for="category">หมวดหมู่:</label>
+      <select name="category" id="category" required>
+            <option value="Custom Kitchen">Custom Kitchen</option>
+      </select><br><br>
+
+      <button type="submit" name="submit">อัปโหลด</button>
+   </form>
+</body>
+</html>

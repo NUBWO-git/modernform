@@ -922,7 +922,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   break;
             }
          } else if (element.id === "storeButton") {
-            targetUrl = "http://localhost/modernform/PET%20COLLECTION/STEELCASE/STEELCASE.html";
+            targetUrl = "http://localhost/modernform/PET%20COLLECTION/Table/CUSTOM%20DININD.html";
          } 
 
          console.log("Target URL:", targetUrl);  // Debugging

@@ -1,0 +1,214 @@
+html, body {
+   margin: 0;
+   padding: 0;
+}
+
+/* คอนเทนเนอร์หลัก */
+.container {
+   display: flex;
+   flex-direction: column; /* จัดแสดงเป็นแนวตั้ง */
+   align-items: center; /* จัดกลางในแนวนอน */
+   justify-content: center; /* จัดตำแหน่งแนวตั้งให้อยู่กลาง */
+}
+
+/* สไตล์ของรูปภาพ */
+.logo-container img {
+   width: 696px;
+   height: 146px;
+   object-fit: contain;
+}
+
+/* สไตล์ของแถบเมนู */
+.menu-bar {
+   width: 100%;
+   height: 60px;
+   background-color: #D9D9D9;
+   text-align: center;
+}
+
+.menu-bar ul {
+   list-style-type: none; /* เอารูปแบบรายการออก */
+   padding: 0;
+   margin: 0;
+}
+
+.menu-bar ul li {
+   display: inline-block; /* ทำให้รายการเป็นแถว */
+   margin: 0 20px; /* เว้นระยะห่างระหว่างแต่ละรายการ */
+}
+
+.menu-bar ul li a {
+   text-decoration: none; /* ลบเส้นใต้จากลิงก์ */
+   font-size: 18px;
+   color: #000;
+   font-family: 'Poppins', sans-serif;
+   font-weight: bold;  /* ทำให้ตัวหนังสือหนา */
+   line-height: 60px;
+}
+
+.menu-bar ul li a:hover {
+   color: #2333BB; /* เปลี่ยนสีเมื่อ hover */
+}
+
+/* สไตล์สำหรับเมนูที่ถูกเลือก */
+.menu-bar ul li.active a {
+   color: #2333BB; /* เปลี่ยนสีเมนูที่ถูกเลือก */
+}
+
+/* รูปที่ 2 ข้างล่าง*/
+/* สไตล์สำหรับคอนเทนเนอร์หลัก */
+.main-container {
+   display: flex; /* ใช้ flexbox เพื่อจัดการ layout */
+   gap: 30px; /* ระยะห่างระหว่างรูปและบริการ */
+   align-items: flex-start; /* จัดรูปภาพให้เริ่มจากด้านบน */
+}
+
+/* สไตล์ของ container สำหรับรูปภาพ */
+.image-container {
+   display: flex;
+   flex-direction: column; /* เรียงในแนวตั้ง */
+   align-items: flex-start; /* ชิดซ้าย */
+   justify-content: flex-start; /* ชิดบน */
+   width: 100%;
+   margin: 0;
+   padding: 0;
+}
+
+.image-container h2 {
+   font-size: 24px;
+   color: #233388; /* สีฟ้า */
+   border-bottom: 3px solid #000000; /* เส้นข้างล่าง */
+   width: 980px; /* ความยาวของเส้น */
+   padding-bottom: 10px; /* ระยะห่างจากข้อความถึงเส้น */
+   margin: 40px -8px;
+   margin-top: 95px; /* ระยะห่างระหว่างรูปกับข้อความ */
+   margin-left: 20px;
+}
+
+/* สไตล์ของรูปภาพ */
+.resize-image {
+   width: 917px;
+   height: 490px;
+   margin: 20px -8px;
+}
+
+.services-title h2 {
+   font-size: 24px;
+   color: #233388;
+   border-bottom: 3px solid #000000;
+   padding-bottom: 10px;
+   margin-top: 50px;
+   margin-left: 20px; /* <-- ขยับทั้งตัวอักษรและเส้น */
+   width: 460px; /* <-- ทำให้เส้นอยู่แค่พอดีกับข้อความ */
+}
+
+/* สไตล์สำหรับบริการ */
+.services-images {
+   display: flex;
+   flex-direction: column; /* เรียงรูปภาพในแนวตั้ง */
+   gap: 20px; /* เว้นระยะห่างระหว่างรูป */
+}
+
+.services-images img {
+   width: 453px; /* ขนาดของรูป */
+   height: 268px; /* ขนาดของรูป */
+   margin-left: 15px; /* ขยับรูปไปทางขวา */
+   margin-right: 30px; /* เพิ่มระยะห่างจากขวา */
+}
+
+/* สไตล์สำหรับคอนเทนเนอร์ */
+.furniture-container {
+   display: flex; /* ใช้ flexbox */
+   gap: 80px;  /* เว้นระยะห่างระหว่างแต่ละรูป */
+   justify-content: center; /* จัดตำแหน่งแนวนอนให้รูปอยู่ตรงกลาง */
+   align-items: center; /* จัดตำแหน่งแนวตั้งให้รูปอยู่ตรงกลาง */
+}
+
+/* สไตล์สำหรับแต่ละ item */
+.furniture-item {
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* จัดข้อความให้ตรงกลางในแนวตั้ง */
+   align-items: center; /* จัดข้อความให้อยู่กลางในแนวนอน */
+   text-align: center; /* ทำให้ข้อความชิดกลาง */
+}
+
+/* สไตล์สำหรับรูปภาพ */
+.furniture-img {
+   width: 414px; /* ขนาดกว้าง */
+   height: 427px; /* ขนาดสูง */
+   object-fit: cover; /* ทำให้รูปภาพพอดีกับขนาดที่กำหนด */
+}
+
+/* สไตล์สำหรับข้อความ h2 */
+.furniture-item h2 {
+   font-size: 24px; /* ขนาดตัวอักษร */
+   color: rgb(0, 0, 0); /* สีของข้อความ */
+   font-weight: bold; /* ทำให้ตัวหนา */
+   margin-bottom: 10px; /* เว้นระยะห่างจากรูป */
+}
+
+/* สไตล์สำหรับข้อความ */
+.text-with-border {
+   width: 414px; /* ความกว้างเท่ากับรูป */
+   height: 60px; /* ความสูงที่ต้องการ */
+   background-color: #D9D9D9; /* สีพื้นหลัง */
+   display: flex;
+   justify-content: center; /* จัดข้อความให้กลาง */
+   align-items: center; /* จัดข้อความในแนวตั้ง */
+   margin-bottom: -12px; /* เว้นระยะห่างจากรูป */
+   text-align: center; /* ให้ข้อความอยู่กลาง */
+   border-radius: 15px;
+}
+
+.social {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #000000; 
+   margin-top: 160px;
+}
+
+.social-image {
+   background-color: white;
+   width: 20px;  /* ขนาดพื้นหลัง */
+   height: 18px; /* ขนาดพื้นหลัง */
+   display: flex;
+   justify-content: center; /* จัดรูปให้อยู่ตรงกลาง */
+   align-items: center; /* จัดรูปให้อยู่ตรงกลาง */
+   border: 2px solid #000; /* ขอบสีดำ รอบ div */
+   border-radius: 8px; /* ให้มุมโค้งมน */
+}
+
+.social-image img {
+   width: 16px;  /* ขนาดรูป */
+   height: 16px; /* ขนาดรูป */
+   border-radius: 50%; /* ให้รูปมีขอบโค้งมนเป็นวงกลม */
+}
+
+.text-social p {
+   color: white; /* เปลี่ยนสีตัวหนังสือเป็นสีขาว */
+   font-size: 14px; /* ขนาดฟอนต์ของข้อความ */
+   margin-left: -25px;
+}
+
+.social-BK {
+   display: flex;
+   flex-direction: row; 
+   gap: 30px; 
+   align-items: center;
+}
+
+.modernform-img img{
+   flex-direction: row;
+   align-items: center;
+   width: 166px;
+   height: 23px; 
+   margin-left: 620px; 
+}
+
+.modernform-img {
+   display: flex;
+   justify-content: flex-end; /* ขยับไปฝั่งขวา */
+   align-items: center; /* จัดตำแหน่งแนวตั้ง */
+}

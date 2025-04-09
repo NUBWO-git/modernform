@@ -125,3 +125,58 @@ document.addEventListener("DOMContentLoaded", function () {
       });
    });
 });
+
+//ลิงค์ Products
+document.getElementById('ProductsLink').addEventListener('click', function(event) {
+   event.preventDefault();  // ป้องกันไม่ให้ลิงก์ไปที่ URL ทันที
+
+   // ทำงานบางอย่างที่คุณต้องการ เช่น แสดงข้อความหรือเรียกฟังก์ชัน
+   console.log('You clicked on ProductsLink!');
+   
+   // เมื่อทำงานเสร็จแล้วให้ไปยังลิงก์
+   window.location.href = "http://localhost/modernform/Online%20Store/Modernform%20Online%20Store.html";
+});
+
+//ลิงค์ Collection
+document.getElementById('CollectionLink').addEventListener('click', function(event) {
+   event.preventDefault();  // ป้องกันไม่ให้ลิงก์ไปที่ URL ทันที
+
+   // ทำงานบางอย่างที่คุณต้องการ เช่น แสดงข้อความหรือเรียกฟังก์ชัน
+   console.log('You clicked on Collection!');
+   
+   // เมื่อทำงานเสร็จแล้วให้ไปยังลิงก์
+   window.location.href = "http://localhost/modernform/PET%20COLLECTION/PET%20COLLECTION.html";
+});
+
+//ลิงค์ Project Reference
+document.getElementById('Project ReferenceLink').addEventListener('click', function(event) {
+   event.preventDefault();  // ป้องกันไม่ให้ลิงก์ไปที่ URL ทันที
+
+   // ทำงานบางอย่างที่คุณต้องการ เช่น แสดงข้อความหรือเรียกฟังก์ชัน
+   console.log('You clicked on Project Reference!');
+   
+   // เมื่อทำงานเสร็จแล้วให้ไปยังลิงก์
+   window.location.href = "http://localhost/modernform/Refeerece/Project%20Reference.html";
+});
+
+//ลิงค์ E-Catalogue
+document.getElementById('E-CatalogueLink').addEventListener('click', function(event) {
+   event.preventDefault();  // ป้องกันไม่ให้ลิงก์ไปที่ URL ทันที
+
+   // ทำงานบางอย่างที่คุณต้องการ เช่น แสดงข้อความหรือเรียกฟังก์ชัน
+   console.log('You clicked on E-Catalogue!');
+   
+   // เมื่อทำงานเสร็จแล้วให้ไปยังลิงก์
+   window.location.href = "http://localhost/modernform/E-Catalogue/E-Catalogue.html";
+});
+
+//ลิงค์ Export
+document.getElementById('ExportLink').addEventListener('click', function(event) {
+   event.preventDefault();  // ป้องกันไม่ให้ลิงก์ไปที่ URL ทันที
+
+   // ทำงานบางอย่างที่คุณต้องการ เช่น แสดงข้อความหรือเรียกฟังก์ชัน
+   console.log('You clicked on Export!');
+   
+   // เมื่อทำงานเสร็จแล้วให้ไปยังลิงก์
+   window.location.href = "http://localhost/modernform/Export/Export.html";
+});

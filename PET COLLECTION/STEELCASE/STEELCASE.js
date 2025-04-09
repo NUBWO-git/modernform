@@ -919,7 +919,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   break;
             }
          } else if (element.id === "storeButton") {
-            targetUrl = "http://localhost/modernform/PET%20COLLECTION/CUSTOM%20SOFA/CUSTOM%20SOFA.html";
+            targetUrl = "http://localhost/modernform/PET%20COLLECTION/DESIGN%20AWARDS/DESIGN%20AWARDS.html";
          }
 
          console.log("Target URL:", targetUrl);  // Debugging

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="Refeerece table.css" />
+   <title>อัปโหลดรูปภาพ</title>
+</head>
+
+<script src="Refeerece table.js"></script>
+
+<body>
+   <h2>อัปโหลดรูปภาพและข้อมูล</h2>
+   <form action="Refeerece table.php" method="post" enctype="multipart/form-data">
+      <label for="image">เลือกภาพ:</label>
+      <input type="file" name="image" id="image" required><br><br>
+
+      <label for="name">ชื่อ:</label>
+      <input type="text" name="name" id="name" required><br><br>
+
+      <label for="category">หมวดหมู่:</label>
+      <input type="text" name="category" id="category" required placeholder="กรอกหมวดหมู่"><br><br>
+
+      <button type="submit" name="submit">อัปโหลด</button>
+   </form>
+</body>
+</html>
